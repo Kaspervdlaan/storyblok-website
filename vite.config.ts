@@ -11,6 +11,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    build: {
+      outDir: '_site'
+    },
     css: {
       preprocessorOptions: {
         scss: {
