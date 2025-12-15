@@ -29,10 +29,10 @@ const vibeTheme = create({
   textMutedColor: '#94d2bd',
   
   // Toolbar
-  barTextColor: '#001219',
+  barTextColor: '#e9d8a6',
   barSelectedColor: '#ee9b00',
   barHoverColor: '#0a9396',
-  barBg: '#e9d8a6',
+  barBg: '#001219',
   
   // Form colors
   inputBg: '#e9d8a6',

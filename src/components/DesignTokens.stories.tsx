@@ -64,7 +64,6 @@ const ColorSwatch: React.FC<{
       border: '3px solid #000',
       borderRadius: '0.6rem',
       overflow: 'hidden',
-      boxShadow: '4px 4px 0 0 #000',
     }}
   >
     <div
@@ -1349,7 +1348,7 @@ export const Overview: Story = {
               fontFamily: 'Space Mono, monospace',
               fontSize: '0.75rem',
               margin: 0,
-              color: '#001219',
+              color: '#fff',
             }}
           >
 {`@use "styles/variables" as *;

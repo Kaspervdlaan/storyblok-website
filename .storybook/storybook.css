@@ -28,36 +28,36 @@ nav.sidebar-container,
   margin: 12px !important;
 }
 
-/* Search input - neobrutalist style */
+/* Search input - neobrutalist style with better contrast */
 [role="search"] input,
 input[placeholder*="Find"] {
   font-family: 'Space Mono', monospace !important;
-  background: #e9d8a6 !important;
-  border: 3px solid #ee9b00 !important;
+  background: #0d1518 !important;
+  border: 2px solid #94d2bd !important;
   border-radius: 0 !important;
-  color: #001219 !important;
-  font-weight: 700 !important;
+  color: #e9d8a6 !important;
+  font-weight: 500 !important;
   padding: 10px 12px !important;
-  box-shadow: 4px 4px 0 0 #ee9b00 !important;
+  box-shadow: none !important;
   transition: all 0.1s ease !important;
 }
 
 [role="search"] input:focus,
 input[placeholder*="Find"]:focus {
-  background: #ffffff !important;
-  border-color: #0a9396 !important;
-  box-shadow: 4px 4px 0 0 #0a9396 !important;
+  background: #1a2023 !important;
+  border-color: #ee9b00 !important;
+  box-shadow: 0 0 0 2px rgba(238, 155, 0, 0.3) !important;
   outline: none !important;
 }
 
 [role="search"] input::placeholder {
-  color: #5c5a52 !important;
-  opacity: 1 !important;
+  color: #94d2bd !important;
+  opacity: 0.8 !important;
 }
 
 /* Search icon */
 [role="search"] svg {
-  color: #001219 !important;
+  color: #94d2bd !important;
 }
 
 /* Sidebar scrollable area */
@@ -78,8 +78,8 @@ button[data-nodetype="root"],
   color: #ee9b00 !important;
   background: transparent !important;
   border: none !important;
-  padding: 12px 16px 8px !important;
-  margin-top: 8px !important;
+  padding: 8px 16px 4px !important;
+  margin-top: 4px !important;
 }
 
 button[data-nodetype="root"]:hover {
@@ -94,8 +94,8 @@ button[data-nodetype="group"] {
   font-size: 13px !important;
   color: #e9d8a6 !important;
   background: transparent !important;
-  padding: 8px 16px !important;
-  margin: 2px 8px !important;
+  padding: 6px 16px !important;
+  margin: 0 8px !important;
   border: 2px solid transparent !important;
   border-radius: 0 !important;
   transition: all 0.1s ease !important;
@@ -119,8 +119,8 @@ a[data-nodetype="document"],
   font-weight: 400 !important;
   color: #94d2bd !important;
   background: transparent !important;
-  padding: 6px 16px 6px 32px !important;
-  margin: 2px 8px !important;
+  padding: 4px 16px 4px 32px !important;
+  margin: 0 8px !important;
   border: 2px solid transparent !important;
   border-radius: 0 !important;
   transition: all 0.1s ease !important;
@@ -171,9 +171,9 @@ a[data-selected="true"]:hover,
 /* Main toolbar */
 [role="main"] > div:first-child,
 .sb-bar {
-  background: #e9d8a6 !important;
-  border-bottom: 4px solid #001219 !important;
-  box-shadow: 0 4px 0 0 rgba(0, 18, 25, 0.1) !important;
+  background: #001219 !important;
+  border-bottom: 3px solid #ee9b00 !important;
+  box-shadow: none !important;
 }
 
 /* Toolbar buttons */
@@ -181,23 +181,36 @@ button[type="button"] {
   font-family: 'Space Mono', monospace !important;
   font-weight: 600 !important;
   border-radius: 0 !important;
+  color: #e9d8a6 !important;
 }
 
 /* Toolbar separator */
 [class*="separator"] {
-  background: #001219 !important;
-  width: 3px !important;
+  background: #ee9b00 !important;
+  width: 2px !important;
 }
 
 /* Zoom controls and other toolbar items */
 [class*="tools"] button {
   border: 2px solid transparent !important;
   transition: all 0.1s ease !important;
+  color: #e9d8a6 !important;
 }
 
 [class*="tools"] button:hover {
-  background: #ee9b00 !important;
-  border-color: #001219 !important;
+  background: #0a9396 !important;
+  border-color: #0a9396 !important;
+  color: #ffffff !important;
+}
+
+/* Toolbar icons */
+[class*="tools"] svg,
+[role="main"] > div:first-child svg {
+  color: #e9d8a6 !important;
+}
+
+[class*="tools"] button:hover svg {
+  color: #ffffff !important;
 }
 
 /* ============================================================================
