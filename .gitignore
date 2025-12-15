@@ -22,3 +22,8 @@ Thumbs.db
 # Editor settings
 .vscode/
 .idea/
+
+# SSL certificates
+*.pem
+*.key
+*.crt
