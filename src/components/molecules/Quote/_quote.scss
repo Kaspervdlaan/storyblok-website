@@ -34,7 +34,6 @@
 .quote--minimal {
   padding: $space-6;
   background-color: transparent;
-  border-left: $border-width-lg solid $color-primary;
   border-radius: 0;
 }
 
@@ -88,6 +87,7 @@
 .quote__avatar {
   .media {
     border: $border-thick;
+    max-width: 200px;
   }
 }
 

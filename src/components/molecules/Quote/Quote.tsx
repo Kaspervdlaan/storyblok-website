@@ -48,7 +48,7 @@ export const Quote: React.FC<QuoteProps> = ({
     md: 64,
     lg: 80,
   };
-
+  
   return (
     <blockquote className={classNames} {...props}>
       <Box
