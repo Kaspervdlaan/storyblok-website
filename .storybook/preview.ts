@@ -17,16 +17,24 @@ const preview: Preview = {
           value: '#ffffff',
         },
         {
+          name: 'champagne',
+          value: '#e9d8a6',
+        },
+        {
           name: 'dark',
-          value: '#1a1a1a',
+          value: '#001219',
         },
         {
           name: 'primary',
-          value: '#ffde03',
+          value: '#ee9b00',
         },
         {
           name: 'secondary',
-          value: '#ff2d92',
+          value: '#0a9396',
+        },
+        {
+          name: 'mint',
+          value: '#94d2bd',
         },
       ],
     },

@@ -5,6 +5,20 @@
 @use "variables" as *;
 
 // ----------------------------------------------------------------------------
+// SQUIRCLE CORNERS - Smooth superellipse corners
+// ----------------------------------------------------------------------------
+
+@mixin squircle($radius: $radius-md) {
+  border-radius: $radius;
+  corner-shape: $border-shape-default;
+}
+
+@mixin squircle-custom($radius: $radius-md, $shape: $border-shape-default) {
+  border-radius: $radius;
+  corner-shape: $shape;
+}
+
+// ----------------------------------------------------------------------------
 // FOCUS RING - Accessible, bold focus indicator
 // ----------------------------------------------------------------------------
 
@@ -12,7 +26,7 @@
   outline: $border-width-md solid $color-black;
   outline-offset: 2px;
   box-shadow: 0 0 0 4px $color-primary;
-  border-radius: $radius-md;
+  @include squircle($radius-md);
 }
 
 @mixin focus-ring-inset {

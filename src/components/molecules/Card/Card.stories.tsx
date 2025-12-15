@@ -35,7 +35,7 @@ export const Default: Story = {
     padding: 'md',
   },
   render: (args) => (
-    <Card {...args} style={{ maxWidth: '400px' }}>
+    <Card {...args}>
       <Card.Header>
         <Typography variant="h3">Card Title</Typography>
       </Card.Header>
@@ -190,13 +190,14 @@ export const ProductCard: Story = {
     <Card variant="elevated" padding="lg" style={{ maxWidth: '320px' }}>
       <div
         style={{
-          background: '#ffde03',
+          background: '#ee9b00',
           height: '180px',
           margin: '-1.5rem -1.5rem 0 -1.5rem',
-          borderBottom: '3px solid #000',
+          borderBottom: '3px solid #001219',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          borderRadius: '0.6rem 0.6rem 0 0',
         }}
       >
         <Typography variant="display" style={{ fontSize: '4rem' }}>
@@ -254,7 +255,7 @@ export const NotificationCard: Story = {
       <Card
         variant="outlined"
         padding="sm"
-        style={{ borderLeft: '6px solid #00ff88' }}
+        style={{ borderLeft: '6px solid #0a9396' }}
       >
         <Card.Body>
           <Typography variant="caption" tone="success">
@@ -269,7 +270,7 @@ export const NotificationCard: Story = {
       <Card
         variant="outlined"
         padding="sm"
-        style={{ borderLeft: '6px solid #ff3333' }}
+        style={{ borderLeft: '6px solid #ae2012' }}
       >
         <Card.Body>
           <Typography variant="caption" tone="danger">
@@ -284,10 +285,10 @@ export const NotificationCard: Story = {
       <Card
         variant="outlined"
         padding="sm"
-        style={{ borderLeft: '6px solid #ff9500' }}
+        style={{ borderLeft: '6px solid #bb3e03' }}
       >
         <Card.Body>
-          <Typography variant="caption" style={{ color: '#ff9500' }}>
+          <Typography variant="caption" style={{ color: '#bb3e03' }}>
             WARNING
           </Typography>
           <Typography variant="bodySm" style={{ marginTop: '0.25rem' }}>
@@ -307,7 +308,7 @@ export const NeobrutalistShowcase: Story = {
   render: () => (
     <div
       style={{
-        background: '#ff2d92',
+        background: '#005f73',
         padding: '3rem',
         minHeight: '400px',
       }}
@@ -377,8 +378,8 @@ export const ProfileCard: Story = {
           style={{
             width: '80px',
             height: '80px',
-            background: '#ffde03',
-            border: '3px solid #000',
+            background: '#94d2bd',
+            border: '3px solid #001219',
             borderRadius: '50%',
             margin: '0 auto 1rem',
             display: 'flex',
@@ -400,7 +401,7 @@ export const ProfileCard: Story = {
             gap: '1.5rem',
             marginTop: '1.5rem',
             paddingTop: '1rem',
-            borderTop: '2px dashed #d4d4d4',
+            borderTop: '2px dashed #c9bfa0',
           }}
         >
           <div style={{ textAlign: 'center' }}>

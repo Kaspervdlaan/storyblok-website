@@ -10,6 +10,8 @@ export interface ButtonProps
   variant?: ButtonVariant;
   /** Size of the button */
   size?: ButtonSize;
+  /** Makes button take full width of container */
+  fullWidth?: boolean;
   /** Shows loading spinner and disables interaction */
   isLoading?: boolean;
   /** Icon element to show before the text */
@@ -64,6 +66,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       variant = 'primary',
       size = 'md',
+      fullWidth = false,
       isLoading = false,
       disabled = false,
       leftIcon,
@@ -81,6 +84,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'button',
       `button--${variant}`,
       `button--${size}`,
+      fullWidth && 'button--full-width',
       isLoading && 'button--loading',
       isDisabled && 'button--disabled',
       className,

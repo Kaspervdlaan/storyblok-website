@@ -1,0 +1,256 @@
+// ============================================================================
+// INPUT COMPONENT STYLES
+// ============================================================================
+
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+// ----------------------------------------------------------------------------
+// WRAPPER
+// ----------------------------------------------------------------------------
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.input-wrapper--full-width {
+  width: 100%;
+}
+
+// ----------------------------------------------------------------------------
+// LABEL
+// ----------------------------------------------------------------------------
+
+.input-label {
+  color: $color-text;
+}
+
+// ----------------------------------------------------------------------------
+// INPUT CONTAINER
+// ----------------------------------------------------------------------------
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: $color-surface;
+  border: $border-default;
+  @include squircle($radius-md);
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover:not(.input-container--disabled) {
+    border-color: $color-neutral-400;
+  }
+
+  &:focus-within:not(.input-container--disabled) {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// VARIANTS
+// ----------------------------------------------------------------------------
+
+.input-container--default {
+  background-color: $color-surface;
+}
+
+.input-container--filled {
+  background-color: $color-surface-muted;
+  border-color: transparent;
+
+  &:hover:not(.input-container--disabled) {
+    background-color: $color-neutral-100;
+    border-color: transparent;
+  }
+
+  &:focus-within:not(.input-container--disabled) {
+    background-color: $color-surface;
+    border-color: $color-primary;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// SIZES
+// ----------------------------------------------------------------------------
+
+.input-container--sm {
+  .input-field {
+    padding: $space-2 $space-3;
+    font-size: $font-size-body-sm;
+  }
+
+  .input-icon {
+    font-size: 1rem;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &.input-container--has-left-icon .input-field {
+    padding-left: $space-8;
+  }
+
+  &.input-container--has-right-icon .input-field {
+    padding-right: $space-8;
+  }
+
+  .input-icon--left {
+    left: $space-2;
+  }
+
+  .input-icon--right {
+    right: $space-2;
+  }
+}
+
+.input-container--md {
+  .input-field {
+    padding: $space-3 $space-4;
+    font-size: $font-size-body;
+  }
+
+  .input-icon {
+    font-size: 1.25rem;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &.input-container--has-left-icon .input-field {
+    padding-left: $space-10;
+  }
+
+  &.input-container--has-right-icon .input-field {
+    padding-right: $space-10;
+  }
+
+  .input-icon--left {
+    left: $space-3;
+  }
+
+  .input-icon--right {
+    right: $space-3;
+  }
+}
+
+.input-container--lg {
+  .input-field {
+    padding: $space-4 $space-5;
+    font-size: $font-size-body;
+  }
+
+  .input-icon {
+    font-size: 1.5rem;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &.input-container--has-left-icon .input-field {
+    padding-left: $space-12;
+  }
+
+  &.input-container--has-right-icon .input-field {
+    padding-right: $space-12;
+  }
+
+  .input-icon--left {
+    left: $space-4;
+  }
+
+  .input-icon--right {
+    right: $space-4;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// INPUT FIELD
+// ----------------------------------------------------------------------------
+
+.input-field {
+  flex: 1;
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: $font-family-sans;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-body;
+  color: $color-text;
+  outline: none;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: $color-text-muted;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// ICONS
+// ----------------------------------------------------------------------------
+
+.input-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-muted;
+  pointer-events: none;
+
+  svg {
+    display: block;
+  }
+}
+
+.input-container {
+  position: relative;
+}
+
+// ----------------------------------------------------------------------------
+// STATES
+// ----------------------------------------------------------------------------
+
+.input-container--error {
+  border-color: $color-danger;
+
+  &:hover:not(.input-container--disabled) {
+    border-color: $color-danger;
+  }
+
+  &:focus-within:not(.input-container--disabled) {
+    border-color: $color-danger;
+    box-shadow: 0 0 0 3px rgba($color-danger, 0.3);
+  }
+}
+
+.input-container--disabled {
+  background-color: $color-surface-muted;
+  border-color: $color-border-muted;
+  cursor: not-allowed;
+  opacity: 0.6;
+
+  .input-icon {
+    opacity: 0.5;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// HELPER TEXT
+// ----------------------------------------------------------------------------
+
+.input-helper {
+  margin-top: $space-1;
+}
+

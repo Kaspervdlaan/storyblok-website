@@ -1,5 +1,3 @@
 // Organisms - Complex UI components composed of molecules and atoms
-// Add organism exports here as they are created
-
-export {};
-
+export { MediaSection, type MediaSectionProps } from './MediaSection';
+export { HeadingSection, type HeadingSectionProps } from './HeadingSection';

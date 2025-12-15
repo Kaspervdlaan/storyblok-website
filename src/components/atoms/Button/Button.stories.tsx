@@ -228,7 +228,7 @@ export const NeobrutalistShowcase: Story = {
   render: () => (
     <div
       style={{
-        background: '#000',
+        background: '#001219',
         padding: '3rem',
         display: 'flex',
         gap: '1.5rem',
@@ -242,7 +242,7 @@ export const NeobrutalistShowcase: Story = {
       <Button variant="secondary" size="lg">
         Learn More
       </Button>
-      <Button variant="ghost" size="lg" style={{ borderColor: '#fff', color: '#fff' }}>
+      <Button variant="ghost" size="lg" style={{ borderColor: '#e9d8a6', color: '#e9d8a6' }}>
         View Demo
       </Button>
     </div>

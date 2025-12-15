@@ -163,9 +163,9 @@ export const NeobrutalistShowcase: Story = {
   render: () => (
     <div
       style={{
-        background: '#ffde03',
+        background: '#ee9b00',
         padding: '3rem',
-        border: '4px solid black',
+        border: '4px solid #001219',
       }}
     >
       <Typography variant="display" style={{ marginBottom: '1rem' }}>

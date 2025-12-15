@@ -122,7 +122,7 @@ export const BackgroundVariants: Story = {
         <Container maxWidth="lg">
           <Typography variant="h3">Primary Background</Typography>
           <Typography variant="body">
-            Bold yellow background for maximum impact.
+            Bold gamboge orange background for maximum impact.
           </Typography>
         </Container>
       </Section>
@@ -169,9 +169,10 @@ export const NeobrutalistPageLayout: Story = {
                 key={feature}
                 style={{
                   background: '#fff',
-                  border: '3px solid #000',
+                  border: '3px solid #001219',
                   padding: '2rem',
-                  boxShadow: '4px 4px 0 0 #000',
+                  boxShadow: '4px 4px 0 0 #001219',
+                  borderRadius: '0.6rem',
                 }}
               >
                 <Typography variant="h3">{feature}</Typography>

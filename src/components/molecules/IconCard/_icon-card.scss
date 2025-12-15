@@ -1,5 +1,5 @@
 // ============================================================================
-// CARD COMPONENT STYLES
+// ICON CARD COMPONENT STYLES
 // ============================================================================
 
 @use "../../../styles/variables" as *;
@@ -9,7 +9,7 @@
 // BASE
 // ----------------------------------------------------------------------------
 
-.card {
+.icon-card {
   @include card-base;
   transition: transform $transition-fast, box-shadow $transition-fast;
 }
@@ -18,7 +18,8 @@
 // VARIANTS
 // ----------------------------------------------------------------------------
 
-.card--elevated {
+.icon-card--default {
+  background-color: $color-surface;
   box-shadow: $shadow-md;
 
   &:hover {
@@ -27,20 +28,19 @@
   }
 }
 
-.card--outlined {
-  border: $border-default;
-  box-shadow: none;
+.icon-card--outlined {
   background-color: $color-surface;
+  box-shadow: none;
 
   &:hover {
     border-color: $color-primary;
   }
 }
 
-.card--flat {
-  border: none;
-  box-shadow: none;
+.icon-card--filled {
   background-color: $color-surface-muted;
+  border-color: transparent;
+  box-shadow: none;
 
   &:hover {
     background-color: $color-neutral-100;
@@ -48,62 +48,26 @@
 }
 
 // ----------------------------------------------------------------------------
-// PADDING
+// CENTERED MODIFIER
 // ----------------------------------------------------------------------------
 
-.card--padding-sm {
-  .card__header,
-  .card__body,
-  .card__footer {
-    padding: $space-3;
-  }
-}
-
-.card--padding-md {
-  .card__header,
-  .card__body,
-  .card__footer {
-    padding: $space-4;
-  }
-}
-
-.card--padding-lg {
-  .card__header,
-  .card__body,
-  .card__footer {
-    padding: $space-6;
-  }
+.icon-card--centered {
+  text-align: center;
 }
 
 // ----------------------------------------------------------------------------
-// SUBCOMPONENTS
+// CONTENT
 // ----------------------------------------------------------------------------
 
-.card__body {
-  flex: 1;
-}
-
-.card__footer {
-  justify-content: flex-end;
+.icon-card__content {
+  min-width: 0;
 }
 
 // ----------------------------------------------------------------------------
-// NESTED STYLES
+// INTERACTIVE MODIFIER
 // ----------------------------------------------------------------------------
 
-.card__header + .card__body {
-  padding-top: $space-2;
-}
-
-.card__body + .card__footer {
-  padding-top: $space-2;
-}
-
-// ----------------------------------------------------------------------------
-// INTERACTIVE CARD MODIFIER
-// ----------------------------------------------------------------------------
-
-.card--interactive {
+.icon-card--interactive {
   cursor: pointer;
 
   &:focus-visible {

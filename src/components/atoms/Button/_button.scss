@@ -14,7 +14,7 @@
   position: relative;
   font-family: $font-family-sans;
   font-size: $font-size-body-sm;
-  border-radius: $radius-md;
+  @include squircle($radius-md);
   box-shadow: $shadow-md;
 
   &:focus-visible {
@@ -43,6 +43,14 @@
   padding: $space-4 $space-8;
   font-size: $font-size-body;
   gap: $space-3;
+}
+
+// ----------------------------------------------------------------------------
+// FULL WIDTH
+// ----------------------------------------------------------------------------
+
+.button--full-width {
+  width: 100%;
 }
 
 // ----------------------------------------------------------------------------

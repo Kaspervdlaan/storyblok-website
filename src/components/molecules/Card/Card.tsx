@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '../../atoms/Box';
 import './_card.scss';
 
 type CardVariant = 'elevated' | 'outlined' | 'flat';
@@ -23,9 +24,9 @@ const CardHeader: React.FC<CardHeaderProps> = ({
   const classNames = ['card__header', className].filter(Boolean).join(' ');
 
   return (
-    <div className={classNames} {...props}>
+    <Box className={classNames} {...props}>
       {children}
-    </div>
+    </Box>
   );
 };
 
@@ -50,9 +51,9 @@ const CardBody: React.FC<CardBodyProps> = ({
   const classNames = ['card__body', className].filter(Boolean).join(' ');
 
   return (
-    <div className={classNames} {...props}>
+    <Box className={classNames} {...props}>
       {children}
-    </div>
+    </Box>
   );
 };
 
@@ -77,9 +78,9 @@ const CardFooter: React.FC<CardFooterProps> = ({
   const classNames = ['card__footer', className].filter(Boolean).join(' ');
 
   return (
-    <div className={classNames} {...props}>
+    <Box className={classNames} display="flex" align="center" gap="sm" {...props}>
       {children}
-    </div>
+    </Box>
   );
 };
 
@@ -123,9 +124,15 @@ const CardBase: React.FC<CardProps> = ({
     .join(' ');
 
   return (
-    <div className={classNames} {...props}>
+    <Box
+      className={classNames}
+      display="flex"
+      direction="column"
+      radius="lg"
+      {...props}
+    >
       {children}
-    </div>
+    </Box>
   );
 };
 
@@ -138,4 +145,3 @@ Card.Body = CardBody;
 Card.Footer = CardFooter;
 
 export default Card;
-

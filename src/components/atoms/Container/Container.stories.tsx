@@ -26,8 +26,9 @@ type Story = StoryObj<typeof Container>;
 
 // Demo content component
 const DemoContent = ({ label }: { label: string }) => (
-  <div
-  >
+  <div style={{
+    border: '1px dashed #001219',
+  }}>
     <Typography variant="h3">{label}</Typography>
     <Typography variant="body" tone="muted">
       This content is centered within the container
@@ -107,13 +108,14 @@ export const PaddingVariants: Story = {
 
 export const NeobrutalistLayout: Story = {
   render: () => (
-    <div style={{ background: '#000', minHeight: '100vh', padding: '2rem 0' }}>
+    <div style={{ background: '#001219', minHeight: '100vh', padding: '2rem 0' }}>
       <Container maxWidth="lg" padding="md">
         <div
           style={{
             background: '#fff',
-            border: '4px solid #000',
+            border: '4px solid #001219',
             padding: '3rem',
+            borderRadius: '0.6rem',
           }}
         >
           <Typography variant="display" style={{ marginBottom: '1rem' }}>
@@ -148,10 +150,12 @@ export const ResponsiveDemo: Story = {
           <div
             key={i}
             style={{
-              background: i % 2 === 0 ? '#ff2d92' : '#ffde03',
-              border: '3px solid #000',
+              background: i % 2 === 0 ? '#0a9396' : '#ee9b00',
+              color: i % 2 === 0 ? '#fff' : '#001219',
+              border: '3px solid #001219',
               padding: '2rem',
-              boxShadow: '4px 4px 0 0 #000',
+              boxShadow: '4px 4px 0 0 #001219',
+              borderRadius: '0.6rem',
             }}
           >
             <Typography variant="h3">Card {i}</Typography>

@@ -147,84 +147,106 @@ const TokenCard: React.FC<{
 export const Colors: Story = {
   render: () => (
     <div>
+      <TokenSection title="Core Palette">
+        <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.875rem', marginBottom: '1.5rem', color: '#5c5a52' }}>
+          Based on <a href="https://coolors.co/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226" target="_blank" rel="noopener noreferrer">Coolors palette</a>
+        </p>
+        <TokenGrid columns={5}>
+          <ColorSwatch name="$color-rich-black" value="#001219" textColor="#fff" />
+          <ColorSwatch name="$color-dark-cyan" value="#005f73" textColor="#fff" />
+          <ColorSwatch name="$color-viridian" value="#0a9396" textColor="#fff" />
+          <ColorSwatch name="$color-mint" value="#94d2bd" textColor="#001219" />
+          <ColorSwatch name="$color-champagne" value="#e9d8a6" textColor="#001219" />
+          <ColorSwatch name="$color-gamboge" value="#ee9b00" textColor="#001219" />
+          <ColorSwatch name="$color-alloy-orange" value="#ca6702" textColor="#001219" />
+          <ColorSwatch name="$color-rust" value="#bb3e03" textColor="#fff" />
+          <ColorSwatch name="$color-rufous" value="#ae2012" textColor="#fff" />
+          <ColorSwatch name="$color-auburn" value="#9b2226" textColor="#fff" />
+        </TokenGrid>
+      </TokenSection>
+
       <TokenSection title="Brand Colors">
         <TokenGrid columns={4}>
-          <ColorSwatch name="$color-primary" value="#ffde03" textColor="#000" />
-          <ColorSwatch name="$color-primary-hover" value="#ffe534" textColor="#000" />
-          <ColorSwatch name="$color-primary-active" value="#e6c800" textColor="#000" />
-          <ColorSwatch name="$color-on-primary" value="#000000" textColor="#fff" />
+          <ColorSwatch name="$color-primary" value="#ee9b00" textColor="#001219" />
+          <ColorSwatch name="$color-primary-hover" value="#f5ad2a" textColor="#001219" />
+          <ColorSwatch name="$color-primary-active" value="#ca6702" textColor="#001219" />
+          <ColorSwatch name="$color-on-primary" value="#001219" textColor="#fff" />
         </TokenGrid>
         <div style={{ height: '1.5rem' }} />
         <TokenGrid columns={4}>
-          <ColorSwatch name="$color-secondary" value="#ff2d92" textColor="#000" />
-          <ColorSwatch name="$color-secondary-hover" value="#ff5aab" textColor="#000" />
-          <ColorSwatch name="$color-secondary-active" value="#e6007a" textColor="#000" />
-          <ColorSwatch name="$color-on-secondary" value="#000000" textColor="#fff" />
+          <ColorSwatch name="$color-secondary" value="#0a9396" textColor="#fff" />
+          <ColorSwatch name="$color-secondary-hover" value="#1ca8ab" textColor="#fff" />
+          <ColorSwatch name="$color-secondary-active" value="#005f73" textColor="#fff" />
+          <ColorSwatch name="$color-on-secondary" value="#ffffff" textColor="#001219" />
         </TokenGrid>
       </TokenSection>
 
       <TokenSection title="Semantic Colors">
         <TokenGrid columns={4}>
-          <ColorSwatch name="$color-danger" value="#ff3333" textColor="#000" />
-          <ColorSwatch name="$color-danger-hover" value="#ff5c5c" textColor="#000" />
-          <ColorSwatch name="$color-danger-active" value="#cc0000" textColor="#fff" />
-          <ColorSwatch name="$color-on-danger" value="#000000" textColor="#fff" />
+          <ColorSwatch name="$color-danger" value="#ae2012" textColor="#fff" />
+          <ColorSwatch name="$color-danger-hover" value="#c4342a" textColor="#fff" />
+          <ColorSwatch name="$color-danger-active" value="#9b2226" textColor="#fff" />
+          <ColorSwatch name="$color-on-danger" value="#ffffff" textColor="#001219" />
         </TokenGrid>
         <div style={{ height: '1rem' }} />
         <TokenGrid columns={4}>
-          <ColorSwatch name="$color-success" value="#00ff88" textColor="#000" />
-          <ColorSwatch name="$color-success-hover" value="#33ff9f" textColor="#000" />
-          <ColorSwatch name="$color-success-active" value="#00cc6a" textColor="#000" />
-          <ColorSwatch name="$color-on-success" value="#000000" textColor="#fff" />
+          <ColorSwatch name="$color-success" value="#0a9396" textColor="#fff" />
+          <ColorSwatch name="$color-success-hover" value="#1ca8ab" textColor="#fff" />
+          <ColorSwatch name="$color-success-active" value="#005f73" textColor="#fff" />
+          <ColorSwatch name="$color-on-success" value="#ffffff" textColor="#001219" />
         </TokenGrid>
         <div style={{ height: '1rem' }} />
         <TokenGrid columns={4}>
-          <ColorSwatch name="$color-warning" value="#ff9500" textColor="#000" />
-          <ColorSwatch name="$color-warning-hover" value="#ffaa33" textColor="#000" />
-          <ColorSwatch name="$color-warning-active" value="#cc7700" textColor="#000" />
-          <ColorSwatch name="$color-on-warning" value="#000000" textColor="#fff" />
+          <ColorSwatch name="$color-warning" value="#bb3e03" textColor="#fff" />
+          <ColorSwatch name="$color-warning-hover" value="#ca6702" textColor="#001219" />
+          <ColorSwatch name="$color-warning-active" value="#a33502" textColor="#fff" />
+          <ColorSwatch name="$color-on-warning" value="#ffffff" textColor="#001219" />
         </TokenGrid>
       </TokenSection>
 
       <TokenSection title="Neutral Scale">
         <TokenGrid columns={5}>
-          <ColorSwatch name="$color-neutral-0" value="#ffffff" textColor="#000" />
-          <ColorSwatch name="$color-neutral-50" value="#f5f5f5" textColor="#000" />
-          <ColorSwatch name="$color-neutral-100" value="#e8e8e8" textColor="#000" />
-          <ColorSwatch name="$color-neutral-200" value="#d4d4d4" textColor="#000" />
-          <ColorSwatch name="$color-neutral-300" value="#a3a3a3" textColor="#000" />
-          <ColorSwatch name="$color-neutral-400" value="#737373" textColor="#000" />
-          <ColorSwatch name="$color-neutral-500" value="#525252" textColor="#fff" />
-          <ColorSwatch name="$color-neutral-600" value="#404040" textColor="#fff" />
-          <ColorSwatch name="$color-neutral-700" value="#2d2d2d" textColor="#fff" />
-          <ColorSwatch name="$color-neutral-800" value="#1a1a1a" textColor="#fff" />
-          <ColorSwatch name="$color-neutral-900" value="#000000" textColor="#fff" />
+          <ColorSwatch name="$color-neutral-0" value="#ffffff" textColor="#001219" />
+          <ColorSwatch name="$color-neutral-50" value="#f7f4ed" textColor="#001219" />
+          <ColorSwatch name="$color-neutral-100" value="#e9d8a6" textColor="#001219" />
+          <ColorSwatch name="$color-neutral-200" value="#c9bfa0" textColor="#001219" />
+          <ColorSwatch name="$color-neutral-300" value="#8a8477" textColor="#001219" />
+          <ColorSwatch name="$color-neutral-400" value="#5c5a52" textColor="#fff" />
+          <ColorSwatch name="$color-neutral-500" value="#3d3d38" textColor="#fff" />
+          <ColorSwatch name="$color-neutral-600" value="#2a2d2e" textColor="#fff" />
+          <ColorSwatch name="$color-neutral-700" value="#1a2023" textColor="#fff" />
+          <ColorSwatch name="$color-neutral-800" value="#0d1518" textColor="#fff" />
+          <ColorSwatch name="$color-neutral-900" value="#001219" textColor="#fff" />
         </TokenGrid>
       </TokenSection>
 
       <TokenSection title="Surface Colors">
         <TokenGrid columns={4}>
-          <ColorSwatch name="$color-surface" value="#ffffff" textColor="#000" />
-          <ColorSwatch name="$color-surface-muted" value="#f0f0f0" textColor="#000" />
-          <ColorSwatch name="$color-surface-dark" value="#1a1a1a" textColor="#fff" />
-          <ColorSwatch name="$color-border" value="#000000" textColor="#fff" />
+          <ColorSwatch name="$color-surface" value="#ffffff" textColor="#001219" />
+          <ColorSwatch name="$color-surface-muted" value="#f7f4ed" textColor="#001219" />
+          <ColorSwatch name="$color-surface-dark" value="#001219" textColor="#e9d8a6" />
+          <ColorSwatch name="$color-border" value="#001219" textColor="#fff" />
         </TokenGrid>
         <div style={{ height: '1rem' }} />
         <TokenGrid columns={4}>
-          <ColorSwatch name="$color-border-muted" value="#d4d4d4" textColor="#000" />
-          <ColorSwatch name="$color-text" value="#000000" textColor="#fff" />
-          <ColorSwatch name="$color-text-muted" value="#525252" textColor="#fff" />
-          <ColorSwatch name="$color-text-inverse" value="#ffffff" textColor="#000" />
+          <ColorSwatch name="$color-border-muted" value="#c9bfa0" textColor="#001219" />
+          <ColorSwatch name="$color-text" value="#001219" textColor="#fff" />
+          <ColorSwatch name="$color-text-muted" value="#5c5a52" textColor="#fff" />
+          <ColorSwatch name="$color-text-inverse" value="#e9d8a6" textColor="#001219" />
         </TokenGrid>
       </TokenSection>
 
       <TokenSection title="Accent Colors">
         <TokenGrid columns={5}>
-          <ColorSwatch name="$color-accent-blue" value="#0066ff" textColor="#fff" />
-          <ColorSwatch name="$color-accent-cyan" value="#00e5ff" textColor="#000" />
-          <ColorSwatch name="$color-accent-lime" value="#c8ff00" textColor="#000" />
-          <ColorSwatch name="$color-accent-orange" value="#ff6600" textColor="#000" />
-          <ColorSwatch name="$color-accent-purple" value="#9933ff" textColor="#fff" />
+          <ColorSwatch name="$color-accent-dark-cyan" value="#005f73" textColor="#fff" />
+          <ColorSwatch name="$color-accent-viridian" value="#0a9396" textColor="#fff" />
+          <ColorSwatch name="$color-accent-mint" value="#94d2bd" textColor="#001219" />
+          <ColorSwatch name="$color-accent-champagne" value="#e9d8a6" textColor="#001219" />
+          <ColorSwatch name="$color-accent-gamboge" value="#ee9b00" textColor="#001219" />
+          <ColorSwatch name="$color-accent-alloy" value="#ca6702" textColor="#001219" />
+          <ColorSwatch name="$color-accent-rust" value="#bb3e03" textColor="#fff" />
+          <ColorSwatch name="$color-accent-rufous" value="#ae2012" textColor="#fff" />
+          <ColorSwatch name="$color-accent-auburn" value="#9b2226" textColor="#fff" />
         </TokenGrid>
       </TokenSection>
     </div>
@@ -510,8 +532,8 @@ export const Spacing: Story = {
                 style={{
                   width: token.value,
                   height: '24px',
-                  background: '#ffde03',
-                  border: '2px solid #000',
+                  background: '#ee9b00',
+                  border: '2px solid #001219',
                   borderRadius: '0.25rem',
                   minWidth: '4px',
                 }}
@@ -562,8 +584,8 @@ export const Spacing: Story = {
                   flex: 1,
                   maxWidth: token.value,
                   height: '24px',
-                  background: '#ff2d92',
-                  border: '2px solid #000',
+                  background: '#0a9396',
+                  border: '2px solid #001219',
                   borderRadius: '0.25rem',
                 }}
               />
@@ -653,9 +675,9 @@ export const Shadows: Story = {
                     width: '100px',
                     height: '60px',
                     background: '#fff',
-                    border: '3px solid #000',
-                    borderRadius: '0.6rem',
-                    boxShadow: token.value,
+                  border: '3px solid #001219',
+                  borderRadius: '0.6rem',
+                  boxShadow: token.value.replace('#000', '#001219'),
                     margin: '8px auto',
                   }}
                 />
@@ -676,9 +698,9 @@ export const Shadows: Story = {
                   width: '100px',
                   height: '60px',
                   background: '#fff',
-                  border: '3px solid #000',
+                  border: '3px solid #001219',
                   borderRadius: '0.6rem',
-                  boxShadow: '4px 4px 0 0 #ffde03',
+                  boxShadow: '4px 4px 0 0 #ee9b00',
                   margin: '8px auto',
                 }}
               />
@@ -693,9 +715,9 @@ export const Shadows: Story = {
                   width: '100px',
                   height: '60px',
                   background: '#fff',
-                  border: '3px solid #000',
+                  border: '3px solid #001219',
                   borderRadius: '0.6rem',
-                  boxShadow: '4px 4px 0 0 #ff2d92',
+                  boxShadow: '4px 4px 0 0 #0a9396',
                   margin: '8px auto',
                 }}
               />
@@ -710,9 +732,9 @@ export const Shadows: Story = {
                   width: '100px',
                   height: '60px',
                   background: '#fff',
-                  border: '3px solid #000',
+                  border: '3px solid #001219',
                   borderRadius: '0.6rem',
-                  boxShadow: '4px 4px 0 0 #ff3333',
+                  boxShadow: '4px 4px 0 0 #ae2012',
                   margin: '8px auto',
                 }}
               />
@@ -825,15 +847,16 @@ export const Mixins: Story = {
             <button
               style={{
                 padding: '1rem 2rem',
-                background: '#ffde03',
-                border: '3px solid #000',
+                background: '#ee9b00',
+                border: '3px solid #001219',
                 borderRadius: '0.6rem',
                 fontFamily: 'Space Mono, monospace',
                 fontWeight: 700,
                 cursor: 'pointer',
-                outline: '3px solid #000',
+                outline: '3px solid #001219',
                 outlineOffset: '2px',
-                boxShadow: '0 0 0 4px #ffde03',
+                boxShadow: '0 0 0 4px #ee9b00',
+                color: '#001219',
               }}
             >
               Focus State
@@ -872,11 +895,12 @@ export const Mixins: Story = {
               style={{
                 padding: '1rem 2rem',
                 background: '#fff',
-                border: '3px solid #000',
+                border: '3px solid #001219',
                 borderRadius: '0.6rem',
                 fontFamily: 'Space Mono, monospace',
                 fontWeight: 700,
-                boxShadow: 'inset 0 0 0 3px #ffde03',
+                boxShadow: 'inset 0 0 0 3px #ee9b00',
+                color: '#001219',
               }}
             >
               Inset Focus
@@ -924,14 +948,15 @@ export const Mixins: Story = {
             <div
               style={{
                 padding: '1rem',
-                background: '#f0f0f0',
-                border: '2px solid #000',
+                background: '#f7f4ed',
+                border: '2px solid #001219',
                 borderRadius: '0.6rem',
                 width: '200px',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
                 fontFamily: 'Space Mono, monospace',
+                color: '#001219',
               }}
             >
               This is a very long text that will be truncated
@@ -968,8 +993,8 @@ export const Mixins: Story = {
             <div
               style={{
                 padding: '1rem',
-                background: '#f0f0f0',
-                border: '2px solid #000',
+                background: '#f7f4ed',
+                border: '2px solid #001219',
                 borderRadius: '0.6rem',
                 width: '200px',
                 display: '-webkit-box',
@@ -978,6 +1003,7 @@ export const Mixins: Story = {
                 overflow: 'hidden',
                 fontFamily: 'Space Mono, monospace',
                 fontSize: '0.875rem',
+                color: '#001219',
               }}
             >
               This is a longer text that will be clamped to only two lines of content.
@@ -1020,22 +1046,23 @@ export const Mixins: Story = {
             <div
               style={{
                 padding: '2rem',
-                background: '#fff',
-                border: '3px solid #000',
+                background: '#ee9b00',
+                border: '3px solid #001219',
                 borderRadius: '0.6rem',
-                boxShadow: '4px 4px 0 0 #000',
+                boxShadow: '4px 4px 0 0 #001219',
                 fontFamily: 'Space Mono, monospace',
                 fontWeight: 700,
                 cursor: 'pointer',
                 transition: 'transform 100ms, box-shadow 100ms',
+                color: '#001219',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translate(-2px, -2px)';
-                e.currentTarget.style.boxShadow = '6px 6px 0 0 #000';
+                e.currentTarget.style.boxShadow = '6px 6px 0 0 #001219';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translate(0, 0)';
-                e.currentTarget.style.boxShadow = '4px 4px 0 0 #000';
+                e.currentTarget.style.boxShadow = '4px 4px 0 0 #001219';
               }}
               onMouseDown={(e) => {
                 e.currentTarget.style.transform = 'translate(0, 0)';
@@ -1043,7 +1070,7 @@ export const Mixins: Story = {
               }}
               onMouseUp={(e) => {
                 e.currentTarget.style.transform = 'translate(-2px, -2px)';
-                e.currentTarget.style.boxShadow = '6px 6px 0 0 #000';
+                e.currentTarget.style.boxShadow = '6px 6px 0 0 #001219';
               }}
             >
               Hover Me!
@@ -1172,8 +1199,8 @@ export const Transitions: Story = {
                   style={{
                     width: '60px',
                     height: '60px',
-                    background: '#ffde03',
-                    border: '3px solid #000',
+                    background: '#0a9396',
+                    border: '3px solid #001219',
                     borderRadius: '0.6rem',
                     margin: '0 auto',
                     transition: `transform ${token.value}`,
@@ -1203,7 +1230,7 @@ export const Overview: Story = {
   render: () => (
     <div
       style={{
-        background: '#ffde03',
+        background: '#001219',
         padding: '3rem',
         margin: '-1rem',
         minHeight: '100vh',
@@ -1214,10 +1241,10 @@ export const Overview: Story = {
           maxWidth: '800px',
           margin: '0 auto',
           background: '#fff',
-          border: '4px solid #000',
+          border: '4px solid #001219',
           borderRadius: '0.6rem',
           padding: '3rem',
-          boxShadow: '8px 8px 0 0 #000',
+          boxShadow: '8px 8px 0 0 #ee9b00',
         }}
       >
         <h1
@@ -1227,6 +1254,7 @@ export const Overview: Story = {
             fontWeight: 700,
             marginBottom: '1rem',
             letterSpacing: '-0.02em',
+            color: '#001219',
           }}
         >
           VIBE DESIGN TOKENS
@@ -1237,10 +1265,11 @@ export const Overview: Story = {
             fontSize: '1.125rem',
             lineHeight: 1.6,
             marginBottom: '2rem',
+            color: '#5c5a52',
           }}
         >
           A comprehensive token system for building bold, neobrutalist interfaces.
-          Every component uses these tokens for consistent styling.
+          Based on <a href="https://coolors.co/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226" target="_blank" rel="noopener noreferrer" style={{ color: '#0a9396' }}>Coolors palette</a>.
         </p>
 
         <div
@@ -1251,21 +1280,22 @@ export const Overview: Story = {
           }}
         >
           {[
-            { label: 'Colors', count: '30+', color: '#ff2d92' },
-            { label: 'Typography', count: '15+', color: '#0066ff' },
-            { label: 'Spacing', count: '13', color: '#00ff88' },
-            { label: 'Shadows', count: '7', color: '#9933ff' },
-            { label: 'Radii', count: '8', color: '#ff6600' },
-            { label: 'Mixins', count: '10+', color: '#00e5ff' },
+            { label: 'Colors', count: '30+', color: '#ee9b00', text: '#001219' },
+            { label: 'Typography', count: '15+', color: '#0a9396', text: '#fff' },
+            { label: 'Spacing', count: '13', color: '#94d2bd', text: '#001219' },
+            { label: 'Shadows', count: '7', color: '#005f73', text: '#fff' },
+            { label: 'Radii', count: '8', color: '#bb3e03', text: '#fff' },
+            { label: 'Mixins', count: '10+', color: '#e9d8a6', text: '#001219' },
           ].map((item) => (
             <div
               key={item.label}
               style={{
                 background: item.color,
-                border: '3px solid #000',
+                color: item.text,
+                border: '3px solid #001219',
                 borderRadius: '0.6rem',
                 padding: '1.5rem',
-                boxShadow: '4px 4px 0 0 #000',
+                boxShadow: '4px 4px 0 0 #001219',
               }}
             >
               <div
@@ -1296,8 +1326,8 @@ export const Overview: Story = {
           style={{
             marginTop: '2rem',
             padding: '1.5rem',
-            background: '#f0f0f0',
-            border: '2px dashed #000',
+            background: '#f7f4ed',
+            border: '2px dashed #001219',
             borderRadius: '0.6rem',
           }}
         >
@@ -1309,6 +1339,7 @@ export const Overview: Story = {
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
               marginBottom: '0.75rem',
+              color: '#001219',
             }}
           >
             Usage
@@ -1318,6 +1349,7 @@ export const Overview: Story = {
               fontFamily: 'Space Mono, monospace',
               fontSize: '0.75rem',
               margin: 0,
+              color: '#001219',
             }}
           >
 {`@use "styles/variables" as *;

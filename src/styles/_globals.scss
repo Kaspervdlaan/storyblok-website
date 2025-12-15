@@ -156,7 +156,7 @@ code {
   background-color: $color-surface-muted;
   padding: $space-1 $space-2;
   border: 1px solid $color-border-muted;
-  border-radius: $radius-sm;
+  @include squircle($radius-sm);
 }
 
 pre {
@@ -165,7 +165,7 @@ pre {
   padding: $space-4;
   overflow-x: auto;
   border: $border-default;
-  border-radius: $radius-md;
+  @include squircle($radius-md);
   
   code {
     background: none;

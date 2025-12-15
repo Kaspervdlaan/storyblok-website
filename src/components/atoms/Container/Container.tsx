@@ -5,13 +5,9 @@ type ContainerMaxWidth = 'sm' | 'md' | 'lg' | 'xl';
 type ContainerPadding = 'none' | 'sm' | 'md' | 'lg';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Maximum width of the container */
   maxWidth?: ContainerMaxWidth;
-  /** Horizontal padding */
   padding?: ContainerPadding;
-  /** Additional CSS classes */
   className?: string;
-  /** Container content */
   children?: React.ReactNode;
 }
 

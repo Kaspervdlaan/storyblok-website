@@ -39,70 +39,87 @@ $letter-spacing-wide: 0.05em;
 $letter-spacing-ultra-wide: 0.1em;
 
 // ----------------------------------------------------------------------------
-// COLOR TOKENS - NEOBRUTALIST PALETTE
+// COLOR TOKENS - WARM-TO-COOL PALETTE
+// Based on: https://coolors.co/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226
 // ----------------------------------------------------------------------------
 
-// Core Black & White - High contrast foundation
-$color-black: #000000;
+// Core palette colors
+$color-rich-black: #001219;
+$color-dark-cyan: #005f73;
+$color-viridian: #0a9396;
+$color-mint: #94d2bd;
+$color-champagne: #e9d8a6;
+$color-gamboge: #ee9b00;
+$color-alloy-orange: #ca6702;
+$color-rust: #bb3e03;
+$color-rufous: #ae2012;
+$color-auburn: #9b2226;
+
+// Core Black & White
+$color-black: $color-rich-black;
 $color-white: #ffffff;
 
-// Brand Primary - Electric Yellow (signature neobrutalist)
-$color-primary: #ffde03;
-$color-primary-hover: #ffe534;
-$color-primary-active: #e6c800;
-$color-on-primary: #000000;
+// Brand Primary - Gamboge (warm orange)
+$color-primary: $color-gamboge;
+$color-primary-hover: #f5ad2a;
+$color-primary-active: $color-alloy-orange;
+$color-on-primary: $color-rich-black;
 
-// Secondary - Hot Pink / Magenta
-$color-secondary: #ff2d92;
-$color-secondary-hover: #ff5aab;
-$color-secondary-active: #e6007a;
-$color-on-secondary: #000000;
+// Secondary - Viridian (teal)
+$color-secondary: $color-viridian;
+$color-secondary-hover: #1ca8ab;
+$color-secondary-active: $color-dark-cyan;
+$color-on-secondary: $color-white;
 
-// Neutrals Scale - Sharp grayscale
+// Neutrals Scale - Based on rich black to champagne
 $color-neutral-0: #ffffff;
-$color-neutral-50: #f5f5f5;
-$color-neutral-100: #e8e8e8;
-$color-neutral-200: #d4d4d4;
-$color-neutral-300: #a3a3a3;
-$color-neutral-400: #737373;
-$color-neutral-500: #525252;
-$color-neutral-600: #404040;
-$color-neutral-700: #2d2d2d;
-$color-neutral-800: #1a1a1a;
-$color-neutral-900: #000000;
+$color-neutral-50: #f7f4ed;
+$color-neutral-100: $color-champagne;
+$color-neutral-200: #c9bfa0;
+$color-neutral-300: #8a8477;
+$color-neutral-400: #5c5a52;
+$color-neutral-500: #3d3d38;
+$color-neutral-600: #2a2d2e;
+$color-neutral-700: #1a2023;
+$color-neutral-800: #0d1518;
+$color-neutral-900: $color-rich-black;
 
-// Semantic Colors - Bold and unapologetic
-$color-danger: #ff3333;
-$color-danger-hover: #ff5c5c;
-$color-danger-active: #cc0000;
-$color-on-danger: #000000;
+// Semantic Colors
+$color-danger: $color-rufous;
+$color-danger-hover: #c4342a;
+$color-danger-active: $color-auburn;
+$color-on-danger: $color-white;
 
-$color-success: #00ff88;
-$color-success-hover: #33ff9f;
-$color-success-active: #00cc6a;
-$color-on-success: #000000;
+$color-success: $color-viridian;
+$color-success-hover: #1ca8ab;
+$color-success-active: $color-dark-cyan;
+$color-on-success: $color-white;
 
-$color-warning: #ff9500;
-$color-warning-hover: #ffaa33;
-$color-warning-active: #cc7700;
-$color-on-warning: #000000;
+$color-warning: $color-rust;
+$color-warning-hover: $color-alloy-orange;
+$color-warning-active: #a33502;
+$color-on-warning: $color-white;
 
 // Surface Colors
-$color-surface: #ffffff;
-$color-surface-muted: #f0f0f0;
-$color-surface-dark: #1a1a1a;
-$color-border: #000000;
-$color-border-muted: #d4d4d4;
-$color-text: #000000;
-$color-text-muted: #525252;
-$color-text-inverse: #ffffff;
+$color-surface: $color-white;
+$color-surface-muted: #f7f4ed;
+$color-surface-dark: $color-rich-black;
+$color-border: $color-rich-black;
+$color-border-muted: #c9bfa0;
+$color-text: $color-rich-black;
+$color-text-muted: #5c5a52;
+$color-text-inverse: $color-champagne;
 
-// Accent Colors for variety
-$color-accent-blue: #0066ff;
-$color-accent-cyan: #00e5ff;
-$color-accent-lime: #c8ff00;
-$color-accent-orange: #ff6600;
-$color-accent-purple: #9933ff;
+// Accent Colors - Full palette for variety
+$color-accent-dark-cyan: $color-dark-cyan;
+$color-accent-viridian: $color-viridian;
+$color-accent-mint: $color-mint;
+$color-accent-champagne: $color-champagne;
+$color-accent-gamboge: $color-gamboge;
+$color-accent-alloy: $color-alloy-orange;
+$color-accent-rust: $color-rust;
+$color-accent-rufous: $color-rufous;
+$color-accent-auburn: $color-auburn;
 
 // ----------------------------------------------------------------------------
 // SPACING TOKENS
@@ -134,6 +151,17 @@ $radius-lg: 0.8rem;    // ~13px
 $radius-xl: 1rem;      // 16px
 $radius-2xl: 1.5rem;   // 24px
 $radius-full: 9999px;
+
+// ----------------------------------------------------------------------------
+// BORDER SHAPE TOKENS
+// ----------------------------------------------------------------------------
+
+$border-shape-none: none;
+$border-shape-bevel: bevel;
+$border-shape-squircle: squircle;
+
+// Default border shape
+$border-shape-default: $border-shape-squircle;
 
 // ----------------------------------------------------------------------------
 // SHADOW TOKENS - Heavy, offset shadows (neobrutalist signature)
