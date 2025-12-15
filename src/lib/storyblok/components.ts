@@ -13,6 +13,9 @@ import {
   SbContainerSection,
   SbIconCard,
   SbButton,
+  SbButtonGroup,
+  SbCard,
+  SbQuote,
   SbRichText,
   SbFallback,
 } from './bloks';
@@ -64,8 +67,23 @@ export const components: Record<string, React.ComponentType<{ blok: Record<strin
   Feature: SbIconCard,
   'feature-card': SbIconCard,
   feature_card: SbIconCard,
-  card: SbIconCard,
-  Card: SbIconCard,
+  
+  // Card
+  card: SbCard,
+  Card: SbCard,
+  
+  // Quote / Testimonial
+  quote: SbQuote,
+  Quote: SbQuote,
+  testimonial: SbQuote,
+  Testimonial: SbQuote,
+  
+  // Button Group
+  button_group: SbButtonGroup,
+  'button-group': SbButtonGroup,
+  ButtonGroup: SbButtonGroup,
+  buttons: SbButtonGroup,
+  Buttons: SbButtonGroup,
   
   // Atoms
   button: SbButton,

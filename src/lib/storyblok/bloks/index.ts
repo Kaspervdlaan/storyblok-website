@@ -29,6 +29,15 @@ export type { SbIconCardProps } from './SbIconCard';
 export { SbButton } from './SbButton';
 export type { SbButtonProps } from './SbButton';
 
+export { SbButtonGroup } from './SbButtonGroup';
+export type { SbButtonGroupProps } from './SbButtonGroup';
+
+export { SbCard } from './SbCard';
+export type { SbCardProps } from './SbCard';
+
+export { SbQuote } from './SbQuote';
+export type { SbQuoteProps } from './SbQuote';
+
 export { SbRichText } from './SbRichText';
 export type { SbRichTextProps } from './SbRichText';
 
