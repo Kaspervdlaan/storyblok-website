@@ -55,6 +55,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
     'grid-section__grid',
     `grid-section__grid--columns-${columns}`,
     `grid-section__grid--gap-${gap}`,
+    `grid-section__grid--background-${background}`,
   ].filter(Boolean).join(' ');
 
   return (
