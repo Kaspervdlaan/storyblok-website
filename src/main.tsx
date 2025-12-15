@@ -24,6 +24,8 @@ function App() {
     console.log('======================');
   }, [slug, story]);
 
+  console.log('SB token:', import.meta.env.VITE_STORYBLOK_API_TOKEN);
+
   if (!story?.content) {
     return (
       <div 

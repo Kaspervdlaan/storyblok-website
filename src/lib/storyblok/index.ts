@@ -12,7 +12,7 @@ import { SbFallback } from './bloks';
  */
 export const initStoryblok = () => {
   storyblokInit({
-    accessToken: 'RDRQzvcVmmfgB3PQJ47NRAtt',
+    accessToken: import.meta.env.VITE_STORYBLOK_API_TOKEN,
     use: [apiPlugin],
     components,
     enableFallbackComponent: true,
