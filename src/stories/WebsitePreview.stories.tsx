@@ -490,7 +490,7 @@ export const ProductPage: Story = {
       <GridSection
         columns={1}
         spacing="lg"
-        background="secondary"
+        background="subtle"
         containerWidth="md"
       >
         <Quote
@@ -499,8 +499,9 @@ export const ProductPage: Story = {
           role="CTO, TechStartup Inc"
           avatar={avatar1}
           authorIcon={<VerifiedIcon />}
-          variant="minimal"
-          size="lg"
+          variant="default"
+          layout="horizontal"
+          size="sm"
         />
       </GridSection>
 
@@ -561,7 +562,7 @@ export const AboutPage: Story = {
           title: 'What We Stand For',
           align: 'center',
         }}
-        columns={3}
+        columns={2}
         gap="lg"
         spacing="lg"
         background="subtle"
@@ -580,13 +581,13 @@ export const AboutPage: Story = {
           iconColor="secondary"
           variant="default"
         />
-        <IconCard
-          icon={<GlobeIcon />}
-          title="Open Source"
-          description="We believe in the power of community. Our core library will always be free and open source."
-          iconColor="primary"
-          variant="default"
-        />
+        <Card variant="flat" padding="lg">
+          <Card.Body>
+            <Typography variant="h3">Open Source</Typography>
+            <Typography variant="bodySm">We believe in the power of community. Our core library will always be free and open source.</Typography>
+            <Button variant="ghost" fullWidth style={{ marginTop: '1.5rem' }}>View Source</Button>
+          </Card.Body>
+        </Card>
       </GridSection>
 
       {/* Team - GridSection */}
