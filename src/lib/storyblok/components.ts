@@ -5,6 +5,8 @@
 
 import {
   SbPage,
+  SbSection,
+  SbContainer,
   SbHeadingSection,
   SbMediaSection,
   SbGridSection,
@@ -18,48 +20,49 @@ import {
 /**
  * Component mapping for Storyblok
  * Keys should match the technical names of your Storyblok components
- * 
- * Add aliases if your Storyblok component names differ from the defaults
  */
 export const components: Record<string, React.ComponentType<{ blok: Record<string, unknown> }>> = {
   // Page wrapper
   page: SbPage,
   Page: SbPage,
   
-  // Organisms - with common aliases
+  // Generic wrappers (for nesting)
+  section: SbSection,
+  Section: SbSection,
+  container: SbContainer,
+  Container: SbContainer,
+  
+  // Organisms - underscore versions
   heading_section: SbHeadingSection,
+  media_section: SbMediaSection,
+  grid_section: SbGridSection,
+  container_section: SbContainerSection,
+  
+  // Organisms - hyphen versions (Storyblok often uses hyphens)
+  'heading-section': SbHeadingSection,
+  'media-section': SbMediaSection,
+  'grid-section': SbGridSection,
+  'container-section': SbContainerSection,
+  
+  // Organisms - PascalCase versions
   HeadingSection: SbHeadingSection,
-  'Heading Section': SbHeadingSection,
+  MediaSection: SbMediaSection,
+  GridSection: SbGridSection,
+  ContainerSection: SbContainerSection,
+  
+  // Common aliases
   hero: SbHeadingSection,
   Hero: SbHeadingSection,
+  'hero-section': SbHeadingSection,
   hero_section: SbHeadingSection,
-  
-  media_section: SbMediaSection,
-  MediaSection: SbMediaSection,
-  'Media Section': SbMediaSection,
-  section: SbMediaSection,  // Generic "section" maps to MediaSection
-  Section: SbMediaSection,
-  
-  grid_section: SbGridSection,
-  GridSection: SbGridSection,
-  'Grid Section': SbGridSection,
-  grid: SbGridSection,
-  Grid: SbGridSection,
-  feature_grid: SbGridSection,
-  
-  container_section: SbContainerSection,
-  ContainerSection: SbContainerSection,
-  'Container Section': SbContainerSection,
-  cta: SbContainerSection,
-  CTA: SbContainerSection,
-  cta_section: SbContainerSection,
   
   // Molecules
   icon_card: SbIconCard,
+  'icon-card': SbIconCard,
   IconCard: SbIconCard,
-  'Icon Card': SbIconCard,
   feature: SbIconCard,
   Feature: SbIconCard,
+  'feature-card': SbIconCard,
   feature_card: SbIconCard,
   card: SbIconCard,
   Card: SbIconCard,
@@ -67,24 +70,13 @@ export const components: Record<string, React.ComponentType<{ blok: Record<strin
   // Atoms
   button: SbButton,
   Button: SbButton,
-  link: SbButton,
-  Link: SbButton,
   
   rich_text: SbRichText,
+  'rich-text': SbRichText,
   RichText: SbRichText,
-  'Rich Text': SbRichText,
   text: SbRichText,
   Text: SbRichText,
-  content: SbRichText,
   
-  // Fallback for unmapped components
+  // Fallback
   fallback: SbFallback,
-};
-
-/**
- * Get component or fallback
- * This is used internally by Storyblok SDK
- */
-export const getComponent = (name: string) => {
-  return components[name] || SbFallback;
 };

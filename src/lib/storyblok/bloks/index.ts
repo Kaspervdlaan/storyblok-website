@@ -5,6 +5,12 @@
 export { SbPage } from './SbPage';
 export type { SbPageProps } from './SbPage';
 
+export { SbSection } from './SbSection';
+export type { SbSectionProps } from './SbSection';
+
+export { SbContainer } from './SbContainer';
+export type { SbContainerProps } from './SbContainer';
+
 export { SbHeadingSection } from './SbHeadingSection';
 export type { SbHeadingSectionProps } from './SbHeadingSection';
 
