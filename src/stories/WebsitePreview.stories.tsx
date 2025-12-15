@@ -1,27 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 
 // Atoms
 import { Box } from '../components/atoms/Box';
+import { Stack } from '../components/atoms/Stack';
 import { Button } from '../components/atoms/Button';
 import { Typography } from '../components/atoms/Typography';
 import { Icon } from '../components/atoms/Icon';
 import { Media } from '../components/atoms/Media';
-import { Input } from '../components/atoms/Input';
-import { Divider } from '../components/atoms/Divider';
-import { Container } from '../components/atoms/Container';
-import { Section } from '../components/atoms/Section';
-import { Wysiwyg } from '../components/atoms/Wysiwyg';
 
 // Molecules
 import { Card } from '../components/molecules/Card';
 import { IconCard } from '../components/molecules/IconCard';
-import { Heading } from '../components/molecules/Heading';
 import { Quote } from '../components/molecules/Quote';
+import { ButtonGroup } from '../components/molecules/ButtonGroup';
 
 // Organisms
 import { HeadingSection } from '../components/organisms/HeadingSection';
 import { MediaSection } from '../components/organisms/MediaSection';
+import { GridSection } from '../components/organisms/GridSection';
+import { ContainerSection } from '../components/organisms/ContainerSection';
 
 const meta: Meta = {
   title: 'Preview/Website',
@@ -80,37 +77,10 @@ const GlobeIcon = () => (
   </svg>
 );
 
-const StarIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-);
-
-const MailIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-    <polyline points="22,6 12,13 2,6" />
-  </svg>
-);
-
 const ArrowRightIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <line x1="5" y1="12" x2="19" y2="12" />
     <polyline points="12 5 19 12 12 19" />
-  </svg>
-);
-
-const MenuIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="3" y1="12" x2="21" y2="12" />
-    <line x1="3" y1="6" x2="21" y2="6" />
-    <line x1="3" y1="18" x2="21" y2="18" />
   </svg>
 );
 
@@ -121,14 +91,13 @@ const VerifiedIcon = () => (
   </svg>
 );
 
-const PlayIcon = () => (
+const CheckIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="5 3 19 12 5 21 5 3" />
+    <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 
 // Sample images
-const heroImage = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80';
 const featureImage1 = 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&q=80';
 const featureImage2 = 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80';
 const avatar1 = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80';
@@ -137,117 +106,13 @@ const avatar3 = 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=
 const sampleVideo = 'https://www.w3schools.com/html/mov_bbb.mp4';
 
 // ============================================================================
-// NAVIGATION COMPONENT
-// ============================================================================
-
-const Navigation = () => (
-  <Box
-    as="nav"
-    padding="md"
-    background="surface"
-    border="default"
-    style={{ borderLeft: 'none', borderRight: 'none', borderTop: 'none' }}
-  >
-    <Container maxWidth="xl">
-      <Box display="flex" align="center" justify="between">
-        <Box display="flex" align="center" gap="sm">
-          <Icon size="sm" color="primary" variant="filled">
-            <ZapIcon />
-          </Icon>
-          <Typography variant="h3" weight="bold">VIBE</Typography>
-        </Box>
-        
-        <Box display="flex" align="center" gap="lg" className="desktop-nav" style={{ display: 'none' }}>
-          <Typography variant="bodySm" weight="medium" style={{ cursor: 'pointer' }}>Features</Typography>
-          <Typography variant="bodySm" weight="medium" style={{ cursor: 'pointer' }}>Pricing</Typography>
-          <Typography variant="bodySm" weight="medium" style={{ cursor: 'pointer' }}>Docs</Typography>
-          <Typography variant="bodySm" weight="medium" style={{ cursor: 'pointer' }}>Blog</Typography>
-        </Box>
-        
-        <Box display="flex" align="center" gap="sm">
-          <Button variant="ghost" size="sm">Sign In</Button>
-          <Button variant="primary" size="sm">Get Started</Button>
-        </Box>
-      </Box>
-    </Container>
-  </Box>
-);
-
-// ============================================================================
-// FOOTER COMPONENT
-// ============================================================================
-
-const Footer = () => (
-  <Box as="footer" paddingY="xl" background="dark">
-    <Container maxWidth="xl">
-      <Box
-        display="grid"
-        gap="xl"
-        style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}
-      >
-        <Box display="flex" direction="column" gap="md">
-          <Box display="flex" align="center" gap="sm">
-            <Icon size="sm" color="primary" variant="filled">
-              <ZapIcon />
-            </Icon>
-            <Typography variant="h3" weight="bold" style={{ color: '#e9d8a6' }}>VIBE</Typography>
-          </Box>
-          <Typography variant="bodySm" style={{ color: '#8a8477', maxWidth: '280px' }}>
-            A neobrutalist design system for teams who refuse to blend in.
-          </Typography>
-        </Box>
-        
-        <Box display="flex" direction="column" gap="sm">
-          <Typography variant="caption" style={{ color: '#e9d8a6' }}>PRODUCT</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Features</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Pricing</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Changelog</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Roadmap</Typography>
-        </Box>
-        
-        <Box display="flex" direction="column" gap="sm">
-          <Typography variant="caption" style={{ color: '#e9d8a6' }}>RESOURCES</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Documentation</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Components</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Examples</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Blog</Typography>
-        </Box>
-        
-        <Box display="flex" direction="column" gap="sm">
-          <Typography variant="caption" style={{ color: '#e9d8a6' }}>COMPANY</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>About</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Careers</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Contact</Typography>
-          <Typography variant="bodySm" style={{ color: '#8a8477', cursor: 'pointer' }}>Legal</Typography>
-        </Box>
-      </Box>
-      
-      <Divider spacing="lg" color="muted" />
-      
-      <Box display="flex" justify="between" align="center" style={{ flexWrap: 'wrap', gap: '1rem' }}>
-        <Typography variant="caption" style={{ color: '#5c5a52' }}>
-          © 2024 Vibe Design System. All rights reserved.
-        </Typography>
-        <Box display="flex" gap="md">
-          <Typography variant="caption" style={{ color: '#5c5a52', cursor: 'pointer' }}>Privacy</Typography>
-          <Typography variant="caption" style={{ color: '#5c5a52', cursor: 'pointer' }}>Terms</Typography>
-        </Box>
-      </Box>
-    </Container>
-  </Box>
-);
-
-// ============================================================================
-// FULL LANDING PAGE - Uses ALL components
+// LANDING PAGE - Using only organisms
 // ============================================================================
 
 export const LandingPage: Story = {
   render: () => (
-    <div style={{ minHeight: '100vh', background: '#fff' }}>
-      {/* Navigation - Uses: Box, Container, Icon, Typography, Button */}
-      <Navigation />
-      
-      {/* Hero Section - Uses: HeadingSection (organism), Button */}
+    <div>
+      {/* Hero - HeadingSection */}
       <HeadingSection
         eyebrow="Introducing Vibe Design System"
         title="Design Without Compromise"
@@ -257,95 +122,86 @@ export const LandingPage: Story = {
         spacing="xl"
         background="dark"
         actions={
-          <>
+          <ButtonGroup gap="sm">
             <Button variant="primary" size="lg" rightIcon={<ArrowRightIcon />}>
               Get Started Free
             </Button>
             <Button variant="ghost" size="lg" style={{ borderColor: '#e9d8a6', color: '#e9d8a6' }}>
               View Components
             </Button>
-          </>
+          </ButtonGroup>
         }
       />
-      
-      {/* Trusted By Section - Uses: Section, Container, Typography, Box */}
-      <Section spacing="md" background="subtle">
-        <Container maxWidth="lg">
-          <Typography variant="caption" align="center" tone="muted" style={{ display: 'block', marginBottom: '1.5rem' }}>
-            TRUSTED BY TEAMS AT
-          </Typography>
-          <Box display="flex" justify="center" gap="xl" align="center" style={{ flexWrap: 'wrap', opacity: 0.5 }}>
-            {['ACME', 'GLOBEX', 'STARK', 'WAYNE', 'UMBRELLA'].map((company) => (
-              <Typography key={company} variant="h3" weight="bold">{company}</Typography>
-            ))}
-          </Box>
-        </Container>
-      </Section>
-      
-      {/* Features Grid - Uses: HeadingSection, IconCard (molecule), Box */}
-      <HeadingSection
-        eyebrow="Features"
-        title="Everything You Need"
-        subtitle="A comprehensive toolkit designed to help you ship beautiful, accessible interfaces faster than ever."
-        size="lg"
-        align="center"
+
+      {/* Trusted By - GridSection */}
+      <ContainerSection
+        background="subtle"
         spacing="lg"
       >
-        <Box
-          display="grid"
-          gap="lg"
-          style={{
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            width: '100%',
-            marginTop: '2rem',
-          }}
-        >
-          <IconCard
-            icon={<RocketIcon />}
-            title="Blazing Fast"
-            description="Optimized for performance with minimal bundle size. Tree-shakeable exports mean you only ship what you use."
-            iconColor="primary"
-            variant="default"
-          />
-          <IconCard
-            icon={<ShieldIcon />}
-            title="Accessible"
-            description="Built with WCAG 2.1 guidelines from the ground up. Keyboard navigation and screen reader support included."
-            iconColor="secondary"
-            variant="default"
-          />
-          <IconCard
-            icon={<CodeIcon />}
-            title="Developer First"
-            description="Full TypeScript support, comprehensive documentation, and a delightful developer experience."
-            iconColor="success"
-            variant="default"
-          />
-          <IconCard
-            icon={<GlobeIcon />}
-            title="Production Ready"
-            description="Battle-tested in production by teams of all sizes. Reliable, stable, and continuously improved."
-            iconColor="primary"
-            variant="default"
-          />
-          <IconCard
-            icon={<HeartIcon />}
-            title="Community Driven"
-            description="Open source with an active community. Regular updates, responsive maintainers, and great support."
-            iconColor="danger"
-            variant="default"
-          />
-          <IconCard
-            icon={<ZapIcon />}
-            title="Customizable"
-            description="Flexible theming system with SCSS tokens. Adapt every aspect to match your brand perfectly."
-            iconColor="neutral"
-            variant="default"
-          />
-        </Box>
-      </HeadingSection>
-      
-      {/* Media Section - Left - Uses: MediaSection (organism), Button */}
+        <ButtonGroup variant='attached'>
+          {['ACME', 'GLOBEX', 'STARK', 'WAYNE', 'UMBRELLA'].map((company) => (
+            <Button key={company}  variant="ghost">{company}</Button>
+          ))}
+        </ButtonGroup>
+      </ContainerSection>
+
+      {/* Features - GridSection with IconCards */}
+      <GridSection
+        heading={{
+          eyebrow: 'Features',
+          title: 'Everything You Need',
+          subtitle: 'A comprehensive toolkit designed to help you ship beautiful, accessible interfaces faster than ever.',
+          align: 'center',
+        }}
+        columns={2}
+        gap="lg"
+        spacing="lg"
+      >
+        <IconCard
+          icon={<RocketIcon />}
+          title="Blazing Fast"
+          description="Optimized for performance with minimal bundle size. Tree-shakeable exports mean you only ship what you use."
+          iconColor="primary"
+          variant="default"
+        />
+        <IconCard
+          icon={<ShieldIcon />}
+          title="Accessible"
+          description="Built with WCAG 2.1 guidelines from the ground up. Keyboard navigation and screen reader support included."
+          iconColor="secondary"
+          variant="default"
+        />
+        <IconCard
+          icon={<CodeIcon />}
+          title="Developer First"
+          description="Full TypeScript support, comprehensive documentation, and a delightful developer experience."
+          iconColor="success"
+          variant="default"
+        />
+        <IconCard
+          icon={<GlobeIcon />}
+          title="Production Ready"
+          description="Battle-tested in production by teams of all sizes. Reliable, stable, and continuously improved."
+          iconColor="primary"
+          variant="default"
+        />
+        <IconCard
+          icon={<HeartIcon />}
+          title="Community Driven"
+          description="Open source with an active community. Regular updates, responsive maintainers, and great support."
+          iconColor="danger"
+          variant="default"
+        />
+        <IconCard
+          icon={<ZapIcon />}
+          title="Customizable"
+          description="Flexible theming system with SCSS tokens. Adapt every aspect to match your brand perfectly."
+          iconColor="neutral"
+          variant="default"
+        />
+      </GridSection>
+
+      {/* Feature Highlight 1 - MediaSection */}
       <MediaSection
         media={{
           type: 'image',
@@ -364,8 +220,8 @@ export const LandingPage: Story = {
           </Button>
         }
       />
-      
-      {/* Media Section - Right with Video - Uses: MediaSection, Media (video), Button */}
+
+      {/* Feature Highlight 2 - MediaSection with Video */}
       <MediaSection
         media={{
           type: 'video',
@@ -380,198 +236,140 @@ export const LandingPage: Story = {
         description="From atoms to organisms, our Atomic Design methodology ensures components are reusable, composable, and maintainable. Spend less time building UI, more time building features."
         layout="media-right"
         spacing="lg"
-        background="none"
         actions={
-          <>
-            <Button variant="secondary" rightIcon={<ArrowRightIcon />}>
-              Browse Components
-            </Button>
-            <Button variant="ghost" leftIcon={<PlayIcon />}>
-              Watch Demo
-            </Button>
-          </>
+          <Button variant="secondary" rightIcon={<ArrowRightIcon />}>
+            Browse Components
+          </Button>
         }
       />
-      
-      {/* Testimonials with Quote Component - Uses: Section, Container, Heading (molecule), Quote (molecule), Box */}
-      <Section spacing="lg" background="subtle">
-        <Container maxWidth="lg">
-          <Heading
-            eyebrow="Testimonials"
-            title="Loved by Developers"
-            subtitle="See what teams are saying about Vibe Design System."
-            size="lg"
-            align="center"
-          />
-          <Box
-            display="grid"
-            gap="lg"
-            style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-              marginTop: '3rem',
-            }}
-          >
-            <Quote
-              quote="Vibe's neobrutalist aesthetic perfectly captures our brand. The component quality is exceptional."
-              author="Sarah Chen"
-              role="Design Lead, Acme Corp"
-              avatar={avatar1}
-              authorIcon={<VerifiedIcon />}
-              variant="elevated"
-            />
-            <Quote
-              quote="Finally, a design system that isn't afraid to be bold. Our team's productivity has doubled."
-              author="Marcus Johnson"
-              role="Frontend Engineer, Globex"
-              avatar={avatar2}
-              authorIcon={<VerifiedIcon />}
-              variant="elevated"
-            />
-            <Quote
-              quote="The TypeScript support and documentation are top-notch. Integration was a breeze."
-              author="Elena Rodriguez"
-              role="Tech Lead, Stark Industries"
-              avatar={avatar3}
-              authorIcon={<VerifiedIcon />}
-              variant="elevated"
-            />
-          </Box>
-        </Container>
-      </Section>
 
-      {/* Featured Quote - Large - Uses: Section, Container, Quote (molecule) */}
-      <Section spacing="lg" background="secondary">
-        <Container maxWidth="md">
-          <Quote
-            quote="Vibe Design System has fundamentally changed how we approach product design. It's not just a component library—it's a philosophy."
-            author="Alex Thompson"
-            role="VP of Product, Fortune 500"
-            avatar={avatar1}
-            authorIcon={<StarIcon />}
-            variant="minimal"
-            size="lg"
-            layout="vertical"
-          />
-        </Container>
-      </Section>
-      
-      {/* Pricing with Card - Uses: Section, Container, Heading, Card (molecule), Box, Typography, Divider, Icon, Button */}
-      <Section spacing="lg">
-        <Container maxWidth="lg">
-          <Heading
-            eyebrow="Pricing"
-            title="Simple, Transparent Pricing"
-            subtitle="Start free, upgrade when you need to."
-            size="lg"
-            align="center"
-          />
-          <Box
-            display="grid"
-            gap="lg"
-            style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              marginTop: '3rem',
-              maxWidth: '900px',
-              margin: '3rem auto 0',
-            }}
-          >
-            {/* Free Tier */}
-            <Card variant="outlined" padding="lg">
-              <Card.Body>
-                <Typography variant="caption">FREE</Typography>
-                <Typography variant="display" style={{ fontSize: '3rem', margin: '0.5rem 0' }}>$0</Typography>
-                <Typography variant="bodySm" tone="muted">Perfect for side projects</Typography>
-                <Divider spacing="md" />
-                <Box display="flex" direction="column" gap="sm">
-                  {['All components', 'Community support', 'Basic documentation', 'MIT License'].map((feature) => (
-                    <Box key={feature} display="flex" align="center" gap="sm">
-                      <Icon size="xs" color="success" variant="ghost"><CheckIcon /></Icon>
-                      <Typography variant="bodySm">{feature}</Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Card.Body>
-              <Card.Footer style={{ borderTop: 'none' }}>
-                <Button variant="ghost" fullWidth>Get Started</Button>
-              </Card.Footer>
-            </Card>
-            
-            {/* Pro Tier */}
-            <Card variant="elevated" padding="lg" style={{ border: '3px solid #ee9b00' }}>
-              <Card.Body>
-                <Box display="flex" justify="between" align="center">
-                  <Typography variant="caption">PRO</Typography>
-                  <Box padding="xs" paddingX="sm" background="primary" radius="sm">
-                    <Typography variant="caption" weight="bold">POPULAR</Typography>
-                  </Box>
-                </Box>
-                <Typography variant="display" style={{ fontSize: '3rem', margin: '0.5rem 0' }}>$29</Typography>
-                <Typography variant="bodySm" tone="muted">Per month, billed annually</Typography>
-                <Divider spacing="md" />
-                <Box display="flex" direction="column" gap="sm">
-                  {['Everything in Free', 'Premium components', 'Priority support', 'Figma files', 'Private Slack'].map((feature) => (
-                    <Box key={feature} display="flex" align="center" gap="sm">
-                      <Icon size="xs" color="success" variant="ghost"><CheckIcon /></Icon>
-                      <Typography variant="bodySm">{feature}</Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Card.Body>
-              <Card.Footer style={{ borderTop: 'none' }}>
-                <Button variant="primary" fullWidth>Start Free Trial</Button>
-              </Card.Footer>
-            </Card>
-            
-            {/* Enterprise Tier */}
-            <Card variant="outlined" padding="lg">
-              <Card.Body>
-                <Typography variant="caption">ENTERPRISE</Typography>
-                <Typography variant="display" style={{ fontSize: '3rem', margin: '0.5rem 0' }}>Custom</Typography>
-                <Typography variant="bodySm" tone="muted">For large organizations</Typography>
-                <Divider spacing="md" />
-                <Box display="flex" direction="column" gap="sm">
-                  {['Everything in Pro', 'Custom components', 'Dedicated support', 'SLA guarantee', 'On-premise option'].map((feature) => (
-                    <Box key={feature} display="flex" align="center" gap="sm">
-                      <Icon size="xs" color="success" variant="ghost"><CheckIcon /></Icon>
-                      <Typography variant="bodySm">{feature}</Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Card.Body>
-              <Card.Footer style={{ borderTop: 'none' }}>
-                <Button variant="ghost" fullWidth>Contact Sales</Button>
-              </Card.Footer>
-            </Card>
-          </Box>
-        </Container>
-      </Section>
-      
-      {/* Newsletter CTA - Uses: HeadingSection, Box, Input, Button */}
-      <HeadingSection
-        title="Stay in the Loop"
-        subtitle="Get the latest updates, tips, and resources delivered to your inbox."
-        size="md"
-        align="center"
+      {/* Testimonials - GridSection with Quotes */}
+      <GridSection
+        heading={{
+          eyebrow: 'Testimonials',
+          title: 'Loved by Developers',
+          subtitle: 'See what teams are saying about Vibe Design System.',
+          align: 'center',
+        }}
+        columns={1}
+        gap="lg"
         spacing="lg"
-        background="primary"
+        background="subtle"
       >
-        <Box
-          display="flex"
-          gap="sm"
-          align="end"
-          style={{ maxWidth: '500px', width: '100%', marginTop: '1rem' }}
-        >
-          <Input
-            placeholder="Enter your email"
-            type="email"
-            leftIcon={<MailIcon />}
-            style={{ flex: 1 }}
-          />
-          <Button variant="secondary" size="md">Subscribe</Button>
-        </Box>
-      </HeadingSection>
-      
-      {/* Final CTA - Uses: HeadingSection, Button */}
+        <Quote
+          quote="Vibe's neobrutalist aesthetic perfectly captures our brand. The component quality is exceptional."
+          author="Sarah Chen"
+          role="Design Lead, Acme Corp"
+          layout="horizontal"
+          avatar={avatar1}
+          authorIcon={<VerifiedIcon />}
+          variant="minimal"
+        />
+      </GridSection>
+
+      {/* Pricing - GridSection with Cards */}
+      <GridSection
+        heading={{
+          eyebrow: 'Pricing',
+          title: 'Simple, Transparent Pricing',
+          subtitle: 'Start free, upgrade when you need to.',
+          align: 'center',
+        }}
+        columns={3}
+        gap="lg"
+        spacing="lg"
+        containerWidth="lg"
+      >
+        {/* Free Tier */}
+        <Card variant="flat" padding="lg">
+          <Card.Body>
+            <Typography variant="caption">FREE</Typography>
+            <Typography variant="display" style={{ fontSize: '3rem', margin: '0.5rem 0' }}>$0</Typography>
+            <Typography variant="bodySm" tone="muted">Perfect for side projects</Typography>
+            <Stack direction="column" gap="sm" style={{ marginTop: '1.5rem' }}>
+              {['All components', 'Community support', 'MIT License'].map((feature) => (
+                <Stack key={feature} direction="row" align="center" gap="sm">
+                  <Icon size="xs" color="success" variant="ghost"><CheckIcon /></Icon>
+                  <Typography variant="bodySm">{feature}</Typography>
+                </Stack>
+              ))}
+            </Stack>
+            <Button variant="ghost" fullWidth style={{ marginTop: '1.5rem' }}>Get Started</Button>
+          </Card.Body>
+        </Card>
+
+        {/* Pro Tier */}
+        <Card variant="elevated" padding="lg" style={{ border: '3px solid #ee9b00' }}>
+          <Card.Body>
+            <Stack direction="row" justify="between" align="center">
+              <Typography variant="caption">PRO</Typography>
+              <Box padding="xs" paddingX="sm" background="primary" radius="sm">
+                <Typography variant="caption" weight="bold">POPULAR</Typography>
+              </Box>
+            </Stack>
+            <Typography variant="display" style={{ fontSize: '3rem', margin: '0.5rem 0' }}>$29</Typography>
+            <Typography variant="bodySm" tone="muted">Per month, billed annually</Typography>
+            <Stack direction="column" gap="sm" style={{ marginTop: '1.5rem' }}>
+              {['Everything in Free', 'Premium components', 'Priority support', 'Figma files'].map((feature) => (
+                <Stack key={feature} direction="row" align="center" gap="sm">
+                  <Icon size="xs" color="success" variant="ghost"><CheckIcon /></Icon>
+                  <Typography variant="bodySm">{feature}</Typography>
+                </Stack>
+              ))}
+            </Stack>
+            <Button variant="primary" fullWidth style={{ marginTop: '1.5rem' }}>Start Free Trial</Button>
+          </Card.Body>
+        </Card>
+
+        {/* Enterprise Tier */}
+        <Card variant="outlined" padding="lg">
+          <Card.Body>
+            <Typography variant="caption">ENTERPRISE</Typography>
+            <Typography variant="display" style={{ fontSize: '3rem', margin: '0.5rem 0' }}>Custom</Typography>
+            <Typography variant="bodySm" tone="muted">For large organizations</Typography>
+            <Stack direction="column" gap="sm" style={{ marginTop: '1.5rem' }}>
+              {['Everything in Pro', 'Custom components', 'Dedicated support', 'SLA guarantee'].map((feature) => (
+                <Stack key={feature} direction="row" align="center" gap="sm">
+                  <Icon size="xs" color="success" variant="ghost"><CheckIcon /></Icon>
+                  <Typography variant="bodySm">{feature}</Typography>
+                </Stack>
+              ))}
+            </Stack>
+            <Button variant="ghost" fullWidth style={{ marginTop: '1.5rem' }}>Contact Sales</Button>
+          </Card.Body>
+        </Card>
+      </GridSection>
+
+      {/* Stats - GridSection */}
+      <GridSection
+        heading={{
+          title: 'Trusted by Thousands',
+          align: 'center',
+        }}
+        columns={4}
+        gap="lg"
+        spacing="lg"
+        background="subtle"
+      >
+        <Stack direction="column" align="center" gap="xs">
+          <Typography variant="display" weight="bold">10K+</Typography>
+          <Typography variant="body" tone="muted">Active Users</Typography>
+        </Stack>
+        <Stack direction="column" align="center" gap="xs">
+          <Typography variant="display" weight="bold">99.9%</Typography>
+          <Typography variant="body" tone="muted">Uptime</Typography>
+        </Stack>
+        <Stack direction="column" align="center" gap="xs">
+          <Typography variant="display" weight="bold">500+</Typography>
+          <Typography variant="body" tone="muted">Components</Typography>
+        </Stack>
+        <Stack direction="column" align="center" gap="xs">
+          <Typography variant="display" weight="bold">24/7</Typography>
+          <Typography variant="body" tone="muted">Support</Typography>
+        </Stack>
+      </GridSection>
+
+      {/* Final CTA - HeadingSection */}
       <HeadingSection
         eyebrow="Ready to Start?"
         title="Build Something Bold"
@@ -579,360 +377,266 @@ export const LandingPage: Story = {
         size="xl"
         align="center"
         spacing="xl"
-        background="dark"
+        background="primary"
         actions={
-          <>
-            <Button variant="primary" size="lg" rightIcon={<ArrowRightIcon />}>
+          <ButtonGroup gap="sm">
+            <Button variant="secondary" size="lg" rightIcon={<ArrowRightIcon />}>
               Get Started Free
             </Button>
-            <Button variant="ghost" size="lg" style={{ borderColor: '#e9d8a6', color: '#e9d8a6' }}>
+            <Button variant="ghost" size="lg">
               Schedule Demo
             </Button>
-          </>
+          </ButtonGroup>
         }
       />
-      
-      {/* Footer - Uses: Box, Container, Icon, Typography, Divider */}
-      <Footer />
     </div>
   ),
 };
 
 // ============================================================================
-// DASHBOARD PREVIEW
+// PRODUCT PAGE
 // ============================================================================
 
-export const DashboardPage: Story = {
+export const ProductPage: Story = {
   render: () => (
-    <div style={{ minHeight: '100vh', background: '#f7f4ed' }}>
-      {/* Header - Uses: Box, Container, Icon, Typography, Input, Button */}
-      <Box
-        padding="md"
-        background="surface"
-        border="default"
-        style={{ borderLeft: 'none', borderRight: 'none', borderTop: 'none' }}
+    <div>
+      {/* Hero - MediaSection */}
+      <MediaSection
+        media={{
+          type: 'image',
+          src: featureImage2,
+          alt: 'Product hero',
+        }}
+        eyebrow="New Release"
+        title="The Ultimate Design System"
+        description="Create stunning interfaces with our comprehensive component library. Built for speed, designed for beauty."
+        layout="media-right"
+        spacing="xl"
+        background="subtle"
+        actions={
+          <ButtonGroup gap="sm">
+            <Button variant="primary" size="lg" rightIcon={<ArrowRightIcon />}>
+              Try it Free
+            </Button>
+            <Button variant="ghost" size="lg">
+              Watch Demo
+            </Button>
+          </ButtonGroup>
+        }
+      />
+
+      {/* Benefits - GridSection */}
+      <GridSection
+        heading={{
+          eyebrow: 'Why Choose Us',
+          title: 'Benefits That Matter',
+          align: 'center',
+        }}
+        columns={2}
+        gap="xl"
+        spacing="lg"
       >
-        <Container maxWidth="xl">
-          <Box display="flex" align="center" justify="between">
-            <Box display="flex" align="center" gap="md">
-              <Icon size="sm" color="primary" variant="filled">
-                <ZapIcon />
-              </Icon>
-              <Typography variant="h3" weight="bold">Dashboard</Typography>
-            </Box>
-            <Box display="flex" align="center" gap="sm">
-              <Input placeholder="Search..." size="sm" style={{ width: '200px' }} />
-              <Button variant="ghost" size="sm">
-                <Icon size="xs" color="neutral" variant="ghost"><MenuIcon /></Icon>
-              </Button>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-      
-      {/* Main Content */}
-      <Container maxWidth="xl" padding="lg">
-        <Box paddingY="lg">
-          {/* Welcome - Uses: Heading (molecule) */}
-          <Heading
-            title="Welcome back, Alex"
-            subtitle="Here's what's happening with your projects today."
-            size="md"
-            align="left"
-          />
-          
-          {/* Stats Grid - Uses: Box, Card (molecule), Typography */}
-          <Box
-            display="grid"
-            gap="md"
-            style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', marginTop: '2rem' }}
-          >
-            {[
-              { label: 'Total Revenue', value: '$45,231', change: '+20.1%', color: 'primary' },
-              { label: 'Subscriptions', value: '2,350', change: '+12.5%', color: 'secondary' },
-              { label: 'Active Users', value: '12,234', change: '+8.2%', color: 'success' },
-              { label: 'Bounce Rate', value: '24.5%', change: '-4.1%', color: 'danger' },
-            ].map((stat) => (
-              <Card key={stat.label} variant="elevated" padding="md">
-                <Card.Body>
-                  <Typography variant="caption" tone="muted">{stat.label}</Typography>
-                  <Typography variant="h2" style={{ marginTop: '0.5rem' }}>{stat.value}</Typography>
-                  <Typography
-                    variant="caption"
-                    style={{ color: stat.change.startsWith('+') ? '#0a9396' : '#ae2012' }}
-                  >
-                    {stat.change} from last month
-                  </Typography>
-                </Card.Body>
-              </Card>
-            ))}
-          </Box>
-          
-          {/* Content Grid */}
-          <Box
-            display="grid"
-            gap="lg"
-            style={{ gridTemplateColumns: '2fr 1fr', marginTop: '2rem' }}
-          >
-            {/* Recent Activity - Uses: Card, Box, Typography, Divider, Media */}
-            <Card variant="elevated" padding="lg">
-              <Card.Header>
-                <Box display="flex" justify="between" align="center">
-                  <Typography variant="h3">Recent Activity</Typography>
-                  <Button variant="ghost" size="sm">View All</Button>
-                </Box>
-              </Card.Header>
-              <Card.Body>
-                <Box display="flex" direction="column" gap="md">
-                  {[
-                    { user: 'Sarah Chen', action: 'created a new project', time: '2 min ago', avatar: avatar1 },
-                    { user: 'Marcus J.', action: 'updated the dashboard', time: '15 min ago', avatar: avatar2 },
-                    { user: 'Elena R.', action: 'deployed to production', time: '1 hour ago', avatar: avatar3 },
-                    { user: 'Alex Kim', action: 'merged pull request #42', time: '2 hours ago', avatar: avatar1 },
-                  ].map((activity, i) => (
-                    <React.Fragment key={i}>
-                      <Box display="flex" align="center" gap="md">
-                        <Media
-                          type="image"
-                          src={activity.avatar}
-                          alt={activity.user}
-                          aspectRatio="square"
-                          radius="full"
-                          style={{ width: '36px', height: '36px' }}
-                        />
-                        <Box style={{ flex: 1 }}>
-                          <Typography variant="bodySm">
-                            <strong>{activity.user}</strong> {activity.action}
-                          </Typography>
-                          <Typography variant="caption" tone="muted">{activity.time}</Typography>
-                        </Box>
-                      </Box>
-                      {i < 3 && <Divider spacing="none" color="muted" />}
-                    </React.Fragment>
-                  ))}
-                </Box>
-              </Card.Body>
-            </Card>
-            
-            {/* Quick Actions - Uses: Box, Card, Typography, Button, Icon */}
-            <Box display="flex" direction="column" gap="md">
-              <Card variant="elevated" padding="md">
-                <Card.Body>
-                  <Typography variant="h3" style={{ marginBottom: '1rem' }}>Quick Actions</Typography>
-                  <Box display="flex" direction="column" gap="sm">
-                    <Button variant="primary" fullWidth leftIcon={<RocketIcon />}>
-                      New Project
-                    </Button>
-                    <Button variant="secondary" fullWidth leftIcon={<CodeIcon />}>
-                      Deploy
-                    </Button>
-                    <Button variant="ghost" fullWidth leftIcon={<GlobeIcon />}>
-                      View Site
-                    </Button>
-                  </Box>
-                </Card.Body>
-              </Card>
-              
-              <Card variant="outlined" padding="md" style={{ background: '#ee9b00' }}>
-                <Card.Body>
-                  <Typography variant="caption" weight="bold">PRO TIP</Typography>
-                  <Typography variant="bodySm" style={{ marginTop: '0.5rem' }}>
-                    Use keyboard shortcuts to navigate faster. Press <code style={{ background: '#001219', color: '#e9d8a6', padding: '2px 6px', borderRadius: '4px' }}>?</code> to see all shortcuts.
-                  </Typography>
-                </Card.Body>
-              </Card>
+        <IconCard
+          icon={<RocketIcon />}
+          title="Ship 10x Faster"
+          description="Pre-built components mean you can focus on building features, not reinventing the wheel. Get to market faster."
+          iconColor="primary"
+          variant="outlined"
+        />
+        <IconCard
+          icon={<ShieldIcon />}
+          title="Enterprise Security"
+          description="Built with security best practices. Regular audits, dependency updates, and vulnerability scanning."
+          iconColor="secondary"
+          variant="outlined"
+        />
+        <IconCard
+          icon={<CodeIcon />}
+          title="Clean Codebase"
+          description="Well-documented, typed, and tested. Your team will love working with our components."
+          iconColor="success"
+          variant="outlined"
+        />
+        <IconCard
+          icon={<HeartIcon />}
+          title="Dedicated Support"
+          description="Our team is here to help. Get answers fast with priority support for Pro and Enterprise plans."
+          iconColor="danger"
+          variant="outlined"
+        />
+      </GridSection>
 
-              {/* Recent Feedback - Uses: Quote (molecule) */}
-              <Quote
-                quote="The new dashboard is amazing! Everything I need is right here."
-                author="Team Member"
-                authorIcon={<StarIcon />}
-                variant="default"
-                size="sm"
-              />
-            </Box>
-          </Box>
-        </Box>
-      </Container>
+      {/* Feature Deep Dive - MediaSection */}
+      <MediaSection
+        media={{
+          type: 'image',
+          src: featureImage1,
+          alt: 'Component showcase',
+        }}
+        eyebrow="Component Library"
+        title="50+ Production-Ready Components"
+        description="From simple buttons to complex data tables, we've got you covered. Every component is accessible, customizable, and thoroughly tested."
+        layout="media-left"
+        spacing="lg"
+        background="subtle"
+        actions={
+          <Button variant="primary" rightIcon={<ArrowRightIcon />}>
+            Browse Components
+          </Button>
+        }
+      />
+
+      {/* Testimonial - GridSection */}
+      <GridSection
+        columns={1}
+        spacing="lg"
+        background="secondary"
+        containerWidth="md"
+      >
+        <Quote
+          quote="Switching to Vibe cut our development time in half. The component quality is unmatched, and the documentation is fantastic."
+          author="Sarah Chen"
+          role="CTO, TechStartup Inc"
+          avatar={avatar1}
+          authorIcon={<VerifiedIcon />}
+          variant="minimal"
+          size="lg"
+        />
+      </GridSection>
+
+      {/* CTA - HeadingSection */}
+      <HeadingSection
+        title="Start Building Today"
+        subtitle="Free to use, forever. Upgrade when you need more."
+        size="lg"
+        align="center"
+        spacing="xl"
+        background="dark"
+        actions={
+          <Button variant="primary" size="lg" rightIcon={<ArrowRightIcon />}>
+            Get Started Free
+          </Button>
+        }
+      />
     </div>
   ),
 };
 
 // ============================================================================
-// BLOG POST PREVIEW
+// ABOUT PAGE
 // ============================================================================
 
-export const BlogPostPage: Story = {
+export const AboutPage: Story = {
   render: () => (
-    <div style={{ minHeight: '100vh', background: '#fff' }}>
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Hero - Uses: Section, Container, Box, Typography, Media */}
-      <Section spacing="lg">
-        <Container maxWidth="md">
-          <Box display="flex" direction="column" gap="md" align="center">
-            <Typography variant="caption" style={{ color: '#ee9b00' }}>DESIGN SYSTEMS</Typography>
-            <Typography variant="display" align="center" style={{ fontSize: '3rem' }}>
-              The Art of Neobrutalist Design
-            </Typography>
-            <Typography variant="body" tone="muted" align="center" style={{ maxWidth: '600px' }}>
-              How bold aesthetics and unapologetic typography are reshaping modern web design.
-            </Typography>
-            <Box display="flex" align="center" gap="md" style={{ marginTop: '1rem' }}>
+    <div>
+      {/* Hero - HeadingSection */}
+      <HeadingSection
+        eyebrow="About Us"
+        title="We Build Tools for Builders"
+        subtitle="A passionate team dedicated to making design systems accessible to everyone."
+        size="xl"
+        align="center"
+        spacing="xl"
+        background="subtle"
+      />
+
+      {/* Mission - MediaSection */}
+      <MediaSection
+        media={{
+          type: 'image',
+          src: featureImage1,
+          alt: 'Our mission',
+        }}
+        eyebrow="Our Mission"
+        title="Democratizing Design"
+        description="We believe every team deserves access to world-class design tools. Our mission is to remove the barriers between great ideas and beautiful products."
+        layout="media-left"
+        spacing="lg"
+      />
+
+      {/* Values - GridSection */}
+      <GridSection
+        heading={{
+          eyebrow: 'Our Values',
+          title: 'What We Stand For',
+          align: 'center',
+        }}
+        columns={3}
+        gap="lg"
+        spacing="lg"
+        background="subtle"
+      >
+        <IconCard
+          icon={<HeartIcon />}
+          title="User First"
+          description="Every decision starts with our users. We build what you need, not what we think is cool."
+          iconColor="danger"
+          variant="default"
+        />
+        <IconCard
+          icon={<ShieldIcon />}
+          title="Quality Over Quantity"
+          description="We'd rather ship 10 perfect components than 100 mediocre ones."
+          iconColor="secondary"
+          variant="default"
+        />
+        <IconCard
+          icon={<GlobeIcon />}
+          title="Open Source"
+          description="We believe in the power of community. Our core library will always be free and open source."
+          iconColor="primary"
+          variant="default"
+        />
+      </GridSection>
+
+      {/* Team - GridSection */}
+      <GridSection
+        heading={{
+          eyebrow: 'Our Team',
+          title: 'Meet the People Behind Vibe',
+          align: 'center',
+        }}
+        columns={4}
+        gap="lg"
+        spacing="lg"
+      >
+        {[
+          { name: 'Alex Chen', role: 'CEO & Founder', img: avatar1 },
+          { name: 'Sarah Miller', role: 'Head of Design', img: avatar2 },
+          { name: 'James Wilson', role: 'Lead Engineer', img: avatar3 },
+          { name: 'Emma Davis', role: 'Product Manager', img: avatar1 },
+        ].map((person) => (
+          <Stack key={person.name} direction="column" align="center" gap="md">
+            <Box width="120px" height="120px" radius="full" overflow="hidden">
               <Media
                 type="image"
-                src={avatar1}
-                alt="Sarah Chen"
+                src={person.img}
+                alt={person.name}
                 aspectRatio="square"
-                radius="full"
-                style={{ width: '48px', height: '48px' }}
               />
-              <Box>
-                <Typography variant="bodySm" weight="bold">Sarah Chen</Typography>
-                <Typography variant="caption" tone="muted">Dec 15, 2024 · 8 min read</Typography>
-              </Box>
             </Box>
-          </Box>
-        </Container>
-      </Section>
-      
-      {/* Featured Image - Uses: Container, Media */}
-      <Container maxWidth="lg" padding="md">
-        <Media
-          type="image"
-          src={heroImage}
-          alt="Abstract design"
-          aspectRatio="wide"
-          radius="lg"
-        />
-      </Container>
-      
-      {/* Article Content - Uses: Section, Container, Box, Typography, Wysiwyg */}
-      <Section spacing="lg">
-        <Container maxWidth="md">
-          <Box display="flex" direction="column" gap="lg">
-            {/* Using Wysiwyg for rich content */}
-            <Wysiwyg html={`
-              <p>In the ever-evolving landscape of web design, a bold new aesthetic has emerged that challenges the polished, minimalist conventions of the past decade. Neobrutalism—with its heavy borders, offset shadows, and vibrant color palettes—is making a statement that resonates with brands seeking to stand out in an increasingly homogeneous digital world.</p>
-              
-              <h2>The Origins</h2>
-              <p>The roots of neobrutalism can be traced back to the Brutalist architecture movement of the 1950s, which celebrated raw concrete and bold geometric forms. In web design, this translates to thick borders, stark contrasts, and an intentional "rawness" that feels refreshingly authentic.</p>
-            `} />
-            
-            {/* Key Takeaway Box */}
-            <Box
-              padding="lg"
-              style={{
-                background: '#ee9b00',
-                border: '4px solid #001219',
-                borderRadius: '0.6rem',
-              }}
-            >
-              <Typography variant="h3" style={{ marginBottom: '0.5rem' }}>Key Takeaway</Typography>
-              <Typography variant="body">
-                Neobrutalism isn't about breaking rules—it's about making intentional choices that prioritize personality over polish.
-              </Typography>
-            </Box>
+            <Stack direction="column" align="center" gap="xs">
+              <Typography variant="h3">{person.name}</Typography>
+              <Typography variant="bodySm" tone="muted">{person.role}</Typography>
+            </Stack>
+          </Stack>
+        ))}
+      </GridSection>
 
-            {/* More Wysiwyg content */}
-            <Wysiwyg html={`
-              <h2>Core Principles</h2>
-              <p>Several key principles define the neobrutalist aesthetic:</p>
-              <ul>
-                <li><strong>Heavy borders:</strong> Thick, often black outlines that define elements clearly</li>
-                <li><strong>Offset shadows:</strong> Hard-edged shadows that create depth without blur</li>
-                <li><strong>Bold typography:</strong> Monospace and sans-serif fonts used unapologetically</li>
-                <li><strong>Vibrant colors:</strong> High-contrast palettes that demand attention</li>
-              </ul>
-              
-              <h2>Implementation</h2>
-              <p>When implementing neobrutalist design, consider using design systems like <strong>Vibe</strong> that provide pre-built components following these principles:</p>
-              
-              <pre><code>// Example usage
-import { Button, Card } from 'vibe-design-system';
-
-function App() {
-  return (
-    &lt;Card variant="elevated"&gt;
-      &lt;Button variant="primary"&gt;
-        Get Started
-      &lt;/Button&gt;
-    &lt;/Card&gt;
-  );
-}</code></pre>
-            `} />
-            
-            {/* Author Quote - Uses: Quote (molecule) */}
-            <Quote
-              quote="The best designs are the ones that make people feel something. Neobrutalism does exactly that—it demands attention and creates emotion."
-              author="Sarah Chen"
-              role="Author of this article"
-              avatar={avatar1}
-              authorIcon={<VerifiedIcon />}
-              variant="minimal"
-              layout="horizontal"
-            />
-            
-            <Divider spacing="lg" />
-            
-            {/* Article Footer - Uses: Box, Button, Icon, Typography */}
-            <Box display="flex" justify="between" align="center">
-              <Box display="flex" gap="sm">
-                <Button variant="ghost" size="sm" leftIcon={<HeartIcon />}>234</Button>
-                <Button variant="ghost" size="sm">Share</Button>
-              </Box>
-              <Typography variant="caption" tone="muted">
-                Tagged: Design, UI/UX, Trends
-              </Typography>
-            </Box>
-          </Box>
-        </Container>
-      </Section>
-      
-      {/* Related Articles - Uses: Section, Container, Heading, Box, Card, Media, Typography */}
-      <Section spacing="lg" background="subtle">
-        <Container maxWidth="lg">
-          <Heading
-            title="Related Articles"
-            subtitle="Continue exploring design system topics"
-            size="md"
-            align="left"
-          />
-          <Box
-            display="grid"
-            gap="lg"
-            style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', marginTop: '2rem' }}
-          >
-            {[
-              { title: 'Building Accessible Components', category: 'ACCESSIBILITY', image: featureImage1 },
-              { title: 'The Power of Design Tokens', category: 'DESIGN SYSTEMS', image: featureImage2 },
-              { title: 'React Best Practices 2024', category: 'DEVELOPMENT', image: heroImage },
-            ].map((article, i) => (
-              <Card key={i} variant="elevated" style={{ overflow: 'hidden' }}>
-                <Media
-                  type="image"
-                  src={article.image}
-                  alt={article.title}
-                  aspectRatio="video"
-                />
-                <Card.Body>
-                  <Box display="flex" direction="column" gap="sm" padding="md">
-                    <Typography variant="caption" style={{ color: '#ee9b00' }}>{article.category}</Typography>
-                    <Typography variant="h3">{article.title}</Typography>
-                    <Button variant="ghost" size="sm" rightIcon={<ArrowRightIcon />}>
-                      Read More
-                    </Button>
-                  </Box>
-                </Card.Body>
-              </Card>
-            ))}
-          </Box>
-        </Container>
-      </Section>
-      
-      {/* Footer */}
-      <Footer />
+      {/* CTA - HeadingSection */}
+      <HeadingSection
+        title="Join Our Journey"
+        subtitle="We're always looking for talented people to join our team."
+        size="lg"
+        align="center"
+        spacing="xl"
+        background="dark"
+        actions={
+          <Button variant="primary" size="lg" rightIcon={<ArrowRightIcon />}>
+            View Open Positions
+          </Button>
+        }
+      />
     </div>
   ),
 };
