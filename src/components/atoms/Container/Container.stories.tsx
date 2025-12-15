@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Container } from './Container';
 import { Typography } from '../Typography';
+import { Box } from '../Box';
+import { Section } from '../Section';
+import { Card } from '../../molecules/Card';
 
 const meta: Meta<typeof Container> = {
   title: 'Atoms/Container',
@@ -26,14 +29,12 @@ type Story = StoryObj<typeof Container>;
 
 // Demo content component
 const DemoContent = ({ label }: { label: string }) => (
-  <div style={{
-    border: '1px dashed #001219',
-  }}>
+  <Box padding="md" border="muted" radius="md">
     <Typography variant="h3">{label}</Typography>
     <Typography variant="body" tone="muted">
       This content is centered within the container
     </Typography>
-  </div>
+  </Box>
 );
 
 // ----------------------------------------------------------------------------
@@ -54,7 +55,7 @@ export const Default: Story = {
 
 export const AllWidths: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <Box display="flex" direction="column" gap="xl">
       <Container maxWidth="sm">
         <DemoContent label="Small (640px)" />
       </Container>
@@ -67,7 +68,7 @@ export const AllWidths: Story = {
       <Container maxWidth="xl">
         <DemoContent label="Extra Large (1280px)" />
       </Container>
-    </div>
+    </Box>
   ),
 };
 
@@ -77,28 +78,28 @@ export const AllWidths: Story = {
 
 export const PaddingVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div style={{ background: '#f0f0f0' }}>
+    <Box display="flex" direction="column" gap="xl">
+      <Box background="muted">
         <Container maxWidth="md" padding="none">
           <DemoContent label="No Padding" />
         </Container>
-      </div>
-      <div style={{ background: '#f0f0f0' }}>
+      </Box>
+      <Box background="muted">
         <Container maxWidth="md" padding="sm">
           <DemoContent label="Small Padding" />
         </Container>
-      </div>
-      <div style={{ background: '#f0f0f0' }}>
+      </Box>
+      <Box background="muted">
         <Container maxWidth="md" padding="md">
           <DemoContent label="Medium Padding (default)" />
         </Container>
-      </div>
-      <div style={{ background: '#f0f0f0' }}>
+      </Box>
+      <Box background="muted">
         <Container maxWidth="md" padding="lg">
           <DemoContent label="Large Padding" />
         </Container>
-      </div>
-    </div>
+      </Box>
+    </Box>
   ),
 };
 
@@ -108,15 +109,13 @@ export const PaddingVariants: Story = {
 
 export const NeobrutalistLayout: Story = {
   render: () => (
-    <div style={{ background: '#001219', minHeight: '100vh', padding: '2rem 0' }}>
+    <Section spacing="xl" background="dark">
       <Container maxWidth="lg" padding="md">
-        <div
-          style={{
-            background: '#fff',
-            border: '4px solid #001219',
-            padding: '3rem',
-            borderRadius: '0.6rem',
-          }}
+        <Box
+          padding="xl"
+          background="surface"
+          border="default"
+          radius="lg"
         >
           <Typography variant="display" style={{ marginBottom: '1rem' }}>
             CONTAINED CONTENT
@@ -126,9 +125,9 @@ export const NeobrutalistLayout: Story = {
             for your content. Perfect for creating readable text blocks and
             centered layouts.
           </Typography>
-        </div>
+        </Box>
       </Container>
-    </div>
+    </Section>
   ),
 };
 
@@ -138,34 +137,53 @@ export const NeobrutalistLayout: Story = {
 
 export const ResponsiveDemo: Story = {
   render: () => (
-    <Container maxWidth="xl" padding="lg">
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1.5rem',
-        }}
-      >
-        {[1, 2, 3, 4].map((i) => (
-          <div
-            key={i}
-            style={{
-              background: i % 2 === 0 ? '#0a9396' : '#ee9b00',
-              color: i % 2 === 0 ? '#fff' : '#001219',
-              border: '3px solid #001219',
-              padding: '2rem',
-              boxShadow: '4px 4px 0 0 #001219',
-              borderRadius: '0.6rem',
-            }}
-          >
-            <Typography variant="h3">Card {i}</Typography>
-            <Typography variant="bodySm">
-              Responsive grid inside container
-            </Typography>
-          </div>
-        ))}
-      </div>
-    </Container>
+    <Section spacing="lg">
+      <Container maxWidth="xl" padding="lg">
+        <Box
+          display="grid"
+          gap="lg"
+          style={{
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          }}
+        >
+          {[1, 2, 3, 4].map((i) => (
+            <Card key={i} variant="elevated" padding="lg">
+              <Card.Body>
+                <Typography variant="h3">Card {i}</Typography>
+                <Typography variant="bodySm" tone="muted">
+                  Responsive grid inside container
+                </Typography>
+              </Card.Body>
+            </Card>
+          ))}
+        </Box>
+      </Container>
+    </Section>
   ),
 };
 
+// ----------------------------------------------------------------------------
+// NESTED CONTAINERS
+// ----------------------------------------------------------------------------
+
+export const NestedContainers: Story = {
+  render: () => (
+    <Section spacing="lg" background="subtle">
+      <Container maxWidth="xl">
+        <Box display="flex" direction="column" gap="lg">
+          <Typography variant="h2">Full Width Header</Typography>
+          
+          <Container maxWidth="md" padding="none">
+            <Box padding="lg" background="surface" border="default" radius="md">
+              <Typography variant="h3">Narrower Content</Typography>
+              <Typography variant="body" tone="muted">
+                This content is in a nested container with medium max-width, 
+                creating a nice reading experience for long-form content.
+              </Typography>
+            </Box>
+          </Container>
+        </Box>
+      </Container>
+    </Section>
+  ),
+};

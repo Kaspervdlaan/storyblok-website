@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Wysiwyg } from './Wysiwyg';
 import { Box } from '../Box';
+import { Typography } from '../Typography';
+import { Section } from '../Section';
+import { Container } from '../Container';
+import { Card } from '../../molecules/Card';
 
 const meta: Meta<typeof Wysiwyg> = {
   title: 'Atoms/Wysiwyg',
@@ -77,23 +81,23 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <Box display="flex" direction="column" gap="xl">
-      <Box>
-        <Box padding="sm" background="primary" radius="sm" style={{ marginBottom: '1rem', display: 'inline-block' }}>
-          <strong>SIZE: SM</strong>
+      <Box display="flex" direction="column" gap="md">
+        <Box padding="sm" background="primary" radius="sm" style={{ display: 'inline-block', alignSelf: 'flex-start' }}>
+          <Typography variant="caption" weight="bold">SIZE: SM</Typography>
         </Box>
         <Wysiwyg size="sm" html="<h1>Small Size</h1><p>This is the small size variant with reduced typography scale. Good for sidebars or secondary content areas.</p><ul><li>Compact headings</li><li>Smaller body text</li></ul>" />
       </Box>
       
-      <Box>
-        <Box padding="sm" background="primary" radius="sm" style={{ marginBottom: '1rem', display: 'inline-block' }}>
-          <strong>SIZE: MD</strong>
+      <Box display="flex" direction="column" gap="md">
+        <Box padding="sm" background="primary" radius="sm" style={{ display: 'inline-block', alignSelf: 'flex-start' }}>
+          <Typography variant="caption" weight="bold">SIZE: MD</Typography>
         </Box>
         <Wysiwyg size="md" html="<h1>Medium Size (Default)</h1><p>This is the default medium size variant. Ideal for main content areas like blog posts or documentation.</p><ul><li>Balanced headings</li><li>Comfortable reading size</li></ul>" />
       </Box>
       
-      <Box>
-        <Box padding="sm" background="primary" radius="sm" style={{ marginBottom: '1rem', display: 'inline-block' }}>
-          <strong>SIZE: LG</strong>
+      <Box display="flex" direction="column" gap="md">
+        <Box padding="sm" background="primary" radius="sm" style={{ display: 'inline-block', alignSelf: 'flex-start' }}>
+          <Typography variant="caption" weight="bold">SIZE: LG</Typography>
         </Box>
         <Wysiwyg size="lg" html="<h1>Large Size</h1><p>This is the large size variant with enhanced typography scale. Perfect for landing pages or hero content.</p><ul><li>Impactful headings</li><li>Larger body text</li></ul>" />
       </Box>
@@ -130,46 +134,41 @@ export const WithChildren: Story = {
 
 export const ArticleExample: Story = {
   render: () => (
-    <Box
-      padding="lg"
-      background="surface"
-      border="default"
-      radius="lg"
-      shadow="md"
-      style={{ maxWidth: '800px' }}
-    >
-      <Wysiwyg
-        html={`
-          <h1>The Future of Design Systems</h1>
-          <p><em>Published on December 15, 2024</em></p>
-          
-          <p>Design systems have become an essential part of modern product development. They provide a shared language between designers and developers, ensuring consistency across products.</p>
-          
-          <h2>What Makes a Good Design System?</h2>
-          <p>A successful design system needs several key components:</p>
-          <ol>
-            <li><strong>Clear documentation</strong> - Every component should be well-documented with examples</li>
-            <li><strong>Flexibility</strong> - Components should be customizable without breaking consistency</li>
-            <li><strong>Accessibility</strong> - Built-in support for keyboard navigation and screen readers</li>
-          </ol>
-          
-          <blockquote>
-            <p>"A design system is not just a style guide or component library—it's a living, breathing product that serves other products."</p>
-          </blockquote>
-          
-          <h2>Implementation Tips</h2>
-          <p>When implementing a design system, consider using <code>CSS custom properties</code> for theming and <code>TypeScript</code> for type safety.</p>
-          
-          <pre><code>// Example token usage
+    <Card variant="elevated" padding="lg" style={{ maxWidth: '800px' }}>
+      <Card.Body>
+        <Wysiwyg
+          html={`
+            <h1>The Future of Design Systems</h1>
+            <p><em>Published on December 15, 2024</em></p>
+            
+            <p>Design systems have become an essential part of modern product development. They provide a shared language between designers and developers, ensuring consistency across products.</p>
+            
+            <h2>What Makes a Good Design System?</h2>
+            <p>A successful design system needs several key components:</p>
+            <ol>
+              <li><strong>Clear documentation</strong> - Every component should be well-documented with examples</li>
+              <li><strong>Flexibility</strong> - Components should be customizable without breaking consistency</li>
+              <li><strong>Accessibility</strong> - Built-in support for keyboard navigation and screen readers</li>
+            </ol>
+            
+            <blockquote>
+              <p>"A design system is not just a style guide or component library—it's a living, breathing product that serves other products."</p>
+            </blockquote>
+            
+            <h2>Implementation Tips</h2>
+            <p>When implementing a design system, consider using <code>CSS custom properties</code> for theming and <code>TypeScript</code> for type safety.</p>
+            
+            <pre><code>// Example token usage
 const Button = styled.button\`
   background: var(--color-primary);
   padding: var(--space-4);
 \`;</code></pre>
-          
-          <p>Remember: the best design system is one that your team actually uses!</p>
-        `}
-      />
-    </Box>
+            
+            <p>Remember: the best design system is one that your team actually uses!</p>
+          `}
+        />
+      </Card.Body>
+    </Card>
   ),
 };
 
@@ -217,3 +216,73 @@ export const WithTable: Story = {
   ),
 };
 
+// ----------------------------------------------------------------------------
+// BLOG POST
+// ----------------------------------------------------------------------------
+
+export const BlogPost: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => (
+    <Section spacing="lg">
+      <Container maxWidth="md">
+        <Box display="flex" direction="column" gap="lg">
+          {/* Header */}
+          <Box display="flex" direction="column" gap="md" align="center">
+            <Typography variant="caption" style={{ color: '#ee9b00' }}>
+              DESIGN SYSTEMS
+            </Typography>
+            <Typography variant="display" align="center">
+              The Art of Neobrutalist Design
+            </Typography>
+            <Typography variant="body" tone="muted" align="center">
+              How bold aesthetics and unapologetic typography are reshaping modern web design.
+            </Typography>
+            <Box display="flex" align="center" gap="md">
+              <Box
+                display="flex"
+                align="center"
+                justify="center"
+                background="secondary"
+                border="default"
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                }}
+              >
+                <Typography variant="body" weight="bold" style={{ color: '#fff' }}>SC</Typography>
+              </Box>
+              <Box display="flex" direction="column">
+                <Typography variant="bodySm" weight="bold">Sarah Chen</Typography>
+                <Typography variant="caption" tone="muted">Dec 15, 2024 · 8 min read</Typography>
+              </Box>
+            </Box>
+          </Box>
+          
+          {/* Content */}
+          <Wysiwyg html={`
+            <p>In the ever-evolving landscape of web design, a bold new aesthetic has emerged that challenges the polished, minimalist conventions of the past decade. Neobrutalism—with its heavy borders, offset shadows, and vibrant color palettes—is making a statement that resonates with brands seeking to stand out.</p>
+            
+            <h2>The Origins</h2>
+            <p>The roots of neobrutalism can be traced back to the Brutalist architecture movement of the 1950s, which celebrated raw concrete and bold geometric forms. In web design, this translates to thick borders, stark contrasts, and an intentional "rawness" that feels refreshingly authentic.</p>
+            
+            <blockquote>
+              <p>Neobrutalism isn't about breaking rules—it's about making intentional choices that prioritize personality over polish.</p>
+            </blockquote>
+            
+            <h2>Core Principles</h2>
+            <p>Several key principles define the neobrutalist aesthetic:</p>
+            <ul>
+              <li><strong>Heavy borders:</strong> Thick, often black outlines that define elements clearly</li>
+              <li><strong>Offset shadows:</strong> Hard-edged shadows that create depth without blur</li>
+              <li><strong>Bold typography:</strong> Monospace and sans-serif fonts used unapologetically</li>
+              <li><strong>Vibrant colors:</strong> High-contrast palettes that demand attention</li>
+            </ul>
+          `} />
+        </Box>
+      </Container>
+    </Section>
+  ),
+};

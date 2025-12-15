@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from './Input';
 import { Box } from '../Box';
+import { Typography } from '../Typography';
+import { Section } from '../Section';
+import { Container } from '../Container';
+import { Card } from '../../molecules/Card';
+import { Button } from '../Button';
+import { Divider } from '../Divider';
 
 const meta: Meta<typeof Input> = {
   title: 'Atoms/Input',
@@ -127,9 +133,18 @@ export const WithError: Story = {
 export const Sizes: Story = {
   render: () => (
     <Box display="flex" direction="column" gap="lg" style={{ maxWidth: '400px' }}>
-      <Input size="sm" placeholder="Small input" label="Small" />
-      <Input size="md" placeholder="Medium input" label="Medium (default)" />
-      <Input size="lg" placeholder="Large input" label="Large" />
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">SMALL</Typography>
+        <Input size="sm" placeholder="Small input" />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">MEDIUM (DEFAULT)</Typography>
+        <Input size="md" placeholder="Medium input" />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">LARGE</Typography>
+        <Input size="lg" placeholder="Large input" />
+      </Box>
     </Box>
   ),
 };
@@ -141,8 +156,14 @@ export const Sizes: Story = {
 export const Variants: Story = {
   render: () => (
     <Box display="flex" direction="column" gap="lg" style={{ maxWidth: '400px' }}>
-      <Input variant="default" placeholder="Default variant" label="Default" />
-      <Input variant="filled" placeholder="Filled variant" label="Filled" />
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">DEFAULT</Typography>
+        <Input variant="default" placeholder="Default variant" />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">FILLED</Typography>
+        <Input variant="filled" placeholder="Filled variant" />
+      </Box>
     </Box>
   ),
 };
@@ -199,7 +220,7 @@ export const Disabled: Story = {
 
 export const FullWidth: Story = {
   render: () => (
-    <Box style={{ width: '100%' }}>
+    <Box style={{ width: '100%', maxWidth: '600px' }}>
       <Input
         label="Full Width Input"
         placeholder="This input takes full width"
@@ -215,43 +236,44 @@ export const FullWidth: Story = {
 
 export const FormExample: Story = {
   render: () => (
-    <Box
-      padding="lg"
-      background="surface"
-      border="default"
-      radius="lg"
-      shadow="md"
-      display="flex"
-      direction="column"
-      gap="md"
-      style={{ maxWidth: '400px' }}
-    >
-      <Input
-        label="Full Name"
-        placeholder="John Doe"
-        leftIcon={<UserIcon />}
-      />
-      <Input
-        label="Email Address"
-        placeholder="john@example.com"
-        type="email"
-        leftIcon={<MailIcon />}
-      />
-      <Input
-        label="Password"
-        placeholder="Create a password"
-        type="password"
-        leftIcon={<LockIcon />}
-        rightIcon={<EyeIcon />}
-        helperText="Must be at least 8 characters"
-      />
-      <Input
-        label="Confirm Password"
-        placeholder="Confirm your password"
-        type="password"
-        leftIcon={<LockIcon />}
-      />
-    </Box>
+    <Card variant="elevated" padding="lg" style={{ maxWidth: '400px' }}>
+      <Card.Header>
+        <Typography variant="h3">Create Account</Typography>
+      </Card.Header>
+      <Card.Body>
+        <Box display="flex" direction="column" gap="md">
+          <Input
+            label="Full Name"
+            placeholder="John Doe"
+            leftIcon={<UserIcon />}
+          />
+          <Input
+            label="Email Address"
+            placeholder="john@example.com"
+            type="email"
+            leftIcon={<MailIcon />}
+          />
+          <Input
+            label="Password"
+            placeholder="Create a password"
+            type="password"
+            leftIcon={<LockIcon />}
+            rightIcon={<EyeIcon />}
+            helperText="Must be at least 8 characters"
+          />
+          <Input
+            label="Confirm Password"
+            placeholder="Confirm your password"
+            type="password"
+            leftIcon={<LockIcon />}
+          />
+        </Box>
+      </Card.Body>
+      <Card.Footer>
+        <Button variant="ghost">Cancel</Button>
+        <Button variant="primary">Create Account</Button>
+      </Card.Footer>
+    </Card>
   ),
 };
 
@@ -262,34 +284,30 @@ export const FormExample: Story = {
 export const AllStates: Story = {
   render: () => (
     <Box display="flex" direction="column" gap="lg" style={{ maxWidth: '400px' }}>
-      <Input
-        label="Default State"
-        placeholder="Normal input"
-      />
-      <Input
-        label="With Value"
-        defaultValue="Some entered text"
-      />
-      <Input
-        label="Focused State"
-        placeholder="Click to focus"
-        autoFocus
-      />
-      <Input
-        label="Error State"
-        defaultValue="Invalid input"
-        error="This field has an error"
-      />
-      <Input
-        label="Disabled State"
-        placeholder="Cannot edit"
-        disabled
-      />
-      <Input
-        label="Read Only"
-        defaultValue="Read only value"
-        readOnly
-      />
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">DEFAULT STATE</Typography>
+        <Input placeholder="Normal input" />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">WITH VALUE</Typography>
+        <Input defaultValue="Some entered text" />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">FOCUSED STATE</Typography>
+        <Input placeholder="Click to focus" autoFocus />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">ERROR STATE</Typography>
+        <Input defaultValue="Invalid input" error="This field has an error" />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">DISABLED STATE</Typography>
+        <Input placeholder="Cannot edit" disabled />
+      </Box>
+      <Box display="flex" direction="column" gap="xs">
+        <Typography variant="caption">READ ONLY</Typography>
+        <Input defaultValue="Read only value" readOnly />
+      </Box>
     </Box>
   ),
 };
@@ -311,3 +329,75 @@ export const InputTypes: Story = {
   ),
 };
 
+// ----------------------------------------------------------------------------
+// LOGIN FORM
+// ----------------------------------------------------------------------------
+
+export const LoginForm: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => (
+    <Section spacing="xl" background="subtle">
+      <Container maxWidth="sm">
+        <Card variant="elevated" padding="lg">
+          <Card.Body>
+            <Box display="flex" direction="column" gap="lg">
+              <Box display="flex" direction="column" gap="sm" align="center">
+                <Typography variant="h2">Welcome Back</Typography>
+                <Typography variant="body" tone="muted">
+                  Sign in to your account
+                </Typography>
+              </Box>
+              
+              <Box display="flex" direction="column" gap="md">
+                <Input
+                  label="Email"
+                  placeholder="you@example.com"
+                  type="email"
+                  leftIcon={<MailIcon />}
+                />
+                <Input
+                  label="Password"
+                  placeholder="Enter your password"
+                  type="password"
+                  leftIcon={<LockIcon />}
+                />
+              </Box>
+              
+              <Button variant="primary" fullWidth>Sign In</Button>
+              
+              <Divider label="Or continue with" spacing="sm" />
+              
+              <Box display="flex" gap="md">
+                <Button variant="ghost" fullWidth>Google</Button>
+                <Button variant="ghost" fullWidth>GitHub</Button>
+              </Box>
+              
+              <Typography variant="bodySm" tone="muted" align="center">
+                Don't have an account? <span style={{ color: '#0a9396', cursor: 'pointer' }}>Sign up</span>
+              </Typography>
+            </Box>
+          </Card.Body>
+        </Card>
+      </Container>
+    </Section>
+  ),
+};
+
+// ----------------------------------------------------------------------------
+// SEARCH BAR
+// ----------------------------------------------------------------------------
+
+export const SearchBar: Story = {
+  render: () => (
+    <Box display="flex" gap="sm" style={{ maxWidth: '500px' }}>
+      <Input
+        leftIcon={<SearchIcon />}
+        placeholder="Search components..."
+        fullWidth
+      />
+      <Button variant="primary">Search</Button>
+    </Box>
+  ),
+};

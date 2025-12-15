@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
+import { Box } from '../Box';
+import { Typography } from '../Typography';
+import { Section } from '../Section';
+import { Container } from '../Container';
 
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
@@ -21,6 +25,9 @@ const meta: Meta<typeof Button> = {
       control: 'boolean',
     },
     disabled: {
+      control: 'boolean',
+    },
+    fullWidth: {
       control: 'boolean',
     },
     onClick: { action: 'clicked' },
@@ -97,12 +104,12 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <Box display="flex" gap="md" style={{ flexWrap: 'wrap' }}>
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="danger">Danger</Button>
-    </div>
+    </Box>
   ),
 };
 
@@ -112,18 +119,25 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: '1rem',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
+    <Box display="flex" gap="md" align="center" style={{ flexWrap: 'wrap' }}>
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
-    </div>
+    </Box>
+  ),
+};
+
+// ----------------------------------------------------------------------------
+// FULL WIDTH
+// ----------------------------------------------------------------------------
+
+export const FullWidth: Story = {
+  render: () => (
+    <Box display="flex" direction="column" gap="md" style={{ width: '300px' }}>
+      <Button variant="primary" fullWidth>Full Width Primary</Button>
+      <Button variant="secondary" fullWidth>Full Width Secondary</Button>
+      <Button variant="ghost" fullWidth>Full Width Ghost</Button>
+    </Box>
   ),
 };
 
@@ -133,7 +147,7 @@ export const Sizes: Story = {
 
 export const Loading: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <Box display="flex" gap="md" style={{ flexWrap: 'wrap' }}>
       <Button variant="primary" isLoading>
         Loading
       </Button>
@@ -146,7 +160,7 @@ export const Loading: Story = {
       <Button variant="danger" isLoading>
         Loading
       </Button>
-    </div>
+    </Box>
   ),
 };
 
@@ -156,7 +170,7 @@ export const Loading: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <Box display="flex" gap="md" style={{ flexWrap: 'wrap' }}>
       <Button variant="primary" disabled>
         Disabled
       </Button>
@@ -169,7 +183,7 @@ export const Disabled: Story = {
       <Button variant="danger" disabled>
         Disabled
       </Button>
-    </div>
+    </Box>
   ),
 };
 
@@ -179,7 +193,7 @@ export const Disabled: Story = {
 
 export const WithIcons: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <Box display="flex" gap="md" style={{ flexWrap: 'wrap' }}>
       <Button variant="primary" leftIcon={<PlusIcon />}>
         Add Item
       </Button>
@@ -189,7 +203,7 @@ export const WithIcons: Story = {
       <Button variant="danger" leftIcon={<TrashIcon />}>
         Delete
       </Button>
-    </div>
+    </Box>
   ),
 };
 
@@ -199,14 +213,7 @@ export const WithIcons: Story = {
 
 export const AllSizesWithIcons: Story = {
   render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: '1rem',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
+    <Box display="flex" gap="md" align="center" style={{ flexWrap: 'wrap' }}>
       <Button size="sm" leftIcon={<PlusIcon />}>
         Small
       </Button>
@@ -216,7 +223,7 @@ export const AllSizesWithIcons: Story = {
       <Button size="lg" leftIcon={<PlusIcon />}>
         Large
       </Button>
-    </div>
+    </Box>
   ),
 };
 
@@ -225,27 +232,33 @@ export const AllSizesWithIcons: Story = {
 // ----------------------------------------------------------------------------
 
 export const NeobrutalistShowcase: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
   render: () => (
-    <div
-      style={{
-        background: '#001219',
-        padding: '3rem',
-        display: 'flex',
-        gap: '1.5rem',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-      }}
-    >
-      <Button variant="primary" size="lg" rightIcon={<ArrowRightIcon />}>
-        Get Started
-      </Button>
-      <Button variant="secondary" size="lg">
-        Learn More
-      </Button>
-      <Button variant="ghost" size="lg" style={{ borderColor: '#e9d8a6', color: '#e9d8a6' }}>
-        View Demo
-      </Button>
-    </div>
+    <Section spacing="xl" background="dark">
+      <Container maxWidth="lg">
+        <Box display="flex" direction="column" gap="lg" align="center">
+          <Typography variant="display" style={{ color: '#e9d8a6' }}>
+            BOLD BUTTONS
+          </Typography>
+          <Typography variant="body" tone="muted" align="center" style={{ maxWidth: '500px', color: '#8a8477' }}>
+            Neobrutalist buttons with heavy borders, offset shadows, and unapologetic presence.
+          </Typography>
+          <Box display="flex" gap="lg" style={{ flexWrap: 'wrap' }} justify="center">
+            <Button variant="primary" size="lg" rightIcon={<ArrowRightIcon />}>
+              Get Started
+            </Button>
+            <Button variant="secondary" size="lg">
+              Learn More
+            </Button>
+            <Button variant="ghost" size="lg" style={{ borderColor: '#e9d8a6', color: '#e9d8a6' }}>
+              View Demo
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    </Section>
   ),
 };
 
@@ -261,3 +274,62 @@ export const Interactive: Story = {
   },
 };
 
+// ----------------------------------------------------------------------------
+// ALL VARIANTS GRID
+// ----------------------------------------------------------------------------
+
+export const AllVariantsGrid: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => (
+    <Section spacing="lg">
+      <Container maxWidth="xl">
+        <Box display="flex" direction="column" gap="xl">
+          <Typography variant="h2">Button Variants & States</Typography>
+          
+          {/* Variants Row */}
+          <Box display="flex" direction="column" gap="md">
+            <Typography variant="caption">VARIANTS</Typography>
+            <Box display="flex" gap="md" style={{ flexWrap: 'wrap' }}>
+              <Button variant="primary">Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="danger">Danger</Button>
+            </Box>
+          </Box>
+          
+          {/* Sizes Row */}
+          <Box display="flex" direction="column" gap="md">
+            <Typography variant="caption">SIZES</Typography>
+            <Box display="flex" gap="md" align="center" style={{ flexWrap: 'wrap' }}>
+              <Button size="sm">Small</Button>
+              <Button size="md">Medium</Button>
+              <Button size="lg">Large</Button>
+            </Box>
+          </Box>
+          
+          {/* States Row */}
+          <Box display="flex" direction="column" gap="md">
+            <Typography variant="caption">STATES</Typography>
+            <Box display="flex" gap="md" style={{ flexWrap: 'wrap' }}>
+              <Button variant="primary">Default</Button>
+              <Button variant="primary" isLoading>Loading</Button>
+              <Button variant="primary" disabled>Disabled</Button>
+            </Box>
+          </Box>
+          
+          {/* With Icons Row */}
+          <Box display="flex" direction="column" gap="md">
+            <Typography variant="caption">WITH ICONS</Typography>
+            <Box display="flex" gap="md" style={{ flexWrap: 'wrap' }}>
+              <Button leftIcon={<PlusIcon />}>Left Icon</Button>
+              <Button rightIcon={<ArrowRightIcon />}>Right Icon</Button>
+              <Button leftIcon={<PlusIcon />} rightIcon={<ArrowRightIcon />}>Both Icons</Button>
+            </Box>
+          </Box>
+        </Box>
+      </Container>
+    </Section>
+  ),
+};

@@ -6,21 +6,13 @@ type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Visual variant of the button */
   variant?: ButtonVariant;
-  /** Size of the button */
   size?: ButtonSize;
-  /** Makes button take full width of container */
   fullWidth?: boolean;
-  /** Shows loading spinner and disables interaction */
   isLoading?: boolean;
-  /** Icon element to show before the text */
   leftIcon?: React.ReactNode;
-  /** Icon element to show after the text */
   rightIcon?: React.ReactNode;
-  /** Additional CSS classes */
   className?: string;
-  /** Button content */
   children?: React.ReactNode;
 }
 

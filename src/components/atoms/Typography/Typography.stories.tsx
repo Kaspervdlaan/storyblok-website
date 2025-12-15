@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Typography } from './Typography';
+import { Box } from '../Box';
+import { Section } from '../Section';
+import { Container } from '../Container';
 
 const meta: Meta<typeof Typography> = {
   title: 'Atoms/Typography',
@@ -51,7 +54,7 @@ export const Default: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <Box display="flex" direction="column" gap="lg">
       <Typography variant="display">Display — Bold Statement</Typography>
       <Typography variant="h1">Heading 1 — Page Title</Typography>
       <Typography variant="h2">Heading 2 — Section Title</Typography>
@@ -65,7 +68,7 @@ export const AllVariants: Story = {
         descriptions.
       </Typography>
       <Typography variant="caption">Caption — Labels & Metadata</Typography>
-    </div>
+    </Box>
   ),
 };
 
@@ -75,7 +78,7 @@ export const AllVariants: Story = {
 
 export const Weights: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <Box display="flex" direction="column" gap="md">
       <Typography variant="h3" weight="regular">
         Regular (400) — Light touch
       </Typography>
@@ -88,7 +91,7 @@ export const Weights: Story = {
       <Typography variant="h3" weight="bold">
         Bold (700) — Maximum impact
       </Typography>
-    </div>
+    </Box>
   ),
 };
 
@@ -98,7 +101,7 @@ export const Weights: Story = {
 
 export const Tones: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <Box display="flex" direction="column" gap="md">
       <Typography variant="body" tone="default">
         Default — Standard text color for primary content
       </Typography>
@@ -111,7 +114,7 @@ export const Tones: Story = {
       <Typography variant="body" tone="success">
         Success — Confirmation and success states
       </Typography>
-    </div>
+    </Box>
   ),
 };
 
@@ -121,7 +124,7 @@ export const Tones: Story = {
 
 export const Alignment: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <Box display="flex" direction="column" gap="md">
       <Typography variant="h3" align="left">
         Left aligned (default)
       </Typography>
@@ -131,7 +134,7 @@ export const Alignment: Story = {
       <Typography variant="h3" align="right">
         Right aligned
       </Typography>
-    </div>
+    </Box>
   ),
 };
 
@@ -141,7 +144,7 @@ export const Alignment: Story = {
 
 export const CustomElement: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <Box display="flex" direction="column" gap="md">
       <Typography variant="h1" as="span">
         H1 styled as span
       </Typography>
@@ -151,7 +154,7 @@ export const CustomElement: Story = {
       <Typography variant="caption" as="label">
         Caption styled as label
       </Typography>
-    </div>
+    </Box>
   ),
 };
 
@@ -160,26 +163,99 @@ export const CustomElement: Story = {
 // ----------------------------------------------------------------------------
 
 export const NeobrutalistShowcase: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
   render: () => (
-    <div
-      style={{
-        background: '#ee9b00',
-        padding: '3rem',
-        border: '4px solid #001219',
-      }}
-    >
-      <Typography variant="display" style={{ marginBottom: '1rem' }}>
-        BREAK THE RULES
-      </Typography>
-      <Typography variant="h2" style={{ marginBottom: '1.5rem' }}>
-        Design without compromise
-      </Typography>
-      <Typography variant="body" style={{ maxWidth: '600px' }}>
-        Neobrutalism embraces bold colors, heavy borders, and unapologetic
-        typography. This design system brings that raw energy to your React
-        applications.
-      </Typography>
-    </div>
+    <Section spacing="xl" background="primary">
+      <Container maxWidth="lg">
+        <Box display="flex" direction="column" gap="lg">
+          <Typography variant="display">
+            BREAK THE RULES
+          </Typography>
+          <Typography variant="h2">
+            Design without compromise
+          </Typography>
+          <Typography variant="body" style={{ maxWidth: '600px' }}>
+            Neobrutalism embraces bold colors, heavy borders, and unapologetic
+            typography. This design system brings that raw energy to your React
+            applications.
+          </Typography>
+        </Box>
+      </Container>
+    </Section>
   ),
 };
 
+// ----------------------------------------------------------------------------
+// TYPOGRAPHY SCALE
+// ----------------------------------------------------------------------------
+
+export const TypographyScale: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => (
+    <Section spacing="lg">
+      <Container maxWidth="lg">
+        <Box display="flex" direction="column" gap="xl">
+          <Box display="flex" direction="column" gap="sm">
+            <Typography variant="caption">TYPOGRAPHY SCALE</Typography>
+            <Typography variant="h2">Complete Type System</Typography>
+          </Box>
+          
+          <Box display="flex" direction="column" gap="lg">
+            <Box display="flex" align="baseline" gap="lg" style={{ flexWrap: 'wrap' }}>
+              <Box style={{ width: '120px' }}>
+                <Typography variant="caption" tone="muted">Display</Typography>
+              </Box>
+              <Typography variant="display">Aa</Typography>
+            </Box>
+            
+            <Box display="flex" align="baseline" gap="lg" style={{ flexWrap: 'wrap' }}>
+              <Box style={{ width: '120px' }}>
+                <Typography variant="caption" tone="muted">Heading 1</Typography>
+              </Box>
+              <Typography variant="h1">Aa</Typography>
+            </Box>
+            
+            <Box display="flex" align="baseline" gap="lg" style={{ flexWrap: 'wrap' }}>
+              <Box style={{ width: '120px' }}>
+                <Typography variant="caption" tone="muted">Heading 2</Typography>
+              </Box>
+              <Typography variant="h2">Aa</Typography>
+            </Box>
+            
+            <Box display="flex" align="baseline" gap="lg" style={{ flexWrap: 'wrap' }}>
+              <Box style={{ width: '120px' }}>
+                <Typography variant="caption" tone="muted">Heading 3</Typography>
+              </Box>
+              <Typography variant="h3">Aa</Typography>
+            </Box>
+            
+            <Box display="flex" align="baseline" gap="lg" style={{ flexWrap: 'wrap' }}>
+              <Box style={{ width: '120px' }}>
+                <Typography variant="caption" tone="muted">Body</Typography>
+              </Box>
+              <Typography variant="body">The quick brown fox jumps over the lazy dog.</Typography>
+            </Box>
+            
+            <Box display="flex" align="baseline" gap="lg" style={{ flexWrap: 'wrap' }}>
+              <Box style={{ width: '120px' }}>
+                <Typography variant="caption" tone="muted">Body Small</Typography>
+              </Box>
+              <Typography variant="bodySm">The quick brown fox jumps over the lazy dog.</Typography>
+            </Box>
+            
+            <Box display="flex" align="baseline" gap="lg" style={{ flexWrap: 'wrap' }}>
+              <Box style={{ width: '120px' }}>
+                <Typography variant="caption" tone="muted">Caption</Typography>
+              </Box>
+              <Typography variant="caption">THE QUICK BROWN FOX</Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Container>
+    </Section>
+  ),
+};

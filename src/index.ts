@@ -27,6 +27,8 @@ export { IconCard, type IconCardProps } from './components/molecules/IconCard';
 
 export { Heading, type HeadingProps } from './components/molecules/Heading';
 
+export { Quote, type QuoteProps } from './components/molecules/Quote';
+
 // Organisms
 export { MediaSection, type MediaSectionProps } from './components/organisms/MediaSection';
 export { HeadingSection, type HeadingSectionProps } from './components/organisms/HeadingSection';

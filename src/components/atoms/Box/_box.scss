@@ -98,7 +98,7 @@
 .box--radius-md { @include squircle($radius-md); }
 .box--radius-lg { @include squircle($radius-lg); }
 .box--radius-xl { @include squircle($radius-xl); }
-.box--radius-full { @include squircle($radius-full); }
+.box--radius-full { border-radius: 50%; }
 
 // ----------------------------------------------------------------------------
 // BACKGROUND

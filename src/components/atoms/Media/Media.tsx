@@ -4,42 +4,30 @@ import './_media.scss';
 
 type MediaAspectRatio = 'auto' | 'square' | 'video' | 'wide' | 'portrait';
 type MediaFit = 'cover' | 'contain' | 'fill' | 'none';
-type MediaRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+type MediaRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
 interface MediaBaseProps {
-  /** Aspect ratio of the media container */
   aspectRatio?: MediaAspectRatio;
-  /** How the media should fit within its container */
   fit?: MediaFit;
-  /** Border radius */
   radius?: MediaRadius;
-  /** Alt text for accessibility */
   alt: string;
-  /** Additional CSS classes */
   className?: string;
+  width?: number;
+  height?: number;
 }
 
 interface MediaImageProps extends MediaBaseProps {
-  /** Media type */
   type: 'image';
-  /** Image source URL */
   src: string;
 }
 
 interface MediaVideoProps extends MediaBaseProps {
-  /** Media type */
   type: 'video';
-  /** Video source URL */
   src: string;
-  /** Poster image for video */
   poster?: string;
-  /** Autoplay video (muted by default for autoplay) */
   autoPlay?: boolean;
-  /** Loop video */
   loop?: boolean;
-  /** Show video controls */
   controls?: boolean;
-  /** Mute video */
   muted?: boolean;
 }
 
@@ -53,6 +41,8 @@ export const Media: React.FC<MediaProps> = (props) => {
     aspectRatio = 'auto',
     fit = 'cover',
     radius = 'md',
+    width,
+    height,
     className = '',
     ...rest
   } = props;
@@ -88,6 +78,8 @@ export const Media: React.FC<MediaProps> = (props) => {
           muted={muted}
           playsInline
           aria-label={alt}
+          width={width}
+          height={height}
         >
           <track kind="captions" />
           Your browser does not support the video tag.
@@ -103,6 +95,8 @@ export const Media: React.FC<MediaProps> = (props) => {
         src={src}
         alt={alt}
         loading="lazy"
+        width={width}
+        height={height}
       />
     </Box>
   );

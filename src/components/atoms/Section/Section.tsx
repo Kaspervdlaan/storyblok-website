@@ -2,7 +2,7 @@ import React from 'react';
 import './_section.scss';
 
 type SectionSpacing = 'sm' | 'md' | 'lg' | 'xl';
-type SectionBackground = 'none' | 'subtle' | 'primary';
+type SectionBackground = 'none' | 'subtle' | 'primary' | 'dark' | 'secondary';
 
 export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   /** Vertical spacing (padding top/bottom) */

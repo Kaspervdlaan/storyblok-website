@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { IconCard } from './IconCard';
+import { Box } from '../../atoms/Box';
+import { Typography } from '../../atoms/Typography';
+import { Section } from '../../atoms/Section';
+import { Container } from '../../atoms/Container';
 
 const meta: Meta<typeof IconCard> = {
   title: 'Molecules/IconCard',
@@ -111,7 +115,7 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '400px' }}>
+    <Box display="flex" direction="column" gap="lg" style={{ maxWidth: '400px' }}>
       <IconCard
         icon={<RocketIcon />}
         title="Default Variant"
@@ -133,7 +137,7 @@ export const Variants: Story = {
         variant="filled"
         iconColor="success"
       />
-    </div>
+    </Box>
   ),
 };
 
@@ -143,7 +147,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '500px' }}>
+    <Box display="flex" direction="column" gap="lg" style={{ maxWidth: '500px' }}>
       <IconCard
         icon={<StarIcon />}
         title="Small Card"
@@ -165,7 +169,7 @@ export const Sizes: Story = {
         size="lg"
         iconColor="primary"
       />
-    </div>
+    </Box>
   ),
 };
 
@@ -175,11 +179,11 @@ export const Sizes: Story = {
 
 export const IconColors: Story = {
   render: () => (
-    <div
+    <Box
+      display="grid"
+      gap="lg"
       style={{
-        display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '1.5rem',
       }}
     >
       <IconCard
@@ -212,7 +216,7 @@ export const IconColors: Story = {
         description="Subtle, understated appearance."
         iconColor="neutral"
       />
-    </div>
+    </Box>
   ),
 };
 
@@ -222,11 +226,11 @@ export const IconColors: Story = {
 
 export const Centered: Story = {
   render: () => (
-    <div
+    <Box
+      display="grid"
+      gap="lg"
       style={{
-        display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-        gap: '1.5rem',
       }}
     >
       <IconCard
@@ -250,7 +254,7 @@ export const Centered: Story = {
         centered
         iconColor="success"
       />
-    </div>
+    </Box>
   ),
 };
 
@@ -259,73 +263,75 @@ export const Centered: Story = {
 // ----------------------------------------------------------------------------
 
 export const FeatureGrid: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
   render: () => (
-    <div style={{ background: '#001219', padding: '3rem', margin: '-1rem' }}>
-      <h2
-        style={{
-          fontFamily: 'Space Mono, monospace',
-          fontSize: '2.25rem',
-          fontWeight: 700,
-          color: '#e9d8a6',
-          marginBottom: '2rem',
-          textAlign: 'center',
-        }}
-      >
-        WHY CHOOSE US
-      </h2>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1.5rem',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}
-      >
-        <IconCard
-          icon={<RocketIcon />}
-          title="Blazing Fast"
-          description="Optimized for performance with sub-second load times."
-          iconColor="primary"
-          centered
-        />
-        <IconCard
-          icon={<ShieldIcon />}
-          title="Secure by Default"
-          description="Built with security best practices from day one."
-          iconColor="secondary"
-          centered
-        />
-        <IconCard
-          icon={<CodeIcon />}
-          title="Developer First"
-          description="Clean APIs and comprehensive documentation."
-          iconColor="success"
-          centered
-        />
-        <IconCard
-          icon={<GlobeIcon />}
-          title="Global Scale"
-          description="Deploy worldwide with edge computing."
-          iconColor="primary"
-          centered
-        />
-        <IconCard
-          icon={<HeartIcon />}
-          title="Community Driven"
-          description="Open source with an active community."
-          iconColor="danger"
-          centered
-        />
-        <IconCard
-          icon={<LockIcon />}
-          title="Privacy Focused"
-          description="Your data stays yours. Always."
-          iconColor="neutral"
-          centered
-        />
-      </div>
-    </div>
+    <Section spacing="xl" background="dark">
+      <Container maxWidth="lg">
+        <Box display="flex" direction="column" gap="xl" align="center">
+          <Box display="flex" direction="column" gap="md" align="center">
+            <Typography variant="caption" style={{ color: '#ee9b00' }}>
+              FEATURES
+            </Typography>
+            <Typography variant="display" style={{ color: '#e9d8a6' }}>
+              WHY CHOOSE US
+            </Typography>
+          </Box>
+          <Box
+            display="grid"
+            gap="lg"
+            style={{
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              width: '100%',
+            }}
+          >
+            <IconCard
+              icon={<RocketIcon />}
+              title="Blazing Fast"
+              description="Optimized for performance with sub-second load times."
+              iconColor="primary"
+              centered
+            />
+            <IconCard
+              icon={<ShieldIcon />}
+              title="Secure by Default"
+              description="Built with security best practices from day one."
+              iconColor="secondary"
+              centered
+            />
+            <IconCard
+              icon={<CodeIcon />}
+              title="Developer First"
+              description="Clean APIs and comprehensive documentation."
+              iconColor="success"
+              centered
+            />
+            <IconCard
+              icon={<GlobeIcon />}
+              title="Global Scale"
+              description="Deploy worldwide with edge computing."
+              iconColor="primary"
+              centered
+            />
+            <IconCard
+              icon={<HeartIcon />}
+              title="Community Driven"
+              description="Open source with an active community."
+              iconColor="danger"
+              centered
+            />
+            <IconCard
+              icon={<LockIcon />}
+              title="Privacy Focused"
+              description="Your data stays yours. Always."
+              iconColor="neutral"
+              centered
+            />
+          </Box>
+        </Box>
+      </Container>
+    </Section>
   ),
 };
 
@@ -335,7 +341,7 @@ export const FeatureGrid: Story = {
 
 export const HorizontalList: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '600px' }}>
+    <Box display="flex" direction="column" gap="md" style={{ maxWidth: '600px' }}>
       <IconCard
         icon={<RocketIcon />}
         title="Step 1: Design"
@@ -360,7 +366,7 @@ export const HorizontalList: Story = {
         size="sm"
         iconColor="success"
       />
-    </div>
+    </Box>
   ),
 };
 
@@ -370,11 +376,11 @@ export const HorizontalList: Story = {
 
 export const WithEmoji: Story = {
   render: () => (
-    <div
+    <Box
+      display="grid"
+      gap="lg"
       style={{
-        display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-        gap: '1.5rem',
       }}
     >
       <IconCard
@@ -398,7 +404,60 @@ export const WithEmoji: Story = {
         iconColor="success"
         centered
       />
-    </div>
+    </Box>
   ),
 };
 
+// ----------------------------------------------------------------------------
+// BENEFITS SECTION
+// ----------------------------------------------------------------------------
+
+export const BenefitsSection: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => (
+    <Section spacing="lg" background="subtle">
+      <Container maxWidth="lg">
+        <Box display="flex" direction="column" gap="xl">
+          <Box display="flex" direction="column" gap="sm">
+            <Typography variant="caption">BENEFITS</Typography>
+            <Typography variant="h2">Built for Modern Teams</Typography>
+            <Typography variant="body" tone="muted" style={{ maxWidth: '600px' }}>
+              Our design system helps you ship faster while maintaining quality and consistency.
+            </Typography>
+          </Box>
+          <Box
+            display="grid"
+            gap="lg"
+            style={{
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            }}
+          >
+            <IconCard
+              icon={<RocketIcon />}
+              title="10x Faster Development"
+              description="Pre-built components mean you can focus on features, not UI from scratch."
+              iconColor="primary"
+              variant="filled"
+            />
+            <IconCard
+              icon={<ShieldIcon />}
+              title="Consistent Quality"
+              description="Every component follows the same standards and patterns."
+              iconColor="secondary"
+              variant="filled"
+            />
+            <IconCard
+              icon={<GlobeIcon />}
+              title="Accessible by Default"
+              description="WCAG 2.1 compliant with keyboard navigation built in."
+              iconColor="success"
+              variant="filled"
+            />
+          </Box>
+        </Box>
+      </Container>
+    </Section>
+  ),
+};

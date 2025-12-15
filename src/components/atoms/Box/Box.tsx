@@ -13,35 +13,20 @@ type BoxBorder = 'none' | 'default' | 'muted';
 type BoxShadow = 'none' | 'sm' | 'md' | 'lg';
 
 export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
-  /** HTML element to render */
   as?: keyof JSX.IntrinsicElements;
-  /** Padding on all sides */
   padding?: BoxPadding;
-  /** Padding on horizontal axis */
   paddingX?: BoxPadding;
-  /** Padding on vertical axis */
   paddingY?: BoxPadding;
-  /** Display property */
   display?: BoxDisplay;
-  /** Flex direction */
   direction?: BoxDirection;
-  /** Align items */
   align?: BoxAlign;
-  /** Justify content */
   justify?: BoxJustify;
-  /** Gap between children */
   gap?: BoxGap;
-  /** Border radius */
   radius?: BoxRadius;
-  /** Background color */
   background?: BoxBackground;
-  /** Border style */
   border?: BoxBorder;
-  /** Box shadow */
   shadow?: BoxShadow;
-  /** Additional CSS classes */
   className?: string;
-  /** Box content */
   children?: React.ReactNode;
 }
 
