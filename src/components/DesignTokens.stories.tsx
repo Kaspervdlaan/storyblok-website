@@ -150,6 +150,9 @@ export const Colors: Story = {
         <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.875rem', marginBottom: '1.5rem', color: '#5c5a52' }}>
           Based on <a href="https://coolors.co/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226" target="_blank" rel="noopener noreferrer">Coolors palette</a>
         </p>
+        <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.875rem', marginBottom: '1.5rem', color: '#5c5a52' }}>
+          Live website using storyblok and this design system: <a href="https://legendary-kitsune-9cc2c7.netlify.app/" target="_blank" rel="noopener noreferrer">vibe.dev</a>
+        </p>
         <TokenGrid columns={5}>
           <ColorSwatch name="$color-rich-black" value="#001219" textColor="#fff" />
           <ColorSwatch name="$color-dark-cyan" value="#005f73" textColor="#fff" />
