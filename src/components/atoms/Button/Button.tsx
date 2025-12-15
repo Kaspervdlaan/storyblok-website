@@ -9,6 +9,10 @@ export interface ButtonProps
   variant?: ButtonVariant;
   size?: ButtonSize;
   fullWidth?: boolean;
+  /** Show box shadow (default: true) */
+  shadow?: boolean;
+  /** Show border (default: true) */
+  border?: boolean;
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -59,6 +63,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'primary',
       size = 'md',
       fullWidth = false,
+      shadow = true,
+      border = true,
       isLoading = false,
       disabled = false,
       leftIcon,
@@ -77,6 +83,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       `button--${variant}`,
       `button--${size}`,
       fullWidth && 'button--full-width',
+      !shadow && 'button--no-shadow',
+      !border && 'button--no-border',
       isLoading && 'button--loading',
       isDisabled && 'button--disabled',
       className,

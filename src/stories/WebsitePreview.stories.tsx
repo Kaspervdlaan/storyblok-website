@@ -133,14 +133,13 @@ export const LandingPage: Story = {
         }
       />
 
-      {/* Trusted By - GridSection */}
       <ContainerSection
         background="subtle"
         spacing="lg"
       >
         <ButtonGroup variant='attached'>
           {['ACME', 'GLOBEX', 'STARK', 'WAYNE', 'UMBRELLA'].map((company) => (
-            <Button key={company}  variant="ghost">{company}</Button>
+            <Button key={company} shadow={false} variant="ghost" size="lg">{company}</Button>
           ))}
         </ButtonGroup>
       </ContainerSection>
@@ -275,7 +274,7 @@ export const LandingPage: Story = {
           subtitle: 'Start free, upgrade when you need to.',
           align: 'center',
         }}
-        columns={3}
+        columns={2}
         gap="lg"
         spacing="lg"
         containerWidth="lg"
@@ -318,24 +317,6 @@ export const LandingPage: Story = {
               ))}
             </Stack>
             <Button variant="primary" fullWidth style={{ marginTop: '1.5rem' }}>Start Free Trial</Button>
-          </Card.Body>
-        </Card>
-
-        {/* Enterprise Tier */}
-        <Card variant="outlined" padding="lg">
-          <Card.Body>
-            <Typography variant="caption">ENTERPRISE</Typography>
-            <Typography variant="display" style={{ fontSize: '3rem', margin: '0.5rem 0' }}>Custom</Typography>
-            <Typography variant="bodySm" tone="muted">For large organizations</Typography>
-            <Stack direction="column" gap="sm" style={{ marginTop: '1.5rem' }}>
-              {['Everything in Pro', 'Custom components', 'Dedicated support', 'SLA guarantee'].map((feature) => (
-                <Stack key={feature} direction="row" align="center" gap="sm">
-                  <Icon size="xs" color="success" variant="ghost"><CheckIcon /></Icon>
-                  <Typography variant="bodySm">{feature}</Typography>
-                </Stack>
-              ))}
-            </Stack>
-            <Button variant="ghost" fullWidth style={{ marginTop: '1.5rem' }}>Contact Sales</Button>
           </Card.Body>
         </Card>
       </GridSection>
