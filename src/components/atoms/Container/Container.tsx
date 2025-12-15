@@ -3,10 +3,12 @@ import './_container.scss';
 
 type ContainerMaxWidth = 'sm' | 'md' | 'lg' | 'xl';
 type ContainerPadding = 'none' | 'sm' | 'md' | 'lg';
+type ContainerBackground = 'none' | 'subtle' | 'primary';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   maxWidth?: ContainerMaxWidth;
   padding?: ContainerPadding;
+  background?: ContainerBackground;
   className?: string;
   children?: React.ReactNode;
 }
@@ -14,6 +16,7 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Container: React.FC<ContainerProps> = ({
   maxWidth = 'lg',
   padding = 'md',
+  background = 'none',
   className = '',
   children,
   ...props
@@ -22,6 +25,7 @@ export const Container: React.FC<ContainerProps> = ({
     'container',
     `container--${maxWidth}`,
     `container--padding-${padding}`,
+    `container--bg-${background}`,
     className,
   ]
     .filter(Boolean)

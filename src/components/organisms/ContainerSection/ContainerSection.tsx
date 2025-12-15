@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section, SectionProps } from '../../atoms/Section';
-import { Container } from '../../atoms/Container';
+import { Container, ContainerProps } from '../../atoms/Container';
 import './_container-section.scss';
 
 // ============================================================================
@@ -11,9 +11,11 @@ type ContainerSectionAlign = 'left' | 'center' | 'right';
 
 export interface ContainerSectionProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
   align?: ContainerSectionAlign;
-  spacing?: SectionProps['spacing'];
-  background?: SectionProps['background'];
-  containerWidth?: 'sm' | 'md' | 'lg' | 'xl';
+  sectionSpacing?: SectionProps['spacing'];
+  containerBackground?: ContainerProps['background'];
+  containerMaxWidth?: ContainerProps['maxWidth'];
+  sectionBackground?: SectionProps['background'];
+  containerPadding?: ContainerProps['padding'];
   children?: React.ReactNode;
   className?: string;
 }
@@ -24,9 +26,11 @@ export interface ContainerSectionProps extends Omit<React.HTMLAttributes<HTMLEle
 
 export const ContainerSection: React.FC<ContainerSectionProps> = ({
   align = 'center',
-  spacing = 'md',
-  containerWidth = 'lg',
-  background = 'none',
+  sectionSpacing = 'md',
+  containerBackground = 'none',
+  sectionBackground = 'none',
+  containerPadding = 'md',
+  containerMaxWidth = 'lg',
   children,
   className = '',
   ...props
@@ -40,11 +44,11 @@ export const ContainerSection: React.FC<ContainerSectionProps> = ({
   return (
     <Section
       className={classNames}
-      spacing={spacing}
-      background={background}
+      spacing={sectionSpacing}
+      background={sectionBackground}
       {...props}
     >
-      <Container maxWidth={containerWidth}>
+      <Container background={containerBackground} maxWidth={containerMaxWidth} padding={containerPadding}>
         {children}
       </Container>
     </Section>

@@ -12,7 +12,8 @@ export interface SbContainerProps {
     _uid: string;
     component: string;
     children?: SbBlokData[];
-    max_width?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+    max_width?: 'sm' | 'md' | 'lg' | 'xl';
+    background?: 'none' | 'subtle' | 'primary';
     padding?: 'none' | 'sm' | 'md' | 'lg';
   };
 }
@@ -23,6 +24,7 @@ export const SbContainer: React.FC<SbContainerProps> = ({ blok }) => {
       {...storyblokEditable(blok)}
       maxWidth={blok.max_width}
       padding={blok.padding}
+      background={blok.background}
     >
       {blok.children?.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
