@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState, useCallback } fr
 // TYPES
 // ============================================================================
 
-export type ThemeName = 'neobrutalist' | 'minimal';
+export type ThemeName = 'neobrutalist' | 'earthy';
 export type ThemeMode = 'light' | 'dark';
 
 export interface ThemeContextValue {
@@ -53,7 +53,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   const [theme, setThemeState] = useState<ThemeName>(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem(`${storageKey}-name`);
-      if (stored === 'neobrutalist' || stored === 'minimal') {
+      if (stored === 'neobrutalist' || stored === 'earthy') {
         return stored;
       }
     }
@@ -113,7 +113,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setThemeState((prev) => (prev === 'neobrutalist' ? 'minimal' : 'neobrutalist'));
+    setThemeState((prev) => prev === 'neobrutalist' ? 'earthy' : 'neobrutalist');
   }, []);
 
   const toggleMode = useCallback(() => {

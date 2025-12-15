@@ -65,7 +65,7 @@ const preview: Preview = {
         icon: 'paintbrush',
         items: [
           { value: 'neobrutalist', title: '🎨 Neobrutalist', left: '⚡' },
-          { value: 'minimal', title: '✨ Minimal Modern', left: '◯' },
+          { value: 'earthy', title: '🌿 Earthy Natural', left: '🍂' },
         ],
         showName: true,
         dynamicTitle: true,
