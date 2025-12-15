@@ -9,19 +9,12 @@ type DividerSpacing = 'none' | 'sm' | 'md' | 'lg' | 'xl';
 type DividerColor = 'default' | 'muted' | 'primary' | 'secondary';
 
 export interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Orientation of the divider */
   orientation?: DividerOrientation;
-  /** Line style variant */
   variant?: DividerVariant;
-  /** Line thickness */
   weight?: DividerWeight;
-  /** Spacing around the divider */
   spacing?: DividerSpacing;
-  /** Color of the divider */
   color?: DividerColor;
-  /** Optional label text in the middle */
   label?: string;
-  /** Additional CSS classes */
   className?: string;
 }
 

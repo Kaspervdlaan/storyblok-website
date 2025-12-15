@@ -4,6 +4,7 @@
 // Maps Storyblok component names to React components
 
 import {
+  SbDivider,
   SbPage,
   SbSection,
   SbContainer,
@@ -25,6 +26,10 @@ import {
  * Keys should match the technical names of your Storyblok components
  */
 export const components: Record<string, React.ComponentType<{ blok: Record<string, unknown> }>> = {
+  // Divider
+  divider: SbDivider,
+  Divider: SbDivider,
+  
   // Page wrapper
   page: SbPage,
   Page: SbPage,

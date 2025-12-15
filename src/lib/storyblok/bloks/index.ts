@@ -2,6 +2,9 @@
 // STORYBLOK BLOKS EXPORTS
 // ============================================================================
 
+export { SbDivider } from './SbDivider';
+export type { SbDividerProps } from './SbDivider';
+
 export { SbPage } from './SbPage';
 export type { SbPageProps } from './SbPage';
 
