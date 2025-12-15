@@ -10,9 +10,10 @@
 // ----------------------------------------------------------------------------
 
 .typography {
-  font-family: $font-family-sans;
-  color: $color-text;
+  font-family: var(--font-family-sans);
+  color: var(--color-text);
   margin: 0;
+  transition: color var(--transition-fast);
 }
 
 // ----------------------------------------------------------------------------
@@ -20,52 +21,52 @@
 // ----------------------------------------------------------------------------
 
 .typography--display {
-  font-size: $font-size-display;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-display;
-  letter-spacing: $letter-spacing-tight;
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .typography--h1 {
-  font-size: $font-size-h1;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-heading;
-  letter-spacing: $letter-spacing-tight;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .typography--h2 {
-  font-size: $font-size-h2;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-heading;
-  letter-spacing: $letter-spacing-tight;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .typography--h3 {
-  font-size: $font-size-h3;
-  font-weight: $font-weight-semibold;
-  line-height: $line-height-heading;
-  letter-spacing: $letter-spacing-normal;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-normal);
 }
 
 .typography--body {
-  font-size: $font-size-body;
-  font-weight: $font-weight-regular;
-  line-height: $line-height-body;
-  letter-spacing: $letter-spacing-normal;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
 }
 
 .typography--bodySm {
-  font-size: $font-size-body-sm;
-  font-weight: $font-weight-regular;
-  line-height: $line-height-body;
-  letter-spacing: $letter-spacing-normal;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
 }
 
 .typography--caption {
-  font-size: $font-size-caption;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-body;
-  letter-spacing: $letter-spacing-wide;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
 }
 
@@ -74,19 +75,19 @@
 // ----------------------------------------------------------------------------
 
 .typography--weight-regular {
-  font-weight: $font-weight-regular;
+  font-weight: var(--font-weight-regular);
 }
 
 .typography--weight-medium {
-  font-weight: $font-weight-medium;
+  font-weight: var(--font-weight-medium);
 }
 
 .typography--weight-semibold {
-  font-weight: $font-weight-semibold;
+  font-weight: var(--font-weight-semibold);
 }
 
 .typography--weight-bold {
-  font-weight: $font-weight-bold;
+  font-weight: var(--font-weight-bold);
 }
 
 // ----------------------------------------------------------------------------
@@ -110,14 +111,13 @@
 // ----------------------------------------------------------------------------
 
 .typography--tone-muted {
-  color: $color-text-muted;
+  color: var(--color-text-muted);
 }
 
 .typography--tone-danger {
-  color: $color-danger;
+  color: var(--color-danger);
 }
 
 .typography--tone-success {
-  color: $color-success;
+  color: var(--color-success);
 }
-

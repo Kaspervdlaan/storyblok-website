@@ -909,7 +909,7 @@ function App() {
               { title: 'The Power of Design Tokens', category: 'DESIGN SYSTEMS', image: featureImage2 },
               { title: 'React Best Practices 2024', category: 'DEVELOPMENT', image: heroImage },
             ].map((article, i) => (
-              <Card key={i} variant="elevated" padding="none" style={{ overflow: 'hidden' }}>
+              <Card key={i} variant="elevated" style={{ overflow: 'hidden' }}>
                 <Media
                   type="image"
                   src={article.image}

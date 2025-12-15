@@ -24,7 +24,7 @@
 // ----------------------------------------------------------------------------
 
 .input-label {
-  color: $color-text;
+  color: var(--color-text);
 }
 
 // ----------------------------------------------------------------------------
@@ -34,18 +34,21 @@
 .input-container {
   display: flex;
   align-items: center;
-  background-color: $color-surface;
-  border: $border-default;
-  @include squircle($radius-md);
-  transition: border-color $transition-fast, box-shadow $transition-fast;
+  background-color: var(--color-surface);
+  border: var(--input-border-width, 3px) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: 
+    border-color var(--transition-fast), 
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
 
   &:hover:not(.input-container--disabled) {
-    border-color: $color-neutral-400;
+    border-color: var(--color-neutral-400);
   }
 
   &:focus-within:not(.input-container--disabled) {
-    border-color: $color-primary;
-    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 30%, transparent);
   }
 }
 
@@ -54,21 +57,21 @@
 // ----------------------------------------------------------------------------
 
 .input-container--default {
-  background-color: $color-surface;
+  background-color: var(--color-surface);
 }
 
 .input-container--filled {
-  background-color: $color-surface-muted;
+  background-color: var(--color-surface-muted);
   border-color: transparent;
 
   &:hover:not(.input-container--disabled) {
-    background-color: $color-neutral-100;
+    background-color: var(--color-neutral-100);
     border-color: transparent;
   }
 
   &:focus-within:not(.input-container--disabled) {
-    background-color: $color-surface;
-    border-color: $color-primary;
+    background-color: var(--color-surface);
+    border-color: var(--color-primary);
   }
 }
 
@@ -79,7 +82,7 @@
 .input-container--sm {
   .input-field {
     padding: $space-2 $space-3;
-    font-size: $font-size-body-sm;
+    font-size: var(--font-size-body-sm);
   }
 
   .input-icon {
@@ -111,7 +114,7 @@
 .input-container--md {
   .input-field {
     padding: $space-3 $space-4;
-    font-size: $font-size-body;
+    font-size: var(--font-size-body);
   }
 
   .input-icon {
@@ -143,7 +146,7 @@
 .input-container--lg {
   .input-field {
     padding: $space-4 $space-5;
-    font-size: $font-size-body;
+    font-size: var(--font-size-body);
   }
 
   .input-icon {
@@ -181,19 +184,19 @@
   width: 100%;
   background: transparent;
   border: none;
-  font-family: $font-family-sans;
-  font-weight: $font-weight-regular;
-  line-height: $line-height-body;
-  color: $color-text;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
   outline: none;
 
   &::placeholder {
-    color: $color-text-muted;
+    color: var(--color-text-muted);
   }
 
   &:disabled {
     cursor: not-allowed;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
   }
 }
 
@@ -206,7 +209,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-text-muted;
+  color: var(--color-text-muted);
   pointer-events: none;
 
   svg {
@@ -223,21 +226,21 @@
 // ----------------------------------------------------------------------------
 
 .input-container--error {
-  border-color: $color-danger;
+  border-color: var(--color-danger);
 
   &:hover:not(.input-container--disabled) {
-    border-color: $color-danger;
+    border-color: var(--color-danger);
   }
 
   &:focus-within:not(.input-container--disabled) {
-    border-color: $color-danger;
-    box-shadow: 0 0 0 3px rgba($color-danger, 0.3);
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-danger) 30%, transparent);
   }
 }
 
 .input-container--disabled {
-  background-color: $color-surface-muted;
-  border-color: $color-border-muted;
+  background-color: var(--color-surface-muted);
+  border-color: var(--color-border-muted);
   cursor: not-allowed;
   opacity: 0.6;
 
@@ -253,4 +256,3 @@
 .input-helper {
   margin-top: $space-1;
 }
-

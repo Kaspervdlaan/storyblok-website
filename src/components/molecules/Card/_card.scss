@@ -10,8 +10,16 @@
 // ----------------------------------------------------------------------------
 
 .card {
-  @include card-base;
-  transition: transform $transition-fast, box-shadow $transition-fast;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: var(--card-border-width, 3px) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: 
+    transform var(--transition-fast), 
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 // ----------------------------------------------------------------------------
@@ -19,31 +27,31 @@
 // ----------------------------------------------------------------------------
 
 .card--elevated {
-  box-shadow: $shadow-md;
+  box-shadow: var(--shadow-md);
 
   &:hover {
     transform: translate(-2px, -2px);
-    box-shadow: $shadow-lg;
+    box-shadow: var(--shadow-lg);
   }
 }
 
 .card--outlined {
-  border: $border-default;
+  border: var(--card-border-width, 3px) solid var(--color-border);
   box-shadow: none;
-  background-color: $color-surface;
+  background-color: var(--color-surface);
 
   &:hover {
-    border-color: $color-primary;
+    border-color: var(--color-primary);
   }
 }
 
 .card--flat {
   border: none;
-  box-shadow: none;
-  background-color: $color-surface-muted;
+  box-shadow: var(--shadow-soft, none);
+  background-color: var(--color-surface-muted);
 
   &:hover {
-    background-color: $color-neutral-100;
+    background-color: var(--color-neutral-100);
   }
 }
 

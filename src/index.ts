@@ -33,6 +33,16 @@ export { Quote, type QuoteProps } from './components/molecules/Quote';
 export { MediaSection, type MediaSectionProps } from './components/organisms/MediaSection';
 export { HeadingSection, type HeadingSectionProps } from './components/organisms/HeadingSection';
 
+// Providers
+export {
+  ThemeProvider,
+  useTheme,
+  type ThemeProviderProps,
+  type ThemeContextValue,
+  type ThemeName,
+  type ThemeMode,
+} from './components/providers/Theme';
+
 // Styles
 // Import these in your app's entry point:
 // import 'vibe-design-system/src/styles/_globals.scss';

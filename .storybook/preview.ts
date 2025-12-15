@@ -1,7 +1,50 @@
-import type { Preview } from '@storybook/react';
+import type { Preview, Decorator } from '@storybook/react';
 import '../src/styles/_globals.scss';
 
+// Theme decorator that applies theme attributes to the document
+const withTheme: Decorator = (Story, context) => {
+  const theme = context.globals.theme || 'neobrutalist';
+  const mode = context.globals.mode || 'light';
+  
+  // Apply theme attributes to document
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-mode', mode);
+  
+  return Story();
+};
+
 const preview: Preview = {
+  globalTypes: {
+    theme: {
+      name: 'Theme',
+      description: 'Global theme for components',
+      defaultValue: 'neobrutalist',
+      toolbar: {
+        icon: 'paintbrush',
+        items: [
+          { value: 'neobrutalist', title: '🎨 Neobrutalist', left: '⚡' },
+          { value: 'minimal', title: '✨ Minimal Modern', left: '◯' },
+        ],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
+    mode: {
+      name: 'Mode',
+      description: 'Color mode (light/dark)',
+      defaultValue: 'light',
+      toolbar: {
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', title: '☀️ Light', left: '🌞' },
+          { value: 'dark', title: '🌙 Dark', left: '🌚' },
+        ],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
+  },
+  decorators: [withTheme],
   parameters: {
     controls: {
       matchers: {
@@ -10,33 +53,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#ffffff',
-        },
-        {
-          name: 'champagne',
-          value: '#e9d8a6',
-        },
-        {
-          name: 'dark',
-          value: '#001219',
-        },
-        {
-          name: 'primary',
-          value: '#ee9b00',
-        },
-        {
-          name: 'secondary',
-          value: '#0a9396',
-        },
-        {
-          name: 'mint',
-          value: '#94d2bd',
-        },
-      ],
+      disable: true, // Disable default backgrounds since we're using theme
     },
     layout: 'padded',
   },
@@ -44,4 +61,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
