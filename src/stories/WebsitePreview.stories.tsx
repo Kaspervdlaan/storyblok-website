@@ -11,11 +11,13 @@ import { Input } from '../components/atoms/Input';
 import { Divider } from '../components/atoms/Divider';
 import { Container } from '../components/atoms/Container';
 import { Section } from '../components/atoms/Section';
+import { Wysiwyg } from '../components/atoms/Wysiwyg';
 
 // Molecules
 import { Card } from '../components/molecules/Card';
 import { IconCard } from '../components/molecules/IconCard';
 import { Heading } from '../components/molecules/Heading';
+import { Quote } from '../components/molecules/Quote';
 
 // Organisms
 import { HeadingSection } from '../components/organisms/HeadingSection';
@@ -112,10 +114,27 @@ const MenuIcon = () => (
   </svg>
 );
 
+const VerifiedIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+    <polyline points="22 4 12 14.01 9 11.01" />
+  </svg>
+);
+
+const PlayIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="5 3 19 12 5 21 5 3" />
+  </svg>
+);
+
 // Sample images
 const heroImage = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80';
 const featureImage1 = 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&q=80';
 const featureImage2 = 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80';
+const avatar1 = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80';
+const avatar2 = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80';
+const avatar3 = 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80';
+const sampleVideo = 'https://www.w3schools.com/html/mov_bbb.mp4';
 
 // ============================================================================
 // NAVIGATION COMPONENT
@@ -219,16 +238,16 @@ const Footer = () => (
 );
 
 // ============================================================================
-// FULL LANDING PAGE
+// FULL LANDING PAGE - Uses ALL components
 // ============================================================================
 
 export const LandingPage: Story = {
   render: () => (
     <div style={{ minHeight: '100vh', background: '#fff' }}>
-      {/* Navigation */}
+      {/* Navigation - Uses: Box, Container, Icon, Typography, Button */}
       <Navigation />
       
-      {/* Hero Section */}
+      {/* Hero Section - Uses: HeadingSection (organism), Button */}
       <HeadingSection
         eyebrow="Introducing Vibe Design System"
         title="Design Without Compromise"
@@ -249,7 +268,7 @@ export const LandingPage: Story = {
         }
       />
       
-      {/* Trusted By Section */}
+      {/* Trusted By Section - Uses: Section, Container, Typography, Box */}
       <Section spacing="md" background="subtle">
         <Container maxWidth="lg">
           <Typography variant="caption" align="center" tone="muted" style={{ display: 'block', marginBottom: '1.5rem' }}>
@@ -263,7 +282,7 @@ export const LandingPage: Story = {
         </Container>
       </Section>
       
-      {/* Features Grid */}
+      {/* Features Grid - Uses: HeadingSection, IconCard (molecule), Box */}
       <HeadingSection
         eyebrow="Features"
         title="Everything You Need"
@@ -326,7 +345,7 @@ export const LandingPage: Story = {
         </Box>
       </HeadingSection>
       
-      {/* Media Section - Left */}
+      {/* Media Section - Left - Uses: MediaSection (organism), Button */}
       <MediaSection
         media={{
           type: 'image',
@@ -346,12 +365,15 @@ export const LandingPage: Story = {
         }
       />
       
-      {/* Media Section - Right */}
+      {/* Media Section - Right with Video - Uses: MediaSection, Media (video), Button */}
       <MediaSection
         media={{
-          type: 'image',
-          src: featureImage2,
-          alt: 'Component library',
+          type: 'video',
+          src: sampleVideo,
+          alt: 'Component demo video',
+          autoPlay: true,
+          loop: true,
+          controls: false,
         }}
         eyebrow="Component Library"
         title="Build Faster"
@@ -360,13 +382,18 @@ export const LandingPage: Story = {
         spacing="lg"
         background="none"
         actions={
-          <Button variant="secondary" rightIcon={<ArrowRightIcon />}>
-            Browse Components
-          </Button>
+          <>
+            <Button variant="secondary" rightIcon={<ArrowRightIcon />}>
+              Browse Components
+            </Button>
+            <Button variant="ghost" leftIcon={<PlayIcon />}>
+              Watch Demo
+            </Button>
+          </>
         }
       />
       
-      {/* Testimonials */}
+      {/* Testimonials with Quote Component - Uses: Section, Container, Heading (molecule), Quote (molecule), Box */}
       <Section spacing="lg" background="subtle">
         <Container maxWidth="lg">
           <Heading
@@ -380,69 +407,55 @@ export const LandingPage: Story = {
             display="grid"
             gap="lg"
             style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
               marginTop: '3rem',
             }}
           >
-            {[
-              {
-                quote: "Vibe's neobrutalist aesthetic perfectly captures our brand. The component quality is exceptional.",
-                author: "Sarah Chen",
-                role: "Design Lead, Acme Corp",
-              },
-              {
-                quote: "Finally, a design system that isn't afraid to be bold. Our team's productivity has doubled.",
-                author: "Marcus Johnson",
-                role: "Frontend Engineer, Globex",
-              },
-              {
-                quote: "The TypeScript support and documentation are top-notch. Integration was a breeze.",
-                author: "Elena Rodriguez",
-                role: "Tech Lead, Stark Industries",
-              },
-            ].map((testimonial, i) => (
-              <Card key={i} variant="elevated" padding="lg">
-                <Card.Body>
-                  <Box display="flex" gap="xs" style={{ marginBottom: '1rem' }}>
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Icon key={star} size="xs" color="primary" variant="ghost">
-                        <StarIcon />
-                      </Icon>
-                    ))}
-                  </Box>
-                  <Typography variant="body" style={{ marginBottom: '1.5rem' }}>
-                    "{testimonial.quote}"
-                  </Typography>
-                  <Box display="flex" align="center" gap="sm">
-                    <Box
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',
-                        background: '#ee9b00',
-                        border: '2px solid #001219',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Typography variant="bodySm" weight="bold">
-                        {testimonial.author.charAt(0)}
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="bodySm" weight="bold">{testimonial.author}</Typography>
-                      <Typography variant="caption" tone="muted">{testimonial.role}</Typography>
-                    </Box>
-                  </Box>
-                </Card.Body>
-              </Card>
-            ))}
+            <Quote
+              quote="Vibe's neobrutalist aesthetic perfectly captures our brand. The component quality is exceptional."
+              author="Sarah Chen"
+              role="Design Lead, Acme Corp"
+              avatar={avatar1}
+              authorIcon={<VerifiedIcon />}
+              variant="elevated"
+            />
+            <Quote
+              quote="Finally, a design system that isn't afraid to be bold. Our team's productivity has doubled."
+              author="Marcus Johnson"
+              role="Frontend Engineer, Globex"
+              avatar={avatar2}
+              authorIcon={<VerifiedIcon />}
+              variant="elevated"
+            />
+            <Quote
+              quote="The TypeScript support and documentation are top-notch. Integration was a breeze."
+              author="Elena Rodriguez"
+              role="Tech Lead, Stark Industries"
+              avatar={avatar3}
+              authorIcon={<VerifiedIcon />}
+              variant="elevated"
+            />
           </Box>
         </Container>
       </Section>
+
+      {/* Featured Quote - Large - Uses: Section, Container, Quote (molecule) */}
+      <Section spacing="lg" background="secondary">
+        <Container maxWidth="md">
+          <Quote
+            quote="Vibe Design System has fundamentally changed how we approach product design. It's not just a component library—it's a philosophy."
+            author="Alex Thompson"
+            role="VP of Product, Fortune 500"
+            avatar={avatar1}
+            authorIcon={<StarIcon />}
+            variant="minimal"
+            size="lg"
+            layout="vertical"
+          />
+        </Container>
+      </Section>
       
-      {/* Pricing */}
+      {/* Pricing with Card - Uses: Section, Container, Heading, Card (molecule), Box, Typography, Divider, Icon, Button */}
       <Section spacing="lg">
         <Container maxWidth="lg">
           <Heading
@@ -533,7 +546,7 @@ export const LandingPage: Story = {
         </Container>
       </Section>
       
-      {/* Newsletter CTA */}
+      {/* Newsletter CTA - Uses: HeadingSection, Box, Input, Button */}
       <HeadingSection
         title="Stay in the Loop"
         subtitle="Get the latest updates, tips, and resources delivered to your inbox."
@@ -558,7 +571,7 @@ export const LandingPage: Story = {
         </Box>
       </HeadingSection>
       
-      {/* Final CTA */}
+      {/* Final CTA - Uses: HeadingSection, Button */}
       <HeadingSection
         eyebrow="Ready to Start?"
         title="Build Something Bold"
@@ -579,7 +592,7 @@ export const LandingPage: Story = {
         }
       />
       
-      {/* Footer */}
+      {/* Footer - Uses: Box, Container, Icon, Typography, Divider */}
       <Footer />
     </div>
   ),
@@ -592,7 +605,7 @@ export const LandingPage: Story = {
 export const DashboardPage: Story = {
   render: () => (
     <div style={{ minHeight: '100vh', background: '#f7f4ed' }}>
-      {/* Header */}
+      {/* Header - Uses: Box, Container, Icon, Typography, Input, Button */}
       <Box
         padding="md"
         background="surface"
@@ -620,7 +633,7 @@ export const DashboardPage: Story = {
       {/* Main Content */}
       <Container maxWidth="xl" padding="lg">
         <Box paddingY="lg">
-          {/* Welcome */}
+          {/* Welcome - Uses: Heading (molecule) */}
           <Heading
             title="Welcome back, Alex"
             subtitle="Here's what's happening with your projects today."
@@ -628,7 +641,7 @@ export const DashboardPage: Story = {
             align="left"
           />
           
-          {/* Stats Grid */}
+          {/* Stats Grid - Uses: Box, Card (molecule), Typography */}
           <Box
             display="grid"
             gap="md"
@@ -661,7 +674,7 @@ export const DashboardPage: Story = {
             gap="lg"
             style={{ gridTemplateColumns: '2fr 1fr', marginTop: '2rem' }}
           >
-            {/* Recent Activity */}
+            {/* Recent Activity - Uses: Card, Box, Typography, Divider, Media */}
             <Card variant="elevated" padding="lg">
               <Card.Header>
                 <Box display="flex" justify="between" align="center">
@@ -672,29 +685,21 @@ export const DashboardPage: Story = {
               <Card.Body>
                 <Box display="flex" direction="column" gap="md">
                   {[
-                    { user: 'Sarah Chen', action: 'created a new project', time: '2 min ago' },
-                    { user: 'Marcus J.', action: 'updated the dashboard', time: '15 min ago' },
-                    { user: 'Elena R.', action: 'deployed to production', time: '1 hour ago' },
-                    { user: 'Alex Kim', action: 'merged pull request #42', time: '2 hours ago' },
+                    { user: 'Sarah Chen', action: 'created a new project', time: '2 min ago', avatar: avatar1 },
+                    { user: 'Marcus J.', action: 'updated the dashboard', time: '15 min ago', avatar: avatar2 },
+                    { user: 'Elena R.', action: 'deployed to production', time: '1 hour ago', avatar: avatar3 },
+                    { user: 'Alex Kim', action: 'merged pull request #42', time: '2 hours ago', avatar: avatar1 },
                   ].map((activity, i) => (
                     <React.Fragment key={i}>
                       <Box display="flex" align="center" gap="md">
-                        <Box
-                          style={{
-                            width: '36px',
-                            height: '36px',
-                            borderRadius: '50%',
-                            background: '#94d2bd',
-                            border: '2px solid #001219',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Typography variant="caption" weight="bold">
-                            {activity.user.charAt(0)}
-                          </Typography>
-                        </Box>
+                        <Media
+                          type="image"
+                          src={activity.avatar}
+                          alt={activity.user}
+                          aspectRatio="square"
+                          radius="full"
+                          style={{ width: '36px', height: '36px' }}
+                        />
                         <Box style={{ flex: 1 }}>
                           <Typography variant="bodySm">
                             <strong>{activity.user}</strong> {activity.action}
@@ -709,7 +714,7 @@ export const DashboardPage: Story = {
               </Card.Body>
             </Card>
             
-            {/* Quick Actions */}
+            {/* Quick Actions - Uses: Box, Card, Typography, Button, Icon */}
             <Box display="flex" direction="column" gap="md">
               <Card variant="elevated" padding="md">
                 <Card.Body>
@@ -736,6 +741,15 @@ export const DashboardPage: Story = {
                   </Typography>
                 </Card.Body>
               </Card>
+
+              {/* Recent Feedback - Uses: Quote (molecule) */}
+              <Quote
+                quote="The new dashboard is amazing! Everything I need is right here."
+                author="Team Member"
+                authorIcon={<StarIcon />}
+                variant="default"
+                size="sm"
+              />
             </Box>
           </Box>
         </Box>
@@ -751,9 +765,10 @@ export const DashboardPage: Story = {
 export const BlogPostPage: Story = {
   render: () => (
     <div style={{ minHeight: '100vh', background: '#fff' }}>
+      {/* Navigation */}
       <Navigation />
       
-      {/* Hero */}
+      {/* Hero - Uses: Section, Container, Box, Typography, Media */}
       <Section spacing="lg">
         <Container maxWidth="md">
           <Box display="flex" direction="column" gap="md" align="center">
@@ -765,20 +780,14 @@ export const BlogPostPage: Story = {
               How bold aesthetics and unapologetic typography are reshaping modern web design.
             </Typography>
             <Box display="flex" align="center" gap="md" style={{ marginTop: '1rem' }}>
-              <Box
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: '#0a9396',
-                  border: '2px solid #001219',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Typography variant="body" weight="bold" style={{ color: '#fff' }}>SC</Typography>
-              </Box>
+              <Media
+                type="image"
+                src={avatar1}
+                alt="Sarah Chen"
+                aspectRatio="square"
+                radius="full"
+                style={{ width: '48px', height: '48px' }}
+              />
               <Box>
                 <Typography variant="bodySm" weight="bold">Sarah Chen</Typography>
                 <Typography variant="caption" tone="muted">Dec 15, 2024 · 8 min read</Typography>
@@ -788,7 +797,7 @@ export const BlogPostPage: Story = {
         </Container>
       </Section>
       
-      {/* Featured Image */}
+      {/* Featured Image - Uses: Container, Media */}
       <Container maxWidth="lg" padding="md">
         <Media
           type="image"
@@ -799,19 +808,19 @@ export const BlogPostPage: Story = {
         />
       </Container>
       
-      {/* Article Content */}
+      {/* Article Content - Uses: Section, Container, Box, Typography, Wysiwyg */}
       <Section spacing="lg">
         <Container maxWidth="md">
           <Box display="flex" direction="column" gap="lg">
-            <Typography variant="body">
-              In the ever-evolving landscape of web design, a bold new aesthetic has emerged that challenges the polished, minimalist conventions of the past decade. Neobrutalism—with its heavy borders, offset shadows, and vibrant color palettes—is making a statement that resonates with brands seeking to stand out in an increasingly homogeneous digital world.
-            </Typography>
+            {/* Using Wysiwyg for rich content */}
+            <Wysiwyg html={`
+              <p>In the ever-evolving landscape of web design, a bold new aesthetic has emerged that challenges the polished, minimalist conventions of the past decade. Neobrutalism—with its heavy borders, offset shadows, and vibrant color palettes—is making a statement that resonates with brands seeking to stand out in an increasingly homogeneous digital world.</p>
+              
+              <h2>The Origins</h2>
+              <p>The roots of neobrutalism can be traced back to the Brutalist architecture movement of the 1950s, which celebrated raw concrete and bold geometric forms. In web design, this translates to thick borders, stark contrasts, and an intentional "rawness" that feels refreshingly authentic.</p>
+            `} />
             
-            <Typography variant="h2">The Origins</Typography>
-            <Typography variant="body">
-              The roots of neobrutalism can be traced back to the Brutalist architecture movement of the 1950s, which celebrated raw concrete and bold geometric forms. In web design, this translates to thick borders, stark contrasts, and an intentional "rawness" that feels refreshingly authentic.
-            </Typography>
-            
+            {/* Key Takeaway Box */}
             <Box
               padding="lg"
               style={{
@@ -825,21 +834,49 @@ export const BlogPostPage: Story = {
                 Neobrutalism isn't about breaking rules—it's about making intentional choices that prioritize personality over polish.
               </Typography>
             </Box>
+
+            {/* More Wysiwyg content */}
+            <Wysiwyg html={`
+              <h2>Core Principles</h2>
+              <p>Several key principles define the neobrutalist aesthetic:</p>
+              <ul>
+                <li><strong>Heavy borders:</strong> Thick, often black outlines that define elements clearly</li>
+                <li><strong>Offset shadows:</strong> Hard-edged shadows that create depth without blur</li>
+                <li><strong>Bold typography:</strong> Monospace and sans-serif fonts used unapologetically</li>
+                <li><strong>Vibrant colors:</strong> High-contrast palettes that demand attention</li>
+              </ul>
+              
+              <h2>Implementation</h2>
+              <p>When implementing neobrutalist design, consider using design systems like <strong>Vibe</strong> that provide pre-built components following these principles:</p>
+              
+              <pre><code>// Example usage
+import { Button, Card } from 'vibe-design-system';
+
+function App() {
+  return (
+    &lt;Card variant="elevated"&gt;
+      &lt;Button variant="primary"&gt;
+        Get Started
+      &lt;/Button&gt;
+    &lt;/Card&gt;
+  );
+}</code></pre>
+            `} />
             
-            <Typography variant="h2">Core Principles</Typography>
-            <Typography variant="body">
-              Several key principles define the neobrutalist aesthetic:
-            </Typography>
-            
-            <Box as="ul" style={{ paddingLeft: '1.5rem' }}>
-              <li><Typography variant="body"><strong>Heavy borders:</strong> Thick, often black outlines that define elements clearly</Typography></li>
-              <li><Typography variant="body"><strong>Offset shadows:</strong> Hard-edged shadows that create depth without blur</Typography></li>
-              <li><Typography variant="body"><strong>Bold typography:</strong> Monospace and sans-serif fonts used unapologetically</Typography></li>
-              <li><Typography variant="body"><strong>Vibrant colors:</strong> High-contrast palettes that demand attention</Typography></li>
-            </Box>
+            {/* Author Quote - Uses: Quote (molecule) */}
+            <Quote
+              quote="The best designs are the ones that make people feel something. Neobrutalism does exactly that—it demands attention and creates emotion."
+              author="Sarah Chen"
+              role="Author of this article"
+              avatar={avatar1}
+              authorIcon={<VerifiedIcon />}
+              variant="minimal"
+              layout="horizontal"
+            />
             
             <Divider spacing="lg" />
             
+            {/* Article Footer - Uses: Box, Button, Icon, Typography */}
             <Box display="flex" justify="between" align="center">
               <Box display="flex" gap="sm">
                 <Button variant="ghost" size="sm" leftIcon={<HeartIcon />}>234</Button>
@@ -853,8 +890,49 @@ export const BlogPostPage: Story = {
         </Container>
       </Section>
       
+      {/* Related Articles - Uses: Section, Container, Heading, Box, Card, Media, Typography */}
+      <Section spacing="lg" background="subtle">
+        <Container maxWidth="lg">
+          <Heading
+            title="Related Articles"
+            subtitle="Continue exploring design system topics"
+            size="md"
+            align="left"
+          />
+          <Box
+            display="grid"
+            gap="lg"
+            style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', marginTop: '2rem' }}
+          >
+            {[
+              { title: 'Building Accessible Components', category: 'ACCESSIBILITY', image: featureImage1 },
+              { title: 'The Power of Design Tokens', category: 'DESIGN SYSTEMS', image: featureImage2 },
+              { title: 'React Best Practices 2024', category: 'DEVELOPMENT', image: heroImage },
+            ].map((article, i) => (
+              <Card key={i} variant="elevated" padding="none" style={{ overflow: 'hidden' }}>
+                <Media
+                  type="image"
+                  src={article.image}
+                  alt={article.title}
+                  aspectRatio="video"
+                />
+                <Card.Body>
+                  <Box display="flex" direction="column" gap="sm" padding="md">
+                    <Typography variant="caption" style={{ color: '#ee9b00' }}>{article.category}</Typography>
+                    <Typography variant="h3">{article.title}</Typography>
+                    <Button variant="ghost" size="sm" rightIcon={<ArrowRightIcon />}>
+                      Read More
+                    </Button>
+                  </Box>
+                </Card.Body>
+              </Card>
+            ))}
+          </Box>
+        </Container>
+      </Section>
+      
+      {/* Footer */}
       <Footer />
     </div>
   ),
 };
-
