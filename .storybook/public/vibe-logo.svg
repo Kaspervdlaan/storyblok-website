@@ -1,0 +1,8 @@
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lightning bolt icon with neobrutalist style -->
+  <rect x="2" y="2" width="36" height="36" fill="#ee9b00" stroke="#e9d8a6" stroke-width="3"/>
+  <path d="M22 8L12 22H19L17 32L28 18H21L22 8Z" fill="#001219"/>
+  
+  <!-- VIBE text - light color for dark background -->
+  <text x="48" y="28" font-family="monospace" font-size="22" font-weight="700" fill="#e9d8a6">VIBE</text>
+</svg>

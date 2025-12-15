@@ -1,5 +1,47 @@
 import type { Preview, Decorator } from '@storybook/react';
+import { create } from '@storybook/theming/create';
 import '../src/styles/_globals.scss';
+
+// Custom docs theme
+const vibeDocsTheme = create({
+  base: 'light',
+  
+  // Brand
+  brandTitle: 'Vibe Design System',
+  brandUrl: '/',
+  
+  // Colors
+  colorPrimary: '#ee9b00',
+  colorSecondary: '#0a9396',
+  
+  // UI
+  appBg: '#f7f4ed',
+  appContentBg: '#ffffff',
+  appPreviewBg: '#ffffff',
+  appBorderColor: '#001219',
+  appBorderRadius: 8,
+  
+  // Text
+  textColor: '#001219',
+  textInverseColor: '#e9d8a6',
+  textMutedColor: '#5c5a52',
+  
+  // Toolbar
+  barTextColor: '#001219',
+  barSelectedColor: '#ee9b00',
+  barHoverColor: '#0a9396',
+  barBg: '#e9d8a6',
+  
+  // Form
+  inputBg: '#ffffff',
+  inputBorder: '#001219',
+  inputTextColor: '#001219',
+  inputBorderRadius: 6,
+  
+  // Typography
+  fontBase: '"Space Mono", "JetBrains Mono", monospace',
+  fontCode: '"IBM Plex Mono", "Fira Code", monospace',
+});
 
 // Theme decorator that applies theme attributes to the document
 const withTheme: Decorator = (Story, context) => {
@@ -46,6 +88,9 @@ const preview: Preview = {
   },
   decorators: [withTheme],
   parameters: {
+    docs: {
+      theme: vibeDocsTheme,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -53,7 +98,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      disable: true, // Disable default backgrounds since we're using theme
+      disable: true,
     },
     layout: 'padded',
   },

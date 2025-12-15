@@ -47,6 +47,26 @@
 .box--display-inline-flex { display: inline-flex; }
 .box--display-grid { display: grid; }
 .box--display-inline-block { display: inline-block; }
+.box--display-none { display: none; }
+
+// ----------------------------------------------------------------------------
+// POSITION
+// ----------------------------------------------------------------------------
+
+.box--position-static { position: static; }
+.box--position-relative { position: relative; }
+.box--position-absolute { position: absolute; }
+.box--position-fixed { position: fixed; }
+.box--position-sticky { position: sticky; }
+
+// ----------------------------------------------------------------------------
+// OVERFLOW
+// ----------------------------------------------------------------------------
+
+.box--overflow-visible { overflow: visible; }
+.box--overflow-hidden { overflow: hidden; }
+.box--overflow-scroll { overflow: scroll; }
+.box--overflow-auto { overflow: auto; }
 
 // ----------------------------------------------------------------------------
 // FLEX DIRECTION
@@ -127,4 +147,3 @@
 .box--shadow-sm { box-shadow: $shadow-sm; }
 .box--shadow-md { box-shadow: $shadow-md; }
 .box--shadow-lg { box-shadow: $shadow-lg; }
-
