@@ -108,7 +108,7 @@ interface CardComponent extends React.FC<CardProps> {
 }
 
 const CardBase: React.FC<CardProps> = ({
-  variant = 'elevated',
+  variant = 'flat',
   padding = 'md',
   className = '',
   children,
