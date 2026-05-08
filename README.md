@@ -245,7 +245,16 @@ Create or edit `.env` in the project root:
 
 ```dotenv
 VITE_STORYBLOK_API_TOKEN=your_storyblok_token
+STORYBLOK_API_TOKEN=your_storyblok_token
+STORYBLOK_CV_SLUG=cv
+STORYBLOK_VERSION=published
+CV_CACHE_TTL_SECONDS=900
+# Optional: protects POST /api/cv/cache/clear
+CV_CACHE_BUST_TOKEN=set_a_random_secret
 ```
+
+This stack expects a Laravel app at `../laravel-proxy` (sibling folder to this repo on the Droplet).
+The frontend serves the SPA and proxies `/api/*` requests to Laravel.
 
 ### 4) Deploy
 
@@ -254,6 +263,19 @@ VITE_STORYBLOK_API_TOKEN=your_storyblok_token
 ```
 
 The app will be available on `http://YOUR_DROPLET_IP`.
+
+CV endpoint via proxy/cache:
+
+```bash
+curl http://YOUR_DROPLET_IP/api/cv
+```
+
+Optional cache clear:
+
+```bash
+curl -X POST http://YOUR_DROPLET_IP/api/cv/cache/clear \
+  -H "X-Cache-Bust-Token: $CV_CACHE_BUST_TOKEN"
+```
 
 ### 5) Update after code changes
 
