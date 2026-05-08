@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { initStoryblok, useStoryblok, StoryblokComponent } from './lib/storyblok';
+import { initStoryblok, StoryblokComponent } from './lib/storyblok';
 import './styles/_globals.scss';
 
 // Initialize Storyblok with Visual Editor support
@@ -8,96 +8,68 @@ initStoryblok();
 
 function App() {
   const slug = window.location.pathname.replace(/^\//, '') || 'home';
-  const storyblokVersion = import.meta.env.PROD ? 'published' : 'draft';
-  const isCvPage = slug === 'cv';
-
-  const [cvHtml, setCvHtml] = useState<string | null>(null);
-  const [cvError, setCvError] = useState<string | null>(null);
-
-  const story = useStoryblok(slug, { version: storyblokVersion });
+  const [story, setStory] = useState<{ content?: unknown } | null>(null);
+  const [fetchError, setFetchError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!isCvPage) {
-      setCvHtml(null);
-      setCvError(null);
-      return;
-    }
-
     let isCancelled = false;
 
-    const loadCv = async () => {
+    const loadStory = async () => {
       try {
-        setCvError(null);
-        const response = await fetch('/api/cv', {
+        setFetchError(null);
+        setStory(null);
+
+        const response = await fetch(`/api/story?slug=${encodeURIComponent(slug)}`, {
           headers: {
             Accept: 'application/json',
           },
         });
 
         if (!response.ok) {
-          throw new Error(`Failed to fetch CV (${response.status})`);
+          throw new Error(`Failed to fetch story (${response.status})`);
         }
 
         const payload = await response.json();
-        const html = typeof payload?.html === 'string' ? payload.html : null;
+        const nextStory = payload?.story;
 
         if (!isCancelled) {
-          if (!html) {
-            throw new Error('CV endpoint did not return HTML content.');
+          if (!nextStory || typeof nextStory !== 'object') {
+            throw new Error('Story endpoint did not return valid story data.');
           }
-          setCvHtml(html);
+
+          setStory(nextStory);
         }
       } catch (error) {
         if (!isCancelled) {
-          setCvError(error instanceof Error ? error.message : 'Unable to load CV.');
+          setFetchError(error instanceof Error ? error.message : 'Unable to load page.');
         }
       }
     };
 
-    loadCv();
+    loadStory();
 
     return () => {
       isCancelled = true;
     };
-  }, [isCvPage]);
+  }, [slug]);
 
-  if (isCvPage) {
-    if (cvError) {
-      return (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            minHeight: '100vh',
-            fontFamily: 'Sora, sans-serif',
-            color: '#ae2012',
-            padding: '2rem',
-            textAlign: 'center',
-          }}
-        >
-          {cvError}
-        </div>
-      );
-    }
-
-    if (!cvHtml) {
-      return (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            minHeight: '100vh',
-            fontFamily: 'Sora, sans-serif',
-          }}
-        >
-          Loading CV...
-        </div>
-      );
-    }
-
-    return <div dangerouslySetInnerHTML={{ __html: cvHtml }} />;
+  if (fetchError) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          fontFamily: 'Sora, sans-serif',
+          color: '#ae2012',
+          padding: '2rem',
+          textAlign: 'center',
+        }}
+      >
+        {fetchError}
+      </div>
+    );
   }
 
   if (!story?.content) {
@@ -118,9 +90,9 @@ function App() {
       >
         <div>Loading...</div>
         <div style={{ fontSize: '0.875rem', color: '#5c5a52' }}>
-          Fetching: /{slug}
+          Fetching cached story: /{slug}
         </div>
-        {!story && !isCvPage && (
+        {!story && (
           <div style={{ fontSize: '0.75rem', color: '#ae2012', maxWidth: '400px', textAlign: 'center' }}>
             No story found. Make sure you have a story with slug "{slug}" in Storyblok.
           </div>
