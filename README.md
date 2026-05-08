@@ -24,9 +24,17 @@ A **Neobrutalist** React + TypeScript design system featuring bold colors, heavy
 # Install dependencies
 npm install
 
-# Start Storybook
-npm run storybook
+# Start Vite app
+npm run dev
 ```
+
+### Running the app
+
+```bash
+npm run dev
+```
+
+This will start the app at `http://localhost:5173`
 
 ### Running Storybook
 
@@ -215,10 +223,88 @@ Each component SCSS file follows this pattern:
 ## 📦 Build for Production
 
 ```bash
-npm run build-storybook
+npm run build
 ```
 
-This creates a static Storybook build in `storybook-static/`.
+This creates a static app build in `_site/`.
+
+## ☁️ Deploy to DigitalOcean Droplet (Docker)
+
+Use this if you want to run the app directly on your Droplet.
+
+### 1) SSH into the Droplet
+
+```bash
+ssh root@YOUR_DROPLET_IP
+```
+
+### 2) Install Docker + Compose (Ubuntu)
+
+From your project directory on the Droplet:
+
+```bash
+./deploy/droplet/setup-droplet.sh
+```
+
+Reconnect SSH after this step so Docker group permissions apply.
+
+### 3) Configure environment values
+
+Create or edit `.env` in the project root:
+
+```dotenv
+VITE_STORYBLOK_API_TOKEN=your_storyblok_token
+```
+
+### 4) Deploy
+
+```bash
+./deploy/droplet/deploy.sh
+```
+
+The app will be available on `http://YOUR_DROPLET_IP`.
+
+### 5) Update after code changes
+
+```bash
+git pull
+./deploy/droplet/deploy.sh
+```
+
+---
+
+## ☁️ Deploy to DigitalOcean App Platform (optional)
+
+This repository is configured for Docker-based deployment to DigitalOcean App Platform:
+
+- Docker image is built from `Dockerfile` (multi-stage build + nginx runtime)
+- SPA route fallback is configured in `deploy/nginx.conf`
+- App Platform spec is stored in `deploy/app.yaml`
+- CI/CD workflow is in `.github/workflows/deploy-do-app.yml`
+
+### Required GitHub Secrets
+
+- `DO_API_TOKEN`
+- `DIGITALOCEAN_APP_ID`
+- `DOCR_REGISTRY` (your container registry name)
+- `DOCR_REPOSITORY` (your image repo, for example `vibe-design`)
+- `VITE_STORYBLOK_API_TOKEN`
+
+### Deployment flow
+
+1. Push to `main`
+2. GitHub Actions builds and pushes image to DOCR
+3. Workflow renders `deploy/app.yaml` with registry values
+4. Workflow updates the App Platform app with `doctl apps update`
+
+### Local Docker smoke test
+
+```bash
+docker build --build-arg VITE_STORYBLOK_API_TOKEN=your_token_here -t vibe-design:local .
+docker run --rm -p 8080:80 vibe-design:local
+```
+
+Open `http://localhost:8080`.
 
 ## 🤝 Contributing
 
