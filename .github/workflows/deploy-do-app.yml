@@ -1,0 +1,63 @@
+name: Deploy to DigitalOcean App Platform
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_API_TOKEN }}
+
+      - name: Authenticate Docker to DOCR
+        run: doctl registry login --expiry-seconds 1200
+
+      - name: Build and tag image
+        env:
+          DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
+          DOCR_REPOSITORY: ${{ secrets.DOCR_REPOSITORY }}
+          VITE_STORYBLOK_API_TOKEN: ${{ secrets.VITE_STORYBLOK_API_TOKEN }}
+          GIT_SHA: ${{ github.sha }}
+        run: |
+          IMAGE=registry.digitalocean.com/$DOCR_REGISTRY/$DOCR_REPOSITORY
+          docker build \
+            --build-arg VITE_STORYBLOK_API_TOKEN="$VITE_STORYBLOK_API_TOKEN" \
+            -t "$IMAGE:$GIT_SHA" \
+            -t "$IMAGE:latest" \
+            .
+
+      - name: Push image
+        env:
+          DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
+          DOCR_REPOSITORY: ${{ secrets.DOCR_REPOSITORY }}
+          GIT_SHA: ${{ github.sha }}
+        run: |
+          IMAGE=registry.digitalocean.com/$DOCR_REGISTRY/$DOCR_REPOSITORY
+          docker push "$IMAGE:$GIT_SHA"
+          docker push "$IMAGE:latest"
+
+      - name: Render App Platform spec
+        env:
+          DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
+          DOCR_REPOSITORY: ${{ secrets.DOCR_REPOSITORY }}
+        run: |
+          sed \
+            -e "s|__DOCR_REGISTRY__|$DOCR_REGISTRY|g" \
+            -e "s|__DOCR_REPOSITORY__|$DOCR_REPOSITORY|g" \
+            deploy/app.yaml > deploy/app.rendered.yaml
+
+      - name: Deploy App Platform app
+        env:
+          DIGITALOCEAN_APP_ID: ${{ secrets.DIGITALOCEAN_APP_ID }}
+        run: doctl apps update "$DIGITALOCEAN_APP_ID" --spec deploy/app.rendered.yaml --wait

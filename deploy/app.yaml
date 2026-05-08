@@ -1,0 +1,13 @@
+name: vibe-design
+region: ams
+services:
+  - name: web
+    http_port: 80
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    image:
+      registry_type: DOCR
+      repository: registry.digitalocean.com/__DOCR_REGISTRY__/__DOCR_REPOSITORY__
+      tag: latest
+    routes:
+      - path: /

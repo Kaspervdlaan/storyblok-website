@@ -9,9 +9,10 @@ initStoryblok();
 function App() {
   // Get slug from URL or default to 'home'
   const slug = window.location.pathname.replace(/^\//, '') || 'home';
+  const storyblokVersion = import.meta.env.PROD ? 'published' : 'draft';
   
   // useStoryblok hook enables live editing in Visual Editor
-  const story = useStoryblok(slug, { version: 'draft' });
+  const story = useStoryblok(slug, { version: storyblokVersion });
 
   // Log Storyblok data for debugging
   useEffect(() => {

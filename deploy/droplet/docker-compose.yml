@@ -1,0 +1,11 @@
+services:
+  vibe-design:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        VITE_STORYBLOK_API_TOKEN: ${VITE_STORYBLOK_API_TOKEN}
+    container_name: vibe-design
+    restart: unless-stopped
+    ports:
+      - "80:80"
