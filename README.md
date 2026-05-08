@@ -241,10 +241,15 @@ Reconnect SSH after this step so Docker group permissions apply.
 
 ### 3) Configure environment values
 
-Create or edit `.env` in the project root:
+Create or edit `.env` in this frontend project:
 
 ```dotenv
 VITE_STORYBLOK_API_TOKEN=your_storyblok_token
+```
+
+In the backend project (`../laravel-proxy`), configure its own `.env`:
+
+```dotenv
 STORYBLOK_API_TOKEN=your_storyblok_token
 STORYBLOK_CV_SLUG=cv
 STORYBLOK_VERSION=published
@@ -253,12 +258,21 @@ CV_CACHE_TTL_SECONDS=900
 CV_CACHE_BUST_TOKEN=set_a_random_secret
 ```
 
-This stack expects a Laravel app at `../laravel-proxy` (sibling folder to this repo on the Droplet).
-The frontend serves the SPA and proxies `/api/*` requests to Laravel.
+The frontend serves the SPA and proxies `/api/*` requests to the backend container over a shared Docker network.
 
 ### 4) Deploy
 
+Start backend first:
+
 ```bash
+cd ../laravel-proxy
+docker compose up -d --build
+```
+
+Then start frontend:
+
+```bash
+cd ../Vibe\ design
 ./deploy/droplet/deploy.sh
 ```
 
