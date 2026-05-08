@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { initStoryblok, useStoryblok, StoryblokComponent } from './lib/storyblok';
 import './styles/_globals.scss';
@@ -7,25 +7,98 @@ import './styles/_globals.scss';
 initStoryblok();
 
 function App() {
-  // Get slug from URL or default to 'home'
   const slug = window.location.pathname.replace(/^\//, '') || 'home';
   const storyblokVersion = import.meta.env.PROD ? 'published' : 'draft';
-  
-  // useStoryblok hook enables live editing in Visual Editor
+  const isCvPage = slug === 'cv';
+
+  const [cvHtml, setCvHtml] = useState<string | null>(null);
+  const [cvError, setCvError] = useState<string | null>(null);
+
   const story = useStoryblok(slug, { version: storyblokVersion });
 
-  // Log Storyblok data for debugging
   useEffect(() => {
-    console.log('=== STORYBLOK DATA ===');
-    console.log('Slug:', slug);
-    console.log('Story:', story);
-    if (story?.content) {
-      console.log('Content:', JSON.stringify(story.content, null, 2));
+    if (!isCvPage) {
+      setCvHtml(null);
+      setCvError(null);
+      return;
     }
-    console.log('======================');
-  }, [slug, story]);
 
-  console.log('SB token:', import.meta.env.VITE_STORYBLOK_API_TOKEN);
+    let isCancelled = false;
+
+    const loadCv = async () => {
+      try {
+        setCvError(null);
+        const response = await fetch('/api/cv', {
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch CV (${response.status})`);
+        }
+
+        const payload = await response.json();
+        const html = typeof payload?.html === 'string' ? payload.html : null;
+
+        if (!isCancelled) {
+          if (!html) {
+            throw new Error('CV endpoint did not return HTML content.');
+          }
+          setCvHtml(html);
+        }
+      } catch (error) {
+        if (!isCancelled) {
+          setCvError(error instanceof Error ? error.message : 'Unable to load CV.');
+        }
+      }
+    };
+
+    loadCv();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [isCvPage]);
+
+  if (isCvPage) {
+    if (cvError) {
+      return (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: '100vh',
+            fontFamily: 'Sora, sans-serif',
+            color: '#ae2012',
+            padding: '2rem',
+            textAlign: 'center',
+          }}
+        >
+          {cvError}
+        </div>
+      );
+    }
+
+    if (!cvHtml) {
+      return (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: '100vh',
+            fontFamily: 'Sora, sans-serif',
+          }}
+        >
+          Loading CV...
+        </div>
+      );
+    }
+
+    return <div dangerouslySetInnerHTML={{ __html: cvHtml }} />;
+  }
 
   if (!story?.content) {
     return (
@@ -47,7 +120,7 @@ function App() {
         <div style={{ fontSize: '0.875rem', color: '#5c5a52' }}>
           Fetching: /{slug}
         </div>
-        {!story && (
+        {!story && !isCvPage && (
           <div style={{ fontSize: '0.75rem', color: '#ae2012', maxWidth: '400px', textAlign: 'center' }}>
             No story found. Make sure you have a story with slug "{slug}" in Storyblok.
           </div>
