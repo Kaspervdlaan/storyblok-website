@@ -13,7 +13,6 @@ A **Neobrutalist** React + TypeScript design system featuring bold colors, heavy
 - **SCSS Token System** - Comprehensive design tokens for colors, typography, spacing, and more
 - **Accessible** - Keyboard navigation and focus styles built-in
 - **TypeScript** - Full type safety with no `any` types
-- **Storybook** - Interactive component documentation
 - **forwardRef Support** - Button and Typography support ref forwarding
 
 ## 🚀 Quick Start
@@ -35,14 +34,6 @@ npm run dev
 ```
 
 This will start the app at `http://localhost:5173`
-
-### Running Storybook
-
-```bash
-npm run storybook
-```
-
-This will start Storybook at `http://localhost:6006`
 
 ## 📁 Project Structure
 
@@ -310,8 +301,7 @@ Open `http://localhost:8080`.
 
 1. Follow the existing component patterns
 2. Use tokens from `_variables.scss` (no hardcoded values)
-3. Include Storybook stories with all variants
-4. Ensure keyboard accessibility
+3. Ensure keyboard accessibility
 
 ---
 

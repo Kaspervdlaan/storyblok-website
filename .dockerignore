@@ -1,6 +1,5 @@
 node_modules
 _site
-storybook-static
 dist
 .git
 .github
