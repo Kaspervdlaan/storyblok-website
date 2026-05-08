@@ -278,7 +278,14 @@ cd ../Vibe\ design
 
 The app will be available on `http://YOUR_DROPLET_IP`.
 
-CV endpoint via proxy/cache:
+All-slug cached story endpoint:
+
+```bash
+curl "http://YOUR_DROPLET_IP/api/story?slug=home"
+curl "http://YOUR_DROPLET_IP/api/story?slug=cv"
+```
+
+Backward-compatible CV endpoint:
 
 ```bash
 curl http://YOUR_DROPLET_IP/api/cv
@@ -287,7 +294,10 @@ curl http://YOUR_DROPLET_IP/api/cv
 Optional cache clear:
 
 ```bash
-curl -X POST http://YOUR_DROPLET_IP/api/cv/cache/clear \
+curl -X POST "http://YOUR_DROPLET_IP/api/story/cache/clear?slug=home" \
+  -H "X-Cache-Bust-Token: $CV_CACHE_BUST_TOKEN"
+
+curl -X POST "http://YOUR_DROPLET_IP/api/cv/cache/clear?slug=cv" \
   -H "X-Cache-Bust-Token: $CV_CACHE_BUST_TOKEN"
 ```
 
